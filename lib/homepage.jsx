@@ -111,10 +111,10 @@ function CaseStudiesView({ onExploreCase }) {
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color={BRAND.cyan}>EDGE CASES & RESEARCH</Eyebrow>
           <div style={{ height: 18 }}/>
-          <SerifH size={48} color="#9CA3AF" weight={500} leading={1.15}>
+          <SerifH size={48} color="#6B7A88" weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
-          <Body size={16} color="#9CA3AF" style={{ marginTop: 16, maxWidth: 680 }}>
+          <Body size={16} color="#6B7A88" style={{ marginTop: 16, maxWidth: 680 }}>
             Three snapshots from our annotation research. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something about how AI learns to think.
           </Body>
         </div>

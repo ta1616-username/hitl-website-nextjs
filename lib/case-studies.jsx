@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { BRAND, FONT, PREMIUM_BG, ItalCyan, Body } from './brand';
 
 export const CASE_W = 480;
@@ -97,6 +98,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
 }
 
 function CaseRow({ kind, h, body, icon, swatch }) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const tone = {
     problem:   { tag: 'PROBLEM',   chip: '#a85a3c', surf: 'rgba(241,217,204,.85)', stripe: '#c97a55' },
     principle: { tag: 'PRINCIPLE', chip: BRAND.cyan, surf: 'rgba(38,50,56,.92)',   stripe: BRAND.cyan, dark: true },
@@ -104,13 +106,21 @@ function CaseRow({ kind, h, body, icon, swatch }) {
   }[kind];
 
   return (
-    <div style={{
-      marginLeft: 44, position: 'relative',
-      background: tone.surf, borderLeft: `2px solid ${tone.stripe}`,
-      padding: '14px 16px', boxSizing: 'border-box',
-      color: tone.dark ? '#fff' : BRAND.slate,
-      minHeight: 132,
-    }}>
+    <div
+      onClick={() => setIsExpanded(!isExpanded)}
+      style={{
+        marginLeft: 44, position: 'relative',
+        background: tone.surf, borderLeft: `2px solid ${tone.stripe}`,
+        border: isExpanded ? `2px solid #ffffff` : 'none',
+        borderLeft: isExpanded ? `2px solid #ffffff` : `2px solid ${tone.stripe}`,
+        padding: '14px 16px', boxSizing: 'border-box',
+        color: tone.dark ? '#fff' : BRAND.slate,
+        minHeight: 132,
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        maxHeight: isExpanded ? '1000px' : '200px',
+        overflow: isExpanded ? 'visible' : 'hidden',
+      }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
         <span style={{
           fontFamily: FONT.mono, fontSize: 9.5, fontWeight: 700,

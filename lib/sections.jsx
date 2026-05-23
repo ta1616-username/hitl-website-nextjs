@@ -31,8 +31,8 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
         <img
           src="/logo-hitl.png"
           alt="Human-in-the-Loop Solutions"
-          width={40}
-          height={40}
+          width={48}
+          height={48}
           style={{ display: 'block', borderRadius: 6 }}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, lineHeight: 1 }}>
@@ -347,13 +347,11 @@ export function Footer({ height = 320, onTabChange = () => {} }) {
       position: 'relative', color: '#fff', display: 'flex', flexDirection: 'column',
       justifyContent: 'space-between', gap: 48,
     }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 48 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48 }}>
         <div>
           <Wordmark inverse={true} scale={1}/>
         </div>
         <FooterNavCol title="Explore" tabs={tabs} onTabChange={onTabChange}/>
-        <FooterCol title="Case Studies" links={['Linguistic Constraints', 'AI Tutoring', 'Empathy Calibration', 'View All →']}/>
-        <FooterCol title="Studio" links={['Method', 'Writing', 'Contact', 'hello@human-in-the-loop-solutions.org']}/>
       </div>
       <div style={{
         borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: 22,
