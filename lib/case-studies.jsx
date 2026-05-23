@@ -105,20 +105,22 @@ function CaseRow({ kind, h, body, icon, swatch }) {
     solution:  { tag: 'SOLUTION',  chip: '#3f7a4a', surf: 'rgba(217,230,212,.92)', stripe: '#3f7a4a' },
   }[kind];
 
+  const isExpandable = kind !== 'principle';
+
   return (
     <div
-      onClick={() => setIsExpanded(!isExpanded)}
+      onClick={() => { if (isExpandable) setIsExpanded(!isExpanded); }}
       style={{
         marginLeft: 44, position: 'relative',
         background: tone.surf, borderLeft: `2px solid ${tone.stripe}`,
-        border: isExpanded ? `2px solid #ffffff` : 'none',
-        borderLeft: isExpanded ? `2px solid #ffffff` : `2px solid ${tone.stripe}`,
+        border: isExpandable && isExpanded ? `2px solid #ffffff` : 'none',
+        borderLeft: isExpandable && isExpanded ? `2px solid #ffffff` : `2px solid ${tone.stripe}`,
         padding: '14px 16px', boxSizing: 'border-box',
         color: tone.dark ? '#fff' : BRAND.slate,
         minHeight: 132,
-        cursor: 'pointer',
+        cursor: isExpandable ? 'pointer' : 'default',
         transition: 'all 0.3s ease',
-        maxHeight: isExpanded ? '1200px' : '120px',
+        maxHeight: isExpandable && isExpanded ? '1200px' : '120px',
         overflow: 'hidden',
       }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>

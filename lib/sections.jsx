@@ -31,11 +31,11 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
         <img
           src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
           alt="Human-in-the-Loop Solutions"
-          width={48}
-          height={48}
-          style={{ display: 'block', borderRadius: 6 }}
+          width={64}
+          height={64}
+          style={{ display: 'block', borderRadius: 8 }}
         />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, lineHeight: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, lineHeight: 1 }}>
           <div style={{
             fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
             letterSpacing: '0.18em', color: '#ffffff', textTransform: 'uppercase',
@@ -349,7 +349,7 @@ export function Footer({ height = 320, onTabChange = () => {} }) {
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 48 }}>
         <div>
-          <Wordmark inverse={true} scale={1}/>
+          <Wordmark inverse={true} scale={1.3}/>
         </div>
         <div style={{ display: 'flex', gap: 32 }}>
           {tabs.map((t) => (

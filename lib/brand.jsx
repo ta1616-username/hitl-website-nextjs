@@ -66,7 +66,7 @@ export function Wordmark({ inverse = true, scale = 1 }) {
           fontFamily: FONT.sans, fontSize: 9.5 * scale, fontWeight: 500,
           letterSpacing: '0.28em', color: sub, textTransform: 'uppercase',
         }}>
-          AI Annotation · Training Research
+          AI Annotation
         </div>
       </div>
     </div>
