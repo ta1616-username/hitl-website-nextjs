@@ -5,6 +5,8 @@ import { BRAND, FONT, PREMIUM_BG, Wordmark, Eyebrow, SerifH, ItalCyan, Body, Tag
 // ───────────────────────────────────────────────────────────────
 // Navigation bar — five tabs, no Begin Engagement CTA.
 // Switches the active tab in parent state rather than scrolling.
+// Uses the custom HITL badge logo (public/logo-hitl.png) on the left,
+// with a cleaned-up wordmark whose only subtitle is "AI Annotation".
 // ───────────────────────────────────────────────────────────────
 export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
   const links = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
@@ -20,10 +22,35 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
     }}>
       <button
         onClick={() => onTabChange('Home')}
-        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        style={{
+          background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+          display: 'flex', alignItems: 'center', gap: 12,
+        }}
         aria-label="Go to Home"
       >
-        <Wordmark inverse={true} scale={1}/>
+        <img
+          src="/logo-hitl.png"
+          alt="Human-in-the-Loop Solutions"
+          width={40}
+          height={40}
+          style={{ display: 'block', borderRadius: 6 }}
+        />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, lineHeight: 1 }}>
+          <div style={{
+            fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
+            letterSpacing: '0.18em', color: '#ffffff', textTransform: 'uppercase',
+            textAlign: 'left',
+          }}>
+            HUMAN-IN-THE-LOOP <span style={{ color: BRAND.cyan }}>SOLUTIONS</span>
+          </div>
+          <div style={{
+            fontFamily: FONT.sans, fontSize: 9.5, fontWeight: 500,
+            letterSpacing: '0.28em', color: 'rgba(255,255,255,.7)', textTransform: 'uppercase',
+            textAlign: 'center',
+          }}>
+            AI Annotation
+          </div>
+        </div>
       </button>
       <nav style={{ display: 'flex', alignItems: 'center', gap: 38 }}>
         {links.map((l) => (
@@ -62,7 +89,6 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
       width: '100%', height, background: PREMIUM_BG,
       position: 'relative', overflow: 'hidden',
     }}>
-      {/* Architectural lines */}
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none"
         style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <line x1="64" y1={height-1} x2={width-64} y2={height-1} stroke={BRAND.slate} strokeOpacity=".22" strokeWidth="1"/>
@@ -73,7 +99,6 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         ))}
       </svg>
 
-      {/* Top strap */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -89,12 +114,10 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         </div>
       </div>
 
-      {/* Body */}
       <div style={{
-        position: 'absolute', inset: '120px 64px 80px',
+        position: 'absolute', inset: '120px 64px 40px',
         display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 64, alignItems: 'center',
       }}>
-        {/* Left: title block */}
         <div style={{ position: 'relative' }}>
           <div style={{ marginBottom: 28 }}>
             <Eyebrow color={BRAND.slate}>A Practice in Human-AI Alignment</Eyebrow>
@@ -149,7 +172,6 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           </div>
         </div>
 
-        {/* Right: instructive geometry */}
         <div style={{ position: 'relative', height: 520 }}>
           <HeroGeometry/>
           <div style={{ position: 'absolute', bottom: -20, right: 0,
@@ -160,26 +182,8 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         </div>
       </div>
 
-      {/* Bottom counter strap */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 64, right: 64, height: 80,
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', alignItems: 'center',
-        borderTop: '1px solid rgba(38,50,56,.18)',
-      }}>
-        {[
-          ['3', 'Live Case Studies'],
-          ['2.4k', 'Annotated Pairs'],
-          ['11', 'Model Families'],
-          ['100%', 'Human-Audited'],
-        ].map(([n, l]) => (
-          <div key={l} style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingRight: 20 }}>
-            <span style={{ fontFamily: FONT.serif, fontWeight: 500, fontSize: 36, color: BRAND.white,
-              letterSpacing: '-0.02em' }}>{n}</span>
-            <span style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
-              letterSpacing: '0.24em', color: BRAND.slate, textTransform: 'uppercase' }}>{l}</span>
-          </div>
-        ))}
-      </div>
+      {/* Statistics row removed per refinement brief (#10). The hero now
+          closes on the geometric figure rather than the numbers strip. */}
     </section>
   );
 }
@@ -332,8 +336,10 @@ export function Services({ height = 760, onTabChange = () => {} }) {
 
 // ───────────────────────────────────────────────────────────────
 // Footer — restrained, no script tagline, updated email.
+// Tab links mirror the NavBar and call onTabChange to switch tabs.
 // ───────────────────────────────────────────────────────────────
-export function Footer({ height = 320 }) {
+export function Footer({ height = 320, onTabChange = () => {} }) {
+  const tabs = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
   return (
     <footer style={{
       width: '100%', minHeight: height, background: '#101719',
@@ -345,7 +351,7 @@ export function Footer({ height = 320 }) {
         <div>
           <Wordmark inverse={true} scale={1}/>
         </div>
-        <FooterCol title="Practice" links={['AI Annotation', 'Alignment Research', 'Language Education', 'Organisational Learning']}/>
+        <FooterNavCol title="Explore" tabs={tabs} onTabChange={onTabChange}/>
         <FooterCol title="Case Studies" links={['Linguistic Constraints', 'AI Tutoring', 'Empathy Calibration', 'View All →']}/>
         <FooterCol title="Studio" links={['Method', 'Writing', 'Contact', 'hello@human-in-the-loop-solutions.org']}/>
       </div>
@@ -359,6 +365,39 @@ export function Footer({ height = 320 }) {
         <span style={{ color: BRAND.cyan }}>4U STANDARD · CERTIFIED PRACTICE</span>
       </div>
     </footer>
+  );
+}
+
+// Clickable tab column: each tab routes through onTabChange so the
+// footer mirrors the top-nav behaviour exactly.
+function FooterNavCol({ title, tabs, onTabChange }) {
+  return (
+    <div>
+      <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
+        letterSpacing: '0.28em', color: BRAND.cyan, textTransform: 'uppercase',
+        marginBottom: 18 }}>{title}</div>
+      <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex',
+        flexDirection: 'column', gap: 10 }}>
+        {tabs.map((t) => (
+          <li key={t}>
+            <button
+              type="button"
+              onClick={() => onTabChange(t)}
+              style={{
+                fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
+                color: 'rgba(255,255,255,.78)', background: 'none', border: 'none',
+                padding: 0, cursor: 'pointer', textAlign: 'left',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.78)'; }}
+            >
+              {t}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

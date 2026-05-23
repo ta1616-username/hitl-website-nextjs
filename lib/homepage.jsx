@@ -47,6 +47,22 @@ function PracticeView() {
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
           Instructive Geometry
         </SerifH>
+
+        {/* 4U Standard badge — sits between the heading and the philosophy
+            text so the symbol introduces the standard the prose explains. */}
+        <div style={{
+          marginTop: 36, marginBottom: 16,
+          display: 'flex', justifyContent: 'center',
+        }}>
+          <img
+            src="/4u-standard.png"
+            alt="4U Standard: Unequivocally Correct, Uniform, Useful, Understandable"
+            width={200}
+            height={200}
+            style={{ display: 'block', width: 200, height: 200 }}
+          />
+        </div>
+
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 28, maxWidth: 760 }}>
           We believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. Our practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
         </Body>
@@ -90,26 +106,34 @@ function CaseStudiesView({ onExploreCase }) {
   return (
     <section style={{ width: '100%', padding: '80px 40px', background: PREMIUM_BG }}>
       <div style={{ maxWidth: 1480, margin: '0 auto' }}>
-        {/* Header */}
+        {/* Header — title and lede in soft grey for calmer contrast
+            against the gradient (#8 in the refinement brief). */}
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color={BRAND.cyan}>EDGE CASES & RESEARCH</Eyebrow>
           <div style={{ height: 18 }}/>
-          <SerifH size={48} color="#ffffff" weight={500} leading={1.15}>
+          <SerifH size={48} color="#9CA3AF" weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
-          <Body size={16} color="rgba(255,255,255,.78)" style={{ marginTop: 16, maxWidth: 680 }}>
+          <Body size={16} color="#9CA3AF" style={{ marginTop: 16, maxWidth: 680 }}>
             Three snapshots from our annotation research. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something about how AI learns to think.
           </Body>
         </div>
 
-        {/* Case Cards Grid */}
-        <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(' + CASE_W + 'px, 1fr))',
-          gap: 28, marginBottom: 80,
-        }}>
-          <CaseCard01 onExplore={() => onExploreCase('01')}/>
-          <CaseCard02 onExplore={() => onExploreCase('02')}/>
-          <CaseCard03 onExplore={() => onExploreCase('03')}/>
+        {/* Case Cards — cases 1 & 2 on row 1, case 3 centred on its own row */}
+        <div style={{ marginBottom: 80, display: 'flex', flexDirection: 'column', gap: 28 }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(' + CASE_W + 'px, 1fr))',
+            gap: 28,
+          }}>
+            <CaseCard01 onExplore={() => onExploreCase('01')}/>
+            <CaseCard02 onExplore={() => onExploreCase('02')}/>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ width: '100%', maxWidth: CASE_W + 80 }}>
+              <CaseCard03 onExplore={() => onExploreCase('03')}/>
+            </div>
+          </div>
         </div>
 
         {/* Infographics gallery */}
@@ -167,36 +191,6 @@ function CaseStudiesView({ onExploreCase }) {
           </div>
         </div>
 
-        {/* Subscription Strap */}
-        <div style={{
-          background: '#ffffff', padding: '40px 36px',
-          borderRadius: 8, display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between', flexWrap: 'wrap', gap: 24,
-        }}>
-          <div>
-            <div style={{
-              fontFamily: FONT.sans, fontSize: 13, fontWeight: 600,
-              letterSpacing: '0.2em', color: BRAND.slate, textTransform: 'uppercase',
-              marginBottom: 8,
-            }}>
-              STAY CONNECTED
-            </div>
-            <div style={{
-              fontFamily: FONT.serif, fontSize: 24, fontWeight: 500,
-              color: BRAND.slate, letterSpacing: '-0.01em',
-            }}>
-              Subscribe to the practice.
-            </div>
-          </div>
-          <button style={{
-            fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
-            letterSpacing: '0.22em', color: '#ffffff', textTransform: 'uppercase',
-            background: BRAND.cyan, border: 'none', padding: '12px 24px',
-            cursor: 'pointer', borderRadius: 4,
-          }}>
-            Subscribe
-          </button>
-        </div>
       </div>
     </section>
   );
@@ -362,7 +356,7 @@ export function FullHomepage() {
         {activeTab === 'Contact' && <ContactView/>}
       </main>
 
-      <Footer/>
+      <Footer onTabChange={handleTabChange}/>
 
       {selectedCase && (
         <InfographicModal caseId={selectedCase} onClose={() => setSelectedCase(null)}/>
