@@ -146,7 +146,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
         </svg>
 
         <CaseRow kind="problem"   onMagnify={(data) => setMagnified({ kind: 'problem', ...data })} {...problem}/>
-        <CaseRow kind="principle" {...principle}/>
+        <CaseRow kind="principle" onMagnify={(data) => setMagnified({ kind: 'principle', ...data })} {...principle}/>
         <CaseRow kind="solution"  onMagnify={(data) => setMagnified({ kind: 'solution', ...data })} {...solution}/>
       </div>
 
@@ -186,7 +186,7 @@ function CaseRow({ kind, h, body, icon, swatch, onMagnify }) {
     solution:  { tag: 'SOLUTION',  chip: '#3f7a4a', surf: 'rgba(217,230,212,.92)', stripe: '#3f7a4a' },
   }[kind];
 
-  const isClickable = kind !== 'principle' && onMagnify;
+  const isClickable = !!onMagnify;
 
   return (
     <div

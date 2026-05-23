@@ -35,7 +35,7 @@ const INFOGRAPHICS = [
 // ───────────────────────────────────────────────────────────────
 // Practice tab content — the Manifesto, given room to breathe.
 // ───────────────────────────────────────────────────────────────
-function PracticeView() {
+function PracticeView({ on4UClick }) {
   return (
     <section style={{
       width: '100%', padding: '96px 40px', background: '#ffffff',
@@ -54,13 +54,23 @@ function PracticeView() {
           marginTop: 36, marginBottom: 16,
           display: 'flex', justifyContent: 'center',
         }}>
-          <img
-            src="/4u-standard.png"
-            alt="4U Standard: Unequivocally Correct, Uniform, Useful, Understandable"
-            width={220}
-            height={220}
-            style={{ display: 'block', width: 220, height: 220 }}
-          />
+          <button
+            onClick={on4UClick}
+            style={{
+              background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+              transition: 'opacity 0.2s ease',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.8'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+          >
+            <img
+              src="/4u-standard.png"
+              alt="4U Standard: Unequivocally Correct, Uniform, Useful, Understandable"
+              width={220}
+              height={220}
+              style={{ display: 'block', width: 220, height: 220 }}
+            />
+          </button>
         </div>
 
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 28, maxWidth: 760 }}>
@@ -119,20 +129,12 @@ function CaseStudiesView({ onExploreCase }) {
           </Body>
         </div>
 
-        {/* Case Cards — cases 1 & 2 on row 1, case 3 centred on its own row */}
-        <div style={{ marginBottom: 80, display: 'flex', flexDirection: 'column', gap: 28 }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(' + CASE_W + 'px, 1fr))',
-            gap: 28,
-          }}>
-            <CaseCard01 onExplore={() => onExploreCase('01')}/>
-            <CaseCard02 onExplore={() => onExploreCase('02')}/>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{ width: '100%', maxWidth: CASE_W + 80 }}>
-              <CaseCard03 onExplore={() => onExploreCase('03')}/>
-            </div>
+        {/* Case Cards — custom layout with offset positioning */}
+        <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
+          <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
+          <div style={{ marginTop: 380 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div style={{ gridColumn: '1 / 2', marginTop: 380 }}>
+            <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
 
@@ -247,6 +249,55 @@ function ContactView() {
 }
 
 // ───────────────────────────────────────────────────────────────
+// 4U Standard modal — magnifying glass effect for the badge.
+// ───────────────────────────────────────────────────────────────
+function FourUModal({ onClose }) {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 1000,
+        background: 'rgba(0,0,0,0.85)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: 24, boxSizing: 'border-box',
+        animation: 'fadeIn 0.2s ease',
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: '#ffffff', padding: '40px', boxSizing: 'border-box',
+          borderRadius: 4, boxShadow: '0 20px 80px rgba(0,0,0,0.6)',
+          maxWidth: 600, maxHeight: '85vh', overflow: 'auto',
+        }}
+      >
+        <img
+          src="/4u-standard.png"
+          alt="4U Standard: Unequivocally Correct, Uniform, Useful, Understandable"
+          style={{ width: '100%', display: 'block', maxWidth: 400, margin: '0 auto' }}
+        />
+        <div style={{
+          marginTop: 28, fontFamily: FONT.serif, fontSize: 24, fontWeight: 500,
+          color: BRAND.slate, textAlign: 'center', lineHeight: 1.3, letterSpacing: '-0.01em',
+        }}>
+          Unequivocally Correct · Uniform · Useful · Understandable
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ───────────────────────────────────────────────────────────────
 // Infographic modal overlay.
 // Closes on Esc, backdrop click, or the close button.
 // ───────────────────────────────────────────────────────────────
@@ -334,6 +385,7 @@ function InfographicModal({ caseId, onClose }) {
 export function FullHomepage() {
   const [activeTab, setActiveTab] = useState('Home');
   const [selectedCase, setSelectedCase] = useState(null);
+  const [show4UModal, setShow4UModal] = useState(false);
 
   const handleTabChange = (next) => {
     setActiveTab(next);
@@ -352,7 +404,7 @@ export function FullHomepage() {
         {activeTab === 'Case Studies' && (
           <CaseStudiesView onExploreCase={(id) => setSelectedCase(id)}/>
         )}
-        {activeTab === 'Practice' && <PracticeView/>}
+        {activeTab === 'Practice' && <PracticeView on4UClick={() => setShow4UModal(true)}/>}
         {activeTab === 'Contact' && <ContactView/>}
       </main>
 
@@ -360,6 +412,10 @@ export function FullHomepage() {
 
       {selectedCase && (
         <InfographicModal caseId={selectedCase} onClose={() => setSelectedCase(null)}/>
+      )}
+
+      {show4UModal && (
+        <FourUModal onClose={() => setShow4UModal(false)}/>
       )}
     </div>
   );

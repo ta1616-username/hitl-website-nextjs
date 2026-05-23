@@ -31,8 +31,8 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
         <img
           src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
           alt="Human-in-the-Loop Solutions"
-          width={120}
-          height={120}
+          width={160}
+          height={160}
           style={{ display: 'block', borderRadius: 8 }}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4, lineHeight: 1 }}>
