@@ -52,7 +52,7 @@ function PracticeView({ on4UClick }) {
             text so the symbol introduces the standard the prose explains. */}
         <div style={{
           marginTop: 36, marginBottom: 16,
-          display: 'flex', justifyContent: 'center',
+          display: 'flex', justifyContent: 'flex-start',
         }}>
           <button
             onClick={on4UClick}
@@ -132,8 +132,8 @@ function CaseStudiesView({ onExploreCase }) {
         {/* Case Cards — custom layout with offset positioning */}
         <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
           <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
-          <div style={{ marginTop: 380 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: 380 }}>
+          <div style={{ marginTop: 460 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div style={{ gridColumn: '1 / 2', marginTop: 420 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
@@ -276,15 +276,15 @@ function FourUModal({ onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: '#ffffff', padding: '40px', boxSizing: 'border-box',
+          background: '#ffffff', padding: '60px', boxSizing: 'border-box',
           borderRadius: 4, boxShadow: '0 20px 80px rgba(0,0,0,0.6)',
-          maxWidth: 600, maxHeight: '85vh', overflow: 'auto',
+          maxWidth: 900, maxHeight: '85vh', overflow: 'auto',
         }}
       >
         <img
           src="/4u-standard.png"
           alt="4U Standard: Unequivocally Correct, Uniform, Useful, Understandable"
-          style={{ width: '100%', display: 'block', maxWidth: 400, margin: '0 auto' }}
+          style={{ width: '100%', display: 'block', maxWidth: 600, margin: '0 auto' }}
         />
         <div style={{
           marginTop: 28, fontFamily: FONT.serif, fontSize: 24, fontWeight: 500,

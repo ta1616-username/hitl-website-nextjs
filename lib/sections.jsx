@@ -349,7 +349,13 @@ export function Footer({ height = 320, onTabChange = () => {} }) {
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 48 }}>
         <div>
-          <Wordmark inverse={true} scale={1.3}/>
+          <img
+            src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
+            alt="Human-In-The-Loop Solutions"
+            width={160}
+            height={160}
+            style={{ display: 'block' }}
+          />
         </div>
         <div style={{ display: 'flex', gap: 32 }}>
           {tabs.map((t) => (
