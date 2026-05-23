@@ -1,60 +1,170 @@
 'use client';
 
-import { BRAND, FONT, PREMIUM_BG, Body, SerifH, Eyebrow, GeoMark } from './brand';
+import { useState, useEffect } from 'react';
+import { BRAND, FONT, PREMIUM_BG, Body, SerifH, Eyebrow } from './brand';
 import { NavBar, Hero, Services, Footer } from './sections';
-import { CaseCard01, CaseCard02, CaseCard03, CASE_W, CASE_H } from './case-studies';
+import { CaseCard01, CaseCard02, CaseCard03, CASE_W } from './case-studies';
 
 // ───────────────────────────────────────────────────────────────
-// Manifesto: "Instructive Geometry" philosophy
+// Infographic data — JPGs live in /public/infographics/.
+// You must copy the three JPGs from your local
+// Infographics folder into hitl-website-nextjs/public/infographics/
+// using these filenames before deploying.
 // ───────────────────────────────────────────────────────────────
-function Manifesto() {
+const INFOGRAPHICS = [
+  {
+    id: '01',
+    label: 'RLHF Edge Case · 01',
+    title: 'Linguistic Constraints and Rewriting',
+    src: '/infographics/RLHF_Edge_Case_01_Linguistic_Constraints_page-0001.jpg',
+  },
+  {
+    id: '02',
+    label: 'RLHF Edge Case · 02',
+    title: 'AI Tutoring: Multi-Step Reasoning',
+    src: '/infographics/RLHF_Edge_Case_02_AI_Tutoring_page-0001.jpg',
+  },
+  {
+    id: '03',
+    label: 'RLHF Edge Case · 03',
+    title: 'Empathy Calibration and Safety Alignment',
+    src: '/infographics/RLHF_Edge_Case_03_Empathy_Calibration_page-0001.jpg',
+  },
+];
+
+// ───────────────────────────────────────────────────────────────
+// Practice tab content — the Manifesto, given room to breathe.
+// ───────────────────────────────────────────────────────────────
+function PracticeView() {
   return (
     <section style={{
-      width: '100%', padding: '80px 40px', background: '#ffffff',
-      display: 'flex', justifyContent: 'center', alignItems: 'center',
+      width: '100%', padding: '96px 40px', background: '#ffffff',
+      display: 'flex', justifyContent: 'center',
     }}>
       <div style={{ maxWidth: 920, width: '100%' }}>
         <Eyebrow color={BRAND.cyan}>OUR PHILOSOPHY</Eyebrow>
-        <SerifH size={48} color={BRAND.slate} weight={500} leading={1.15}>
+        <div style={{ height: 18 }}/>
+        <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
           Instructive Geometry
         </SerifH>
-        <Body size={16} color={BRAND.slate} weight={400} style={{ marginTop: 24, maxWidth: 720 }}>
-          We believe that human judgment and AI capability are not competitors—they are complementary forces that amplify each other. Our practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
+        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 28, maxWidth: 760 }}>
+          We believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. Our practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
         </Body>
-        <Body size={16} color={BRAND.slate} weight={400} style={{ marginTop: 16, maxWidth: 720 }}>
-          Every annotation, every labelled example, every piece of feedback you provide teaches the system not just what to do, but <em style={{ fontStyle: 'italic' }}>how to think</em>. That is the instructive part. The geometry is the pattern—the repeatable, scalable structure that allows human wisdom to flow into AI capability at scale.
+        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
+          Every annotation, every labelled example, every piece of feedback you provide teaches the system not just what to do, but <em style={{ fontStyle: 'italic' }}>how to think</em>. That is the instructive part. The geometry is the pattern: the repeatable, scalable structure that allows human wisdom to flow into AI capability at scale.
         </Body>
+
+        {/* Four principles */}
+        <div style={{
+          marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28,
+        }}>
+          {[
+            ['CORRECT', 'Every example is factually right and contractually compliant.'],
+            ['UNIFORM', 'The same situation produces the same shape of answer, every time.'],
+            ['USEFUL', 'The answer moves the reader forward, not in a circle.'],
+            ['UNDERSTANDABLE', 'A person who is not an expert can read it and feel met.'],
+          ].map(([term, def]) => (
+            <div key={term} style={{
+              padding: '20px 24px',
+              borderLeft: `2px solid ${BRAND.cyan}`,
+              background: '#fafafa',
+            }}>
+              <div style={{
+                fontFamily: FONT.mono, fontSize: 11, fontWeight: 600,
+                letterSpacing: '0.28em', color: BRAND.cyan, marginBottom: 10,
+              }}>{term}</div>
+              <Body size={14} color={BRAND.slate}>{def}</Body>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
 // ───────────────────────────────────────────────────────────────
-// Case Studies Showcase: grid of three cards + subscription strap
+// Case Studies tab — the three narrative cards plus the
+// infographic gallery (thumbnails open a modal at full size).
 // ───────────────────────────────────────────────────────────────
-function CaseStudiesShowcase() {
+function CaseStudiesView({ onExploreCase }) {
   return (
     <section style={{ width: '100%', padding: '80px 40px', background: PREMIUM_BG }}>
       <div style={{ maxWidth: 1480, margin: '0 auto' }}>
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color={BRAND.cyan}>EDGE CASES & RESEARCH</Eyebrow>
+          <div style={{ height: 18 }}/>
           <SerifH size={48} color="#ffffff" weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
           <Body size={16} color="rgba(255,255,255,.78)" style={{ marginTop: 16, maxWidth: 680 }}>
-            Three snapshots from our annotation research. Each shows a moment where the gap between a near-miss answer and a golden response reveals something about how AI learns to think.
+            Three snapshots from our annotation research. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something about how AI learns to think.
           </Body>
         </div>
 
         {/* Case Cards Grid */}
         <div style={{
           display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(' + CASE_W + 'px, 1fr))',
-          gap: 28, marginBottom: 60,
+          gap: 28, marginBottom: 80,
         }}>
-          <CaseCard01/>
-          <CaseCard02/>
-          <CaseCard03/>
+          <CaseCard01 onExplore={() => onExploreCase('01')}/>
+          <CaseCard02 onExplore={() => onExploreCase('02')}/>
+          <CaseCard03 onExplore={() => onExploreCase('03')}/>
+        </div>
+
+        {/* Infographics gallery */}
+        <div style={{ marginBottom: 60 }}>
+          <Eyebrow color={BRAND.cyan}>ANNOTATED INFOGRAPHICS</Eyebrow>
+          <div style={{ height: 14 }}/>
+          <SerifH size={36} color="#ffffff" weight={500} leading={1.2}>
+            The full walkthrough.
+          </SerifH>
+          <Body size={15} color="rgba(255,255,255,.72)" style={{ marginTop: 12, maxWidth: 620 }}>
+            Click any panel to open the full-size annotated infographic.
+          </Body>
+          <div style={{
+            marginTop: 28,
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20,
+          }}>
+            {INFOGRAPHICS.map((g) => (
+              <button
+                key={g.id}
+                onClick={() => onExploreCase(g.id)}
+                style={{
+                  position: 'relative', overflow: 'hidden',
+                  background: '#ffffff', border: 'none', padding: 0,
+                  cursor: 'pointer', textAlign: 'left',
+                  boxShadow: '0 2px 12px rgba(0,0,0,.18)',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(0,0,0,.28)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,.18)';
+                }}
+              >
+                <img
+                  src={g.src}
+                  alt={g.title}
+                  style={{ width: '100%', display: 'block', height: 220, objectFit: 'cover', objectPosition: 'top' }}
+                />
+                <div style={{ padding: '16px 18px 18px', background: '#fff' }}>
+                  <div style={{
+                    fontFamily: FONT.mono, fontSize: 10.5, fontWeight: 600,
+                    letterSpacing: '0.24em', color: BRAND.cyan, textTransform: 'uppercase',
+                    marginBottom: 6,
+                  }}>{g.label}</div>
+                  <div style={{
+                    fontFamily: FONT.serif, fontSize: 18, fontWeight: 500,
+                    color: BRAND.slate, letterSpacing: '-0.01em', lineHeight: 1.25,
+                  }}>{g.title}</div>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Subscription Strap */}
@@ -93,17 +203,170 @@ function CaseStudiesShowcase() {
 }
 
 // ───────────────────────────────────────────────────────────────
-// Full Homepage: composition of all sections
+// Contact tab — short, warm, direct.
+// ───────────────────────────────────────────────────────────────
+function ContactView() {
+  return (
+    <section style={{
+      width: '100%', padding: '96px 40px', background: '#ffffff',
+      display: 'flex', justifyContent: 'center',
+    }}>
+      <div style={{ maxWidth: 720, width: '100%' }}>
+        <Eyebrow color={BRAND.cyan}>GET IN TOUCH</Eyebrow>
+        <div style={{ height: 18 }}/>
+        <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
+          Let&rsquo;s talk.
+        </SerifH>
+        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 24 }}>
+          Whether you have a project in mind, a question about the practice, or you would simply like to compare notes on annotation craft, I would love to hear from you.
+        </Body>
+
+        <div style={{
+          marginTop: 48, padding: '32px 36px',
+          background: '#fafafa', borderLeft: `3px solid ${BRAND.cyan}`,
+        }}>
+          <div style={{
+            fontFamily: FONT.mono, fontSize: 11, fontWeight: 600,
+            letterSpacing: '0.28em', color: BRAND.cyan, textTransform: 'uppercase',
+            marginBottom: 12,
+          }}>EMAIL</div>
+          <a
+            href="mailto:hello@human-in-the-loop-solutions.org"
+            style={{
+              fontFamily: FONT.serif, fontSize: 28, fontWeight: 500,
+              color: BRAND.slate, letterSpacing: '-0.01em',
+              textDecoration: 'none', borderBottom: `1px solid ${BRAND.cyan}`,
+            }}
+          >
+            hello@human-in-the-loop-solutions.org
+          </a>
+        </div>
+
+        <div style={{ marginTop: 40 }}>
+          <Body size={14} color="rgba(38,50,56,.7)">
+            Operating worldwide, remote. Responses usually within two working days.
+          </Body>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ───────────────────────────────────────────────────────────────
+// Infographic modal overlay.
+// Closes on Esc, backdrop click, or the close button.
+// ───────────────────────────────────────────────────────────────
+function InfographicModal({ caseId, onClose }) {
+  const item = INFOGRAPHICS.find((g) => g.id === caseId);
+
+  useEffect(() => {
+    if (!item) return;
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [item, onClose]);
+
+  if (!item) return null;
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 1000,
+        background: 'rgba(16,23,25,.88)',
+        backdropFilter: 'blur(4px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: 40,
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-label={item.title}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: 'relative', maxWidth: 1100, width: '100%',
+          maxHeight: 'calc(100vh - 80px)', overflow: 'auto',
+          background: '#ffffff', boxShadow: '0 20px 60px rgba(0,0,0,.5)',
+        }}
+      >
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '18px 24px', borderBottom: '1px solid rgba(38,50,56,.1)',
+          background: '#ffffff', position: 'sticky', top: 0, zIndex: 2,
+        }}>
+          <div>
+            <div style={{
+              fontFamily: FONT.mono, fontSize: 10.5, fontWeight: 600,
+              letterSpacing: '0.24em', color: BRAND.cyan, textTransform: 'uppercase',
+              marginBottom: 4,
+            }}>{item.label}</div>
+            <div style={{
+              fontFamily: FONT.serif, fontSize: 22, fontWeight: 500,
+              color: BRAND.slate, letterSpacing: '-0.01em',
+            }}>{item.title}</div>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            style={{
+              fontFamily: FONT.sans, fontSize: 13, fontWeight: 600,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+              color: BRAND.slate, background: 'none',
+              border: '1px solid rgba(38,50,56,.2)', padding: '8px 14px',
+              cursor: 'pointer',
+            }}
+          >
+            Close ✕
+          </button>
+        </div>
+        <img
+          src={item.src}
+          alt={item.title}
+          style={{ width: '100%', display: 'block', height: 'auto' }}
+        />
+      </div>
+    </div>
+  );
+}
+
+// ───────────────────────────────────────────────────────────────
+// Full Homepage — tab-aware composition.
 // ───────────────────────────────────────────────────────────────
 export function FullHomepage() {
+  const [activeTab, setActiveTab] = useState('Home');
+  const [selectedCase, setSelectedCase] = useState(null);
+
+  const handleTabChange = (next) => {
+    setActiveTab(next);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  };
+
   return (
-    <div style={{ width: '100%', minHeight: '100vh' }}>
-      <NavBar/>
-      <Hero/>
-      <Services/>
-      <Manifesto/>
-      <CaseStudiesShowcase/>
+    <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <NavBar activeTab={activeTab} onTabChange={handleTabChange}/>
+
+      <main style={{ flex: 1 }}>
+        {activeTab === 'Home' && <Hero onTabChange={handleTabChange}/>}
+        {activeTab === 'Services' && <Services onTabChange={handleTabChange}/>}
+        {activeTab === 'Case Studies' && (
+          <CaseStudiesView onExploreCase={(id) => setSelectedCase(id)}/>
+        )}
+        {activeTab === 'Practice' && <PracticeView/>}
+        {activeTab === 'Contact' && <ContactView/>}
+      </main>
+
       <Footer/>
+
+      {selectedCase && (
+        <InfographicModal caseId={selectedCase} onClose={() => setSelectedCase(null)}/>
+      )}
     </div>
   );
 }

@@ -6,7 +6,7 @@ export const CASE_W = 480;
 export const CASE_H = 760;
 
 // Shared card chrome.
-function CaseCard({ no, eyebrow, title, italWord, lede, problem, principle, solution, accentTone = 'cyan' }) {
+function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onExplore }) {
   return (
     <article style={{
       width: '100%', height: '100%', background: PREMIUM_BG,
@@ -54,7 +54,6 @@ function CaseCard({ no, eyebrow, title, italWord, lede, problem, principle, solu
       {/* Body — vertical narrative: problem → principle → solution */}
       <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column',
         gap: 12 }}>
-        {/* Connector spine */}
         <svg width="14" height="100%" viewBox="0 0 14 460" preserveAspectRatio="none"
           style={{ position: 'absolute', left: 20, top: 16, bottom: 16, height: 'calc(100% - 32px)' }}>
           <line x1="7" y1="0" x2="7" y2="460" stroke={BRAND.cyan} strokeOpacity=".55"
@@ -76,24 +75,28 @@ function CaseCard({ no, eyebrow, title, italWord, lede, problem, principle, solu
       }}>
         <span style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
           letterSpacing: '0.26em', color: BRAND.slate, textTransform: 'uppercase' }}>
-          {/* footer ticker */}
-          Read · Annotated walkthrough
+          Read: Annotated walkthrough
         </span>
-        <span style={{
-          fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
-          letterSpacing: '0.22em', color: BRAND.slate, textTransform: 'uppercase',
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          padding: '8px 14px 8px 16px', background: BRAND.cyan,
-        }}>
+        <button
+          onClick={onExplore}
+          style={{
+            fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
+            letterSpacing: '0.22em', color: BRAND.slate, textTransform: 'uppercase',
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            padding: '8px 14px 8px 16px', background: BRAND.cyan,
+            border: 'none', cursor: 'pointer', transition: 'opacity 0.2s ease',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.85'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+        >
           Explore Case <span style={{ fontSize: 14 }}>→</span>
-        </span>
+        </button>
       </footer>
     </article>
   );
 }
 
-function CaseRow({ kind, label, h, body, icon, swatch }) {
-  // tone tokens by row kind
+function CaseRow({ kind, h, body, icon, swatch }) {
   const tone = {
     problem:   { tag: 'PROBLEM',   chip: '#a85a3c', surf: 'rgba(241,217,204,.85)', stripe: '#c97a55' },
     principle: { tag: 'PRINCIPLE', chip: BRAND.cyan, surf: 'rgba(38,50,56,.92)',   stripe: BRAND.cyan, dark: true },
@@ -140,7 +143,7 @@ function CaseRow({ kind, label, h, body, icon, swatch }) {
   );
 }
 
-// Mini-icons — circles, squares, lines only.
+// Mini-icons.
 function IconX({ color = '#a85a3c' }) {
   return (
     <svg width="22" height="22" viewBox="0 0 22 22">
@@ -168,15 +171,16 @@ function IconDot({ color = BRAND.cyan }) {
 }
 
 // ───────────────────────────────────────────────────────────────
-// Three specific cards.
+// Three specific cards. onExplore is wired by the parent to open
+// the corresponding infographic modal.
 // ───────────────────────────────────────────────────────────────
-export function CaseCard01() {
+export function CaseCard01({ onExplore }) {
   return (
     <CaseCard
+      onExplore={onExplore}
       no="01"
       eyebrow="RLHF Edge Case · 01"
       title={<>Linguistic Constraints <ItalCyan>and</ItalCyan> Rewriting.</>}
-      italWord="and"
       lede="The anatomy of a Golden Response. A near-miss answer differs from a true Golden Response by a single word."
       problem={{
         h: 'Generic politeness.',
@@ -186,7 +190,7 @@ export function CaseCard01() {
       }}
       principle={{
         h: 'Respect every boundary, however small.',
-        body: 'When developer rules clash with default friendliness, the rules win. Three small constraints — word limit, banned word, no preamble — define the Golden contract.',
+        body: 'When developer rules clash with default friendliness, the rules win. Three small constraints: word limit, banned word, no preamble. Together they define the Golden contract.',
         icon: <IconDot color="#fff"/>,
       }}
       solution={{
@@ -199,9 +203,10 @@ export function CaseCard01() {
   );
 }
 
-export function CaseCard02() {
+export function CaseCard02({ onExplore }) {
   return (
     <CaseCard
+      onExplore={onExplore}
       no="02"
       eyebrow="RLHF Edge Case · 02"
       title={<>AI Tutoring. Multi-Step Reasoning <ItalCyan>&amp;</ItalCyan> Truthfulness.</>}
@@ -214,29 +219,30 @@ export function CaseCard02() {
       }}
       principle={{
         h: 'Be a teacher first. A helper second.',
-        body: 'Politeness is not the same as truth. A good tutor flags the mistake warmly, then offers a memorable picture — a Time Machine — that carries the grammar with it.',
+        body: 'Politeness is not the same as truth. A good tutor flags the mistake warmly, then offers a memorable picture: a Time Machine that carries the grammar with it.',
         icon: <IconDot color="#fff"/>,
       }}
       solution={{
         h: 'A kind correction. A memorable image.',
         body: 'Gently surfaces the mistake. Replaces three tense names with one image the learner can hold. The student leaves with something they can use next time.',
         icon: <IconCheck/>,
-        swatch: <>Actually, that is a very common point of confusion. Think of it like a <b style={{ fontFamily: FONT.serif, fontStyle: 'italic' }}>Time Machine</b> tense — you are looking back at the imaginary past…</>,
+        swatch: <>Actually, that is a very common point of confusion. Think of it like a <b style={{ fontFamily: FONT.serif, fontStyle: 'italic' }}>Time Machine</b> tense: you are looking back at the imaginary past…</>,
       }}
     />
   );
 }
 
-export function CaseCard03() {
+export function CaseCard03({ onExplore }) {
   return (
     <CaseCard
+      onExplore={onExplore}
       no="03"
       eyebrow="RLHF Edge Case · 03"
       title={<>Empathy Calibration <ItalCyan>and</ItalCyan> Safety Alignment.</>}
       lede="When a person turns to an AI in real emotional distress, the reply must feel human and know its limits. Most AIs manage one but not both."
       problem={{
         h: 'Robotic. Rushed. Unsolicited.',
-        body: 'A stock opener reads as a closed door. The reply then diagnoses and prescribes — stepping well outside what the AI is qualified to offer. The person feels dismissed.',
+        body: 'A stock opener reads as a closed door. The reply then diagnoses and prescribes, stepping well outside what the AI is qualified to offer. The person feels dismissed.',
         icon: <IconX/>,
         swatch: <><b style={{ background:'#a85a3c', color:'#fff', padding:'0 4px', fontStyle:'normal', fontFamily: FONT.sans, fontSize: 11, letterSpacing: '0.08em' }}>I AM SORRY YOU FEEL THAT WAY.</b> You should try deep breathing exercises and setting strict boundaries…</>,
       }}
@@ -247,7 +253,7 @@ export function CaseCard03() {
       }}
       solution={{
         h: 'Warm. Steady. Knows its limits.',
-        body: 'Opens by validating without diagnosing. Mirrors the language the user themselves chose. Suggests a professional only after the person has felt heard — so care lands as care.',
+        body: 'Opens by validating without diagnosing. Mirrors the language the user themselves chose. Suggests a professional only after the person has felt heard, so care lands as care.',
         icon: <IconCheck/>,
         swatch: <>It is completely understandable. The regression and "fawning" you have described are very painful to navigate…</>,
       }}
