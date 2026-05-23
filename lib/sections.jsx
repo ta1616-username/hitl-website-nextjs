@@ -383,9 +383,7 @@ export function Footer({ height = 320, onTabChange = () => {} }) {
   );
 }
 
-// Clickable tab column: each tab routes through onTabChange so the
-// footer mirrors the top-nav behaviour exactly.
-function FooterNavCol({ title, tabs, onTabChange }) {
+function FooterCol({ title, links }) {
   return (
     <div>
       <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
@@ -393,19 +391,11 @@ function FooterNavCol({ title, tabs, onTabChange }) {
         marginBottom: 18 }}>{title}</div>
       <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex',
         flexDirection: 'column', gap: 10 }}>
-        {tabs.map((t) => (
-          <li key={t}>
-            <button
-              type="button"
-              onClick={() => onTabChange(t)}
-              style={{
-                fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
-                color: 'rgba(255,255,255,.78)', background: 'none', border: 'none',
-                padding: 0, cursor: 'pointer', textAlign: 'left',
-                transition: 'color 0.2s ease',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.78)'; }}
-            >
-              {t}
-        
+        {links.map((l) => (
+          <li key={l} style={{ fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
+            color: 'rgba(255,255,255,.78)', wordBreak: 'break-word' }}>{l}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
