@@ -52,7 +52,7 @@ function PracticeView({ on4UClick }) {
             text so the symbol introduces the standard the prose explains. */}
         <div style={{
           marginTop: 36, marginBottom: 16,
-          display: 'flex', justifyContent: 'flex-start',
+          display: 'flex', justifyContent: 'flex-end',
         }}>
           <button
             onClick={on4UClick}
@@ -66,9 +66,9 @@ function PracticeView({ on4UClick }) {
             <img
               src="/4u-standard.png"
               alt="4U Standard: Unequivocally Correct, Uniform, Useful, Understandable"
-              width={220}
-              height={220}
-              style={{ display: 'block', width: 220, height: 220 }}
+              width={300}
+              height={300}
+              style={{ display: 'block', width: 300, height: 300 }}
             />
           </button>
         </div>
@@ -133,7 +133,7 @@ function CaseStudiesView({ onExploreCase }) {
         <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
           <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
           <div style={{ marginTop: 460 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: 420 }}>
+          <div style={{ gridColumn: '1 / 2', marginTop: 200 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>

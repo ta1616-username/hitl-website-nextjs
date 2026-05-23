@@ -348,14 +348,22 @@ export function Footer({ height = 320, onTabChange = () => {} }) {
       justifyContent: 'space-between', gap: 48,
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 48 }}>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <img
             src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
             alt="Human-In-The-Loop Solutions"
             width={160}
             height={160}
-            style={{ display: 'block' }}
+            style={{ display: 'block', flexShrink: 0 }}
           />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <div style={{ fontFamily: FONT.serif, fontSize: 18, fontWeight: 500, color: '#ffffff', letterSpacing: '-0.01em' }}>
+              HUMAN-IN-THE-LOOP <span style={{ color: BRAND.cyan }}>SOLUTIONS</span>
+            </div>
+            <div style={{ fontFamily: FONT.serif, fontSize: 13, fontWeight: 400, color: 'rgba(255,255,255,.7)' }}>
+              AI Annotation
+            </div>
+          </div>
         </div>
         <div style={{ display: 'flex', gap: 32 }}>
           {tabs.map((t) => (
