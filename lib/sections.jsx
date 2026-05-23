@@ -13,7 +13,7 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
 
   return (
     <header style={{
-      width: '100%', height: 96, padding: '0 64px',
+      width: '100%', height: 140, padding: '0 64px',
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       background: 'rgba(38,50,56,0.92)',
       backdropFilter: 'blur(6px)',
@@ -24,15 +24,15 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
         onClick={() => onTabChange('Home')}
         style={{
           background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-          display: 'flex', alignItems: 'center', gap: 12,
+          display: 'flex', alignItems: 'center', gap: 16,
         }}
         aria-label="Go to Home"
       >
         <img
           src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
           alt="Human-in-the-Loop Solutions"
-          width={64}
-          height={64}
+          width={120}
+          height={120}
           style={{ display: 'block', borderRadius: 8 }}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4, lineHeight: 1 }}>

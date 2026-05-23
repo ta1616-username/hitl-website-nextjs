@@ -3,18 +3,99 @@
 import { useState } from 'react';
 import { BRAND, FONT, PREMIUM_BG, ItalCyan, Body } from './brand';
 
+// Magnifying glass modal for expanded problem/solution view
+function MagnifyModal({ kind, h, body, icon, swatch, onClose }) {
+  const tone = {
+    problem:   { tag: 'PROBLEM',   chip: '#a85a3c', surf: 'rgba(241,217,204,.85)', stripe: '#c97a55' },
+    principle: { tag: 'PRINCIPLE', chip: BRAND.cyan, surf: 'rgba(38,50,56,.92)',   stripe: BRAND.cyan, dark: true },
+    solution:  { tag: 'SOLUTION',  chip: '#3f7a4a', surf: 'rgba(217,230,212,.92)', stripe: '#3f7a4a' },
+  }[kind];
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+        background: 'rgba(0,0,0,0.85)', zIndex: 1000,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: 24, boxSizing: 'border-box',
+        animation: 'fadeIn 0.2s ease',
+      }}>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: tone.surf, borderLeft: `3px solid ${tone.stripe}`,
+          padding: '32px 36px', boxSizing: 'border-box',
+          color: tone.dark ? '#fff' : BRAND.slate,
+          maxWidth: 720, maxHeight: '85vh', overflow: 'auto',
+          borderRadius: 4, boxShadow: '0 20px 80px rgba(0,0,0,0.6)',
+        }}>
+        {/* Header with tag and icon */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
+          <span style={{
+            fontFamily: FONT.mono, fontSize: 11, fontWeight: 700,
+            letterSpacing: '0.28em', textTransform: 'uppercase',
+            background: tone.chip, color: tone.dark ? BRAND.slate : '#fff',
+            padding: '4px 10px',
+          }}>{tone.tag}</span>
+          <span style={{ flex: 1 }}/>
+          {icon}
+        </div>
+
+        {/* Large title */}
+        <h3 style={{
+          fontFamily: FONT.serif, fontWeight: 500, fontSize: 32, lineHeight: 1.2,
+          color: tone.dark ? '#fff' : BRAND.slate, margin: '0 0 14px',
+          letterSpacing: '-0.01em',
+        }}>{h}</h3>
+
+        {/* Body text */}
+        <Body size={14.5} color={tone.dark ? 'rgba(255,255,255,.82)' : 'rgba(38,50,56,.82)'}>
+          {body}
+        </Body>
+
+        {/* Swatch if present */}
+        {swatch && (
+          <div style={{
+            marginTop: 16, padding: '12px 14px',
+            background: tone.dark ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,.65)',
+            borderLeft: `2px solid ${tone.dark ? BRAND.cyan : tone.stripe}`,
+            fontFamily: FONT.serif, fontSize: 13.5, fontStyle: 'italic',
+            color: tone.dark ? '#fff' : BRAND.slate, lineHeight: 1.5,
+          }}>
+            {swatch}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export const CASE_W = 480;
 export const CASE_H = 760;
 
 // Shared card chrome.
 function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onExplore }) {
+  const [magnified, setMagnified] = useState(null);
+
   return (
-    <article style={{
-      width: '100%', height: '100%', background: PREMIUM_BG,
-      position: 'relative', overflow: 'hidden', boxSizing: 'border-box',
-      padding: '36px 36px 28px',
-      display: 'flex', flexDirection: 'column',
-    }}>
+    <>
+      {magnified && (
+        <MagnifyModal
+          kind={magnified.kind}
+          h={magnified.h}
+          body={magnified.body}
+          icon={magnified.icon}
+          swatch={magnified.swatch}
+          onClose={() => setMagnified(null)}
+        />
+      )}
+      <article style={{
+        width: '100%', height: '100%', background: PREMIUM_BG,
+        position: 'relative', overflow: 'hidden', boxSizing: 'border-box',
+        padding: '36px 36px 28px',
+        display: 'flex', flexDirection: 'column',
+      }}>
       {/* watermark grid in corner */}
       <svg width="120" height="120" viewBox="0 0 120 120"
         style={{ position: 'absolute', top: -10, right: -10, opacity: .25, pointerEvents: 'none' }}>
@@ -64,9 +145,9 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
           <circle cx="7" cy="440" r="4" fill={BRAND.cyan} stroke={BRAND.slate} strokeWidth="1.4"/>
         </svg>
 
-        <CaseRow kind="problem"   {...problem}/>
+        <CaseRow kind="problem"   onMagnify={(data) => setMagnified({ kind: 'problem', ...data })} {...problem}/>
         <CaseRow kind="principle" {...principle}/>
-        <CaseRow kind="solution"  {...solution}/>
+        <CaseRow kind="solution"  onMagnify={(data) => setMagnified({ kind: 'solution', ...data })} {...solution}/>
       </div>
 
       {/* Footer CTA */}
@@ -93,36 +174,36 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
           Explore Case <span style={{ fontSize: 14 }}>→</span>
         </button>
       </footer>
-    </article>
+      </article>
+    </>
   );
 }
 
-function CaseRow({ kind, h, body, icon, swatch }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function CaseRow({ kind, h, body, icon, swatch, onMagnify }) {
   const tone = {
     problem:   { tag: 'PROBLEM',   chip: '#a85a3c', surf: 'rgba(241,217,204,.85)', stripe: '#c97a55' },
     principle: { tag: 'PRINCIPLE', chip: BRAND.cyan, surf: 'rgba(38,50,56,.92)',   stripe: BRAND.cyan, dark: true },
     solution:  { tag: 'SOLUTION',  chip: '#3f7a4a', surf: 'rgba(217,230,212,.92)', stripe: '#3f7a4a' },
   }[kind];
 
-  const isExpandable = kind !== 'principle';
+  const isClickable = kind !== 'principle' && onMagnify;
 
   return (
     <div
-      onClick={() => { if (isExpandable) setIsExpanded(!isExpanded); }}
+      onClick={() => { if (isClickable) onMagnify({ h, body, icon, swatch }); }}
       style={{
         marginLeft: 44, position: 'relative',
         background: tone.surf, borderLeft: `2px solid ${tone.stripe}`,
-        border: isExpandable && isExpanded ? `2px solid #ffffff` : 'none',
-        borderLeft: isExpandable && isExpanded ? `2px solid #ffffff` : `2px solid ${tone.stripe}`,
         padding: '14px 16px', boxSizing: 'border-box',
         color: tone.dark ? '#fff' : BRAND.slate,
         minHeight: 132,
-        cursor: isExpandable ? 'pointer' : 'default',
-        transition: 'all 0.3s ease',
-        maxHeight: isExpandable && isExpanded ? '1200px' : '120px',
+        cursor: isClickable ? 'pointer' : 'default',
+        transition: 'opacity 0.2s ease',
+        maxHeight: '120px',
         overflow: 'hidden',
-      }}>
+      }}
+      onMouseEnter={(e) => { if (isClickable) e.currentTarget.style.opacity = '0.9'; }}
+      onMouseLeave={(e) => { if (isClickable) e.currentTarget.style.opacity = '1'; }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
         <span style={{
           fontFamily: FONT.mono, fontSize: 9.5, fontWeight: 700,
