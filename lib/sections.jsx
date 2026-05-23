@@ -338,29 +338,29 @@ export function Services({ height = 760, onTabChange = () => {} }) {
 // Footer — restrained, no script tagline, updated email.
 // Tab links mirror the NavBar and call onTabChange to switch tabs.
 // ───────────────────────────────────────────────────────────────
-export function Footer({ height = 320, onTabChange = () => {} }) {
+export function Footer({ height = 280, onTabChange = () => {} }) {
   const tabs = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
   return (
     <footer style={{
       width: '100%', minHeight: height, background: '#101719',
-      padding: '64px 64px 32px', boxSizing: 'border-box',
+      padding: '40px 64px 24px', boxSizing: 'border-box',
       position: 'relative', color: '#fff', display: 'flex', flexDirection: 'column',
-      justifyContent: 'space-between', gap: 48,
+      justifyContent: 'space-between', gap: 32,
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 48 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img
             src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
             alt="Human-In-The-Loop Solutions"
-            width={160}
-            height={160}
+            width={140}
+            height={140}
             style={{ display: 'block', flexShrink: 0 }}
           />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <div style={{ fontFamily: FONT.serif, fontSize: 18, fontWeight: 500, color: '#ffffff', letterSpacing: '-0.01em' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <div style={{ fontFamily: FONT.sans, fontSize: 12, fontWeight: 600, color: '#ffffff', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
               HUMAN-IN-THE-LOOP <span style={{ color: BRAND.cyan }}>SOLUTIONS</span>
             </div>
-            <div style={{ fontFamily: FONT.serif, fontSize: 13, fontWeight: 400, color: 'rgba(255,255,255,.7)' }}>
+            <div style={{ fontFamily: FONT.sans, fontSize: 9.5, fontWeight: 500, color: 'rgba(255,255,255,.7)', letterSpacing: '0.28em', textTransform: 'uppercase' }}>
               AI Annotation
             </div>
           </div>

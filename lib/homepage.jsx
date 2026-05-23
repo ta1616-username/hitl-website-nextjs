@@ -53,6 +53,7 @@ function PracticeView({ on4UClick }) {
         <div style={{
           marginTop: 36, marginBottom: 16,
           display: 'flex', justifyContent: 'flex-end',
+          marginRight: '-160px',
         }}>
           <button
             onClick={on4UClick}
@@ -132,8 +133,8 @@ function CaseStudiesView({ onExploreCase }) {
         {/* Case Cards — custom layout with offset positioning */}
         <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
           <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
-          <div style={{ marginTop: 460 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: 200 }}>
+          <div style={{ marginTop: 320 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div style={{ gridColumn: '1 / 2', marginTop: 60 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
