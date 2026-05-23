@@ -118,8 +118,8 @@ function CaseRow({ kind, h, body, icon, swatch }) {
         minHeight: 132,
         cursor: 'pointer',
         transition: 'all 0.3s ease',
-        maxHeight: isExpanded ? '1000px' : '200px',
-        overflow: isExpanded ? 'visible' : 'hidden',
+        maxHeight: isExpanded ? '1200px' : '120px',
+        overflow: 'hidden',
       }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
         <span style={{
@@ -270,3 +270,4 @@ export function CaseCard03({ onExplore }) {
     />
   );
 }
+                         

@@ -29,7 +29,7 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
         aria-label="Go to Home"
       >
         <img
-          src="/logo-hitl.png"
+          src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
           alt="Human-in-the-Loop Solutions"
           width={48}
           height={48}
@@ -347,11 +347,28 @@ export function Footer({ height = 320, onTabChange = () => {} }) {
       position: 'relative', color: '#fff', display: 'flex', flexDirection: 'column',
       justifyContent: 'space-between', gap: 48,
     }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 48 }}>
         <div>
           <Wordmark inverse={true} scale={1}/>
         </div>
-        <FooterNavCol title="Explore" tabs={tabs} onTabChange={onTabChange}/>
+        <div style={{ display: 'flex', gap: 32 }}>
+          {tabs.map((t) => (
+            <button
+              key={t}
+              onClick={() => onTabChange(t)}
+              style={{
+                fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
+                color: 'rgba(255,255,255,.78)', background: 'none', border: 'none',
+                padding: 0, cursor: 'pointer',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.78)'; }}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
       </div>
       <div style={{
         borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: 22,
@@ -391,27 +408,4 @@ function FooterNavCol({ title, tabs, onTabChange }) {
               onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.78)'; }}
             >
               {t}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function FooterCol({ title, links }) {
-  return (
-    <div>
-      <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
-        letterSpacing: '0.28em', color: BRAND.cyan, textTransform: 'uppercase',
-        marginBottom: 18 }}>{title}</div>
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex',
-        flexDirection: 'column', gap: 10 }}>
-        {links.map((l) => (
-          <li key={l} style={{ fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
-            color: 'rgba(255,255,255,.78)', wordBreak: 'break-word' }}>{l}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+        
