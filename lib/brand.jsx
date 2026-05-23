@@ -21,10 +21,10 @@ export const BRAND = {
 };
 
 export const FONT = {
-  serif:  '"Cormorant Garamond", "EB Garamond", Georgia, serif',
-  sans:   'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif',
-  mono:   '"JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace',
-  script: '"Italianno", "Pinyon Script", cursive',
+  serif:  'var(--font-cormorant), "EB Garamond", Georgia, serif',
+  sans:   'var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif',
+  mono:   'var(--font-jetbrains), "IBM Plex Mono", ui-monospace, monospace',
+  script: 'var(--font-italianno), "Pinyon Script", cursive',
 };
 
 export const PREMIUM_BG = `linear-gradient(135deg, ${BRAND.gradStops[0]} 0%, ${BRAND.gradStops[1]} 28%, ${BRAND.gradStops[2]} 52%, ${BRAND.gradStops[3]} 76%, ${BRAND.gradStops[4]} 100%)`;
