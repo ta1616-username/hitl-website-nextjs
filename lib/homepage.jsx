@@ -74,7 +74,7 @@ function PracticeView({ on4UClick }) {
           </button>
         </div>
 
-        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -12, maxWidth: 760 }}>
+        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -32, maxWidth: 760 }}>
           We believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. Our practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
         </Body>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
@@ -134,7 +134,7 @@ function CaseStudiesView({ onExploreCase }) {
         <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
           <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
           <div style={{ marginTop: 680 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: -8 }}>
+          <div style={{ gridColumn: '1 / 2', marginTop: -80 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
