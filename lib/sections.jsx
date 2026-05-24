@@ -365,7 +365,7 @@ export function Footer({ height = 140, onTabChange = () => {} }) {
             </div>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 32, alignItems: 'center', marginLeft: -60 }}>
           {tabs.map((t) => (
             <button
               key={t}
