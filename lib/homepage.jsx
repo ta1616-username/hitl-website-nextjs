@@ -51,9 +51,9 @@ function PracticeView({ on4UClick }) {
         {/* 4U Standard badge — sits between the heading and the philosophy
             text so the symbol introduces the standard the prose explains. */}
         <div style={{
-          marginTop: 36, marginBottom: 8,
+          marginTop: 36, marginBottom: -20,
           display: 'flex', justifyContent: 'flex-end',
-          marginRight: '-420px',
+          marginRight: '-260px',
         }}>
           <button
             onClick={on4UClick}
@@ -133,8 +133,8 @@ function CaseStudiesView({ onExploreCase }) {
         {/* Case Cards — custom layout with offset positioning */}
         <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
           <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
-          <div style={{ marginTop: 200 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: 20 }}>
+          <div style={{ marginTop: 80 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div style={{ gridColumn: '1 / 2', marginTop: -40 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
