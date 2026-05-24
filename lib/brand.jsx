@@ -76,8 +76,8 @@ export function Wordmark({ inverse = true, scale = 1 }) {
 export function Tagline({ size = 44, color = '#ffffff', opacity = 1 }) {
   return (
     <span style={{
-      fontFamily: FONT.script, fontSize: size, lineHeight: 1, color, opacity,
-      whiteSpace: 'nowrap', letterSpacing: '0.01em',
+      fontFamily: FONT.serif, fontSize: size, lineHeight: 1, color, opacity,
+      whiteSpace: 'nowrap', letterSpacing: '0.01em', fontStyle: 'italic', fontWeight: 400,
     }}>
       Bridging AI Potential with Human Expertise
     </span>

@@ -338,14 +338,14 @@ export function Services({ height = 760, onTabChange = () => {} }) {
 // Footer — restrained, no script tagline, updated email.
 // Tab links mirror the NavBar and call onTabChange to switch tabs.
 // ───────────────────────────────────────────────────────────────
-export function Footer({ height = 280, onTabChange = () => {} }) {
+export function Footer({ height = 140, onTabChange = () => {} }) {
   const tabs = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
   return (
     <footer style={{
       width: '100%', minHeight: height, background: '#101719',
-      padding: '40px 64px 24px', boxSizing: 'border-box',
-      position: 'relative', color: '#fff', display: 'flex', flexDirection: 'column',
-      justifyContent: 'space-between', gap: 32,
+      padding: '0 64px', boxSizing: 'border-box',
+      position: 'relative', color: '#fff', display: 'flex', alignItems: 'center',
+      justifyContent: 'space-between',
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 48 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
