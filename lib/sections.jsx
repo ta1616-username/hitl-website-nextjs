@@ -347,7 +347,7 @@ export function Footer({ height = 140, onTabChange = () => {} }) {
       position: 'relative', color: '#fff', display: 'flex', alignItems: 'center',
       justifyContent: 'space-between',
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 48 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 48, marginLeft: -32 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img
             src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
