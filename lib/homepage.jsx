@@ -37,7 +37,7 @@ const INFOGRAPHICS = [
 // ───────────────────────────────────────────────────────────────
 function PracticeView({ on4UClick }) {
   return (
-    <section style={{
+    <section data-practice="true" style={{
       width: '100%', padding: '96px 40px', background: '#ffffff',
       display: 'flex', justifyContent: 'center',
     }}>
@@ -49,8 +49,10 @@ function PracticeView({ on4UClick }) {
         </SerifH>
 
         {/* 4U Standard badge — sits between the heading and the philosophy
-            text so the symbol introduces the standard the prose explains. */}
-        <div style={{
+            text so the symbol introduces the standard the prose explains.
+            data-fouru-badge lets globals.css reset the negative marginRight
+            on mobile (which otherwise pushes the badge 200px offscreen). */}
+        <div data-fouru-badge="true" style={{
           marginTop: 0, marginBottom: -80,
           display: 'flex', justifyContent: 'flex-end',
           marginRight: '-200px',
@@ -115,7 +117,7 @@ function PracticeView({ on4UClick }) {
 // ───────────────────────────────────────────────────────────────
 function CaseStudiesView({ onExploreCase }) {
   return (
-    <section style={{ width: '100%', padding: '80px 40px', background: PREMIUM_BG }}>
+    <section data-case-studies-section="true" style={{ width: '100%', padding: '80px 40px', background: PREMIUM_BG }}>
       <div style={{ maxWidth: 1480, margin: '0 auto' }}>
         {/* Header — title and lede in soft grey for calmer contrast
             against the gradient (#8 in the refinement brief). */}
@@ -130,11 +132,14 @@ function CaseStudiesView({ onExploreCase }) {
           </Body>
         </div>
 
-        {/* Case Cards — custom layout with offset positioning */}
-        <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0 }}>
-          <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
-          <div style={{ marginTop: 450 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: -100 }}>
+        {/* Case Cards — custom layout with offset positioning.
+            data-case-grid lets globals.css collapse the 2-column
+            staircase to a single column on mobile (and reset the
+            marginTop offsets, which only make sense in 2-col). */}
+        <div data-case-grid="true" style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0 }}>
+          <div data-case-grid-cell="1"><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
+          <div data-case-grid-cell="2" style={{ marginTop: 450 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div data-case-grid-cell="3" style={{ gridColumn: '1 / 2', marginTop: -100 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>

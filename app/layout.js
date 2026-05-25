@@ -38,7 +38,9 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  // maximumScale removed — pinning it to 1 blocked pinch-to-zoom on iOS,
+  // which is an accessibility regression. Users with low vision rely on
+  // browser zoom; the viewport meta should never disable it.
 };
 
 export default function RootLayout({ children }) {

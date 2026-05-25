@@ -12,7 +12,7 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
   const links = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
 
   return (
-    <header style={{
+    <header data-navbar="true" style={{
       width: '100%', height: 140, padding: '0 64px',
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       background: 'rgba(38,50,56,0.92)',
@@ -85,7 +85,7 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
 // ───────────────────────────────────────────────────────────────
 export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
   return (
-    <section style={{
+    <section data-hero="true" style={{
       width: '100%', height, background: PREMIUM_BG,
       position: 'relative', overflow: 'hidden',
     }}>
@@ -99,7 +99,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         ))}
       </svg>
 
-      <div style={{
+      <div data-hero-topbar="true" style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0 64px', borderBottom: '1px solid rgba(38,50,56,.12)',
@@ -114,7 +114,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         </div>
       </div>
 
-      <div style={{
+      <div data-hero-grid="true" style={{
         position: 'absolute', inset: '120px 64px 40px',
         display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 64, alignItems: 'center',
       }}>
@@ -122,7 +122,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           <div style={{ marginBottom: 28 }}>
             <Eyebrow color={BRAND.slate}>A Practice in Human-AI Alignment</Eyebrow>
           </div>
-          <h1 style={{
+          <h1 data-hero-title="true" style={{
             fontFamily: FONT.serif, fontWeight: 500, fontSize: 96, lineHeight: 1.0,
             color: BRAND.white, margin: 0, letterSpacing: '-0.02em',
             textShadow: '0 1px 0 rgba(38,50,56,.08)',
@@ -258,7 +258,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
     },
   ];
   return (
-    <section style={{
+    <section data-services="true" style={{
       width: '100%', minHeight: height, background: BRAND.slate,
       position: 'relative', padding: '88px 64px', boxSizing: 'border-box',
       color: '#fff',
@@ -289,7 +289,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }}>
+      <div data-services-grid="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }}>
         {items.map((it) => (
           <article key={it.n} style={{
             position: 'relative', padding: '32px 26px 30px',
@@ -341,13 +341,13 @@ export function Services({ height = 760, onTabChange = () => {} }) {
 export function Footer({ height = 140, onTabChange = () => {} }) {
   const tabs = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
   return (
-    <footer style={{
+    <footer data-footer="true" style={{
       width: '100%', minHeight: height, background: '#101719',
       padding: '0 64px', boxSizing: 'border-box',
       position: 'relative', color: '#fff', display: 'flex', alignItems: 'center',
       justifyContent: 'space-between',
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 48, marginLeft: -80 }}>
+      <div data-footer-inner="true" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 48, marginLeft: -80 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img
             src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
