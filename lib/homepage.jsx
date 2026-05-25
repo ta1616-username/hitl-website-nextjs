@@ -51,7 +51,7 @@ function PracticeView({ on4UClick }) {
         {/* 4U Standard badge — sits between the heading and the philosophy
             text so the symbol introduces the standard the prose explains. */}
         <div style={{
-          marginTop: 0, marginBottom: -40,
+          marginTop: 0, marginBottom: -80,
           display: 'flex', justifyContent: 'flex-end',
           marginRight: '-200px',
         }}>
@@ -74,7 +74,7 @@ function PracticeView({ on4UClick }) {
           </button>
         </div>
 
-        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -32, maxWidth: 760 }}>
+        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
           We believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. Our practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
         </Body>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
@@ -131,10 +131,10 @@ function CaseStudiesView({ onExploreCase }) {
         </div>
 
         {/* Case Cards — custom layout with offset positioning */}
-        <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
+        <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0 }}>
           <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
-          <div style={{ marginTop: 680 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: -80 }}>
+          <div style={{ marginTop: 800 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div style={{ gridColumn: '1 / 2', marginTop: 0 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
@@ -237,6 +237,35 @@ function ContactView() {
           >
             hello@human-in-the-loop-solutions.org
           </a>
+        </div>
+
+        <div style={{
+          marginTop: 28, padding: '32px 36px',
+          background: '#fafafa', borderLeft: `3px solid ${BRAND.cyan}`,
+          display: 'flex', alignItems: 'center', gap: 16,
+        }}>
+          <div style={{ flex: 1 }}>
+            <div style={{
+              fontFamily: FONT.mono, fontSize: 11, fontWeight: 600,
+              letterSpacing: '0.28em', color: BRAND.cyan, textTransform: 'uppercase',
+              marginBottom: 12,
+            }}>CONNECT</div>
+            <a
+              href="https://www.linkedin.com/company/human-in-the-loop-solutions/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: FONT.sans, fontSize: 14, fontWeight: 600,
+                letterSpacing: '0.18em', color: BRAND.slate, textTransform: 'uppercase',
+                textDecoration: 'none', borderBottom: `1.5px solid ${BRAND.cyan}`,
+                display: 'inline-block', transition: 'opacity 0.2s ease',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+            >
+              LinkedIn →
+            </a>
+          </div>
         </div>
 
         <div style={{ marginTop: 40 }}>

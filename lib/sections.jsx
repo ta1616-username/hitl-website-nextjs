@@ -391,7 +391,10 @@ export function Footer({ height = 140, onTabChange = () => {} }) {
         letterSpacing: '0.18em', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase',
       }}>
         <span>© 2026 · Human-in-the-Loop Solutions</span>
-        <span style={{ color: BRAND.cyan }}>4U STANDARD · CERTIFIED PRACTICE</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ color: 'rgba(255,255,255,.5)' }}>•</span>
+          <span style={{ color: BRAND.cyan }}>4U STANDARD · CERTIFIED PRACTICE</span>
+        </div>
       </div>
     </footer>
   );
