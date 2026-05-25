@@ -127,7 +127,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
             color: BRAND.white, margin: 0, letterSpacing: '-0.02em',
             textShadow: '0 1px 0 rgba(38,50,56,.08)',
           }}>
-            Where instruction<br/>becomes <ItalCyan>intelligence</ItalCyan>.
+            Where instruction<br/>becomes <span style={{ color: BRAND.cyan }}>intelligence</span>.
           </h1>
           <div style={{ marginTop: 34, marginBottom: 28 }}>
             <Tagline size={62} color="#ffffff"/>
