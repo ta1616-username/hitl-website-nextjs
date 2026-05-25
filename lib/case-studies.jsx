@@ -135,8 +135,8 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
       </header>
 
       {/* Body — vertical narrative: problem → principle → solution */}
-      <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column',
-        gap: 12, justifyContent: 'space-between' }}>
+      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column',
+        gap: 12 }}>
         <svg width="14" height="100%" viewBox="0 0 14 460" preserveAspectRatio="none"
           style={{ position: 'absolute', left: 20, top: 16, bottom: 16, height: 'calc(100% - 32px)' }}>
           <line x1="7" y1="0" x2="7" y2="460" stroke={BRAND.cyan} strokeOpacity=".55"
@@ -153,7 +153,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
 
       {/* Footer CTA */}
       <footer style={{
-        marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(38,50,56,.18)',
+        marginTop: 'auto', paddingTop: 14, borderTop: '1px solid rgba(38,50,56,.18)',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <span style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
