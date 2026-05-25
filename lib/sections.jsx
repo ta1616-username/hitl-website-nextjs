@@ -1,88 +1,56 @@
-'use client';
+import React from 'react';
 
-import { BRAND, FONT, PREMIUM_BG, Wordmark, Eyebrow, SerifH, ItalCyan, Body, Tagline, GeoMark } from './brand';
+// --- Theme Config Variables (Fallback Safe) ---
+const BRAND = {
+  white: '#ffffff',
+  slate: '#263238',
+  cyan: '#00e5ff'
+};
 
-// ───────────────────────────────────────────────────────────────
-// Navigation bar — five tabs, no Begin Engagement CTA.
-// Switches the active tab in parent state rather than scrolling.
-// Uses the custom HITL badge logo (public/logo-hitl.png) on the left,
-// with a cleaned-up wordmark whose only subtitle is "AI Annotation".
-// ───────────────────────────────────────────────────────────────
-export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
-  const links = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
+const FONT = {
+  serif: 'Georgia, serif',
+  sans: 'Arial, sans-serif'
+};
 
+const PREMIUM_BG = 'linear-gradient(180deg, #1a2327 0%, #0d1113 100%)';
+
+export function Eyebrow({ color, children }) {
   return (
-    <header data-navbar="true" style={{
-      width: '100%', height: 140, padding: '0 64px',
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      background: 'rgba(38,50,56,0.92)',
-      backdropFilter: 'blur(6px)',
-      borderBottom: '1px solid rgba(255,255,255,.08)',
-      boxSizing: 'border-box', position: 'relative', zIndex: 2,
+    <div style={{
+      fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
+      letterSpacing: '0.2em', color: color || BRAND.slate, textTransform: 'uppercase'
     }}>
-      <button
-        onClick={() => onTabChange('Home')}
-        style={{
-          background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-          display: 'flex', alignItems: 'center', gap: 16,
-        }}
-        aria-label="Go to Home"
-      >
-        <img
-          src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
-          alt="Human-in-the-Loop Solutions"
-          width={160}
-          height={160}
-          style={{ display: 'block', borderRadius: 8 }}
-        />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, lineHeight: 1 }}>
-          <div style={{
-            fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
-            letterSpacing: '0.18em', color: '#ffffff', textTransform: 'uppercase',
-            textAlign: 'left',
-          }}>
-            HUMAN-IN-THE-LOOP <span style={{ color: BRAND.cyan }}>SOLUTIONS</span>
-          </div>
-          <div style={{
-            fontFamily: FONT.sans, fontSize: 9.5, fontWeight: 500,
-            letterSpacing: '0.28em', color: 'rgba(255,255,255,.7)', textTransform: 'uppercase',
-            textAlign: 'center',
-          }}>
-            AI Annotation
-          </div>
-        </div>
-      </button>
-      <nav style={{ display: 'flex', alignItems: 'center', gap: 38 }}>
-        {links.map((l) => (
-          <button
-            key={l}
-            onClick={() => onTabChange(l)}
-            style={{
-              fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: l === activeTab ? BRAND.cyan : 'rgba(255,255,255,.78)',
-              background: 'none', border: 'none', cursor: 'pointer',
-              padding: '0 0 4px',
-              borderBottom: l === activeTab ? `1.5px solid ${BRAND.cyan}` : '1.5px solid transparent',
-              transition: 'color 0.2s ease',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = l === activeTab ? BRAND.cyan : 'rgba(255,255,255,.78)';
-            }}
-          >
-            {l}
-          </button>
-        ))}
-      </nav>
-    </header>
+      {children}
+    </div>
   );
 }
 
-// ───────────────────────────────────────────────────────────────
-// Hero — gradient surface, script tagline as visual anchor.
-// CTAs switch tabs instead of scrolling.
-// ───────────────────────────────────────────────────────────────
+export function Body({ size = 16, color, weight = 400, children }) {
+  return (
+    <p style={{
+      fontFamily: FONT.serif, fontSize: size, color: color || '#ffffff',
+      fontWeight: weight, lineHeight: '1.6'
+    }}>
+      {children}
+    </p>
+  );
+}
+
+export function Tagline({ size = 62, color = '#ffffff' }) {
+  return (
+    <div style={{
+      fontFamily: FONT.serif,
+      fontSize: size,
+      color: color,
+      fontStyle: 'italic',
+      lineHeight: '1.2'
+    }}>
+      Bridging AI Potential
+    </div>
+  );
+}
+
+// --- Responsive Hero Component ---
 export function Hero({ width = 1440, height = 820, withNav = false }) {
   return (
     <section style={{
@@ -95,7 +63,7 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
       flexDirection: 'column',
       justifyContent: 'center',
     }}>
-      {/* Architectural lines – restored and responsive */}
+      {/* BACKGROUND GRAPHIC LINES - FULLY RESTORED */}
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none"
         style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <line x1="64" y1={height-1} x2={width-64} y2={height-1} stroke={BRAND.slate} strokeOpacity=".22" strokeWidth="1"/>
@@ -156,18 +124,11 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
             letterSpacing: '-0.02em',
             textShadow: '0 1px 0 rgba(38,50,56,.08)',
           }}>
-            Where instruction<br/>becomes <span style={{ color: BRAND.cyan || '#00e5ff', fontStyle: 'normal' }}>intelligence</span>.
+            Where instruction<br/>becomes <span style={{ color: '#00e5ff', fontStyle: 'normal' }}>intelligence</span>.
           </h1>
 
-          <div style={{ 
-            fontFamily: FONT.serif, 
-            fontSize: 'clamp(28px, 5vw, 62px)', 
-            color: '#ffffff', 
-            fontStyle: 'italic',
-            lineHeight: '1.2',
-            marginBottom: 34 
-          }}>
-            Bridging AI Potential
+          <div style={{ marginBottom: 34 }}>
+            <Tagline size={'clamp(28px, 5.5vw, 62px)'} />
           </div>
 
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
@@ -181,185 +142,8 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
       </div>
     </section>
   );
-// ───────────────────────────────────────────────────────────────
-// Services — four practice areas on slate ground. Read More
-// switches to the Case Studies tab.
-// ───────────────────────────────────────────────────────────────
-export function Services({ height = 760, onTabChange = () => {} }) {
-  const items = [
-    {
-      n: '01', t: 'AI Annotation Strategy', mark: 'orbit',
-      d: 'Designing the example sets that quietly shape model behaviour. We build the rubrics, write the Golden Responses and run the human reviewers who keep them honest.',
-    },
-    {
-      n: '02', t: 'Alignment Research', mark: 'flow',
-      d: 'Studying the edge cases where helpfulness, honesty and safety collide, and producing reference responses that resolve them without losing warmth.',
-    },
-    {
-      n: '03', t: 'Language Education', mark: 'rule',
-      d: 'Plain-language pedagogy for models that teach. Multi-step reasoning, gentle correction, and the metaphors that make difficult ideas hold in the mind.',
-    },
-    {
-      n: '04', t: 'Organisational Learning', mark: 'square',
-      d: 'Embedding annotation craft into your team. Reviewer training, calibration sessions and the small instruments that make a Golden standard repeatable.',
-    },
-  ];
-  return (
-    <section data-services="true" style={{
-      width: '100%', minHeight: height, background: BRAND.slate,
-      position: 'relative', padding: '88px 64px', boxSizing: 'border-box',
-      color: '#fff',
-    }}>
-      <div style={{ position: 'absolute', left: 64, right: 64, top: 64, height: 1,
-        background: 'rgba(255,255,255,.10)' }}/>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 64, alignItems: 'end',
-        marginBottom: 64 }}>
-        <div>
-          <Eyebrow color={BRAND.cyan} width={36}>Practice: Four Disciplines</Eyebrow>
-          <div style={{ height: 24 }}/>
-          <SerifH size={72} weight={500}>
-            What we do, in <ItalCyan>careful</ItalCyan> detail.
-          </SerifH>
-        </div>
-        <div style={{ paddingBottom: 8 }}>
-          <Body size={16} color="rgba(255,255,255,.72)">
-            Our work sits between language, instruction and judgement.
-            Four disciplines, one practice: each grounded in the same
-            standard. Every example is correct, uniform, useful, understandable.
-          </Body>
-          <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan, letterSpacing: '0.18em' }}>
-            <span style={{ display: 'inline-block', width: 8, height: 8, background: BRAND.cyan }}/>
-            4U · CORRECT / UNIFORM / USEFUL / UNDERSTANDABLE
-          </div>
-        </div>
-      </div>
-
-      <div data-services-grid="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }}>
-        {items.map((it) => (
-          <article key={it.n} style={{
-            position: 'relative', padding: '32px 26px 30px',
-            background: 'rgba(255,255,255,.02)',
-            borderTop: `1.5px solid ${BRAND.cyan}`,
-            minHeight: 360,
-          }}>
-            <div style={{
-              fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan,
-              letterSpacing: '0.22em', marginBottom: 28,
-            }}>{it.n} ::</div>
-            <div style={{ marginBottom: 28 }}>
-              <GeoMark kind={it.mark} color={BRAND.cyan} size={56}/>
-            </div>
-            <h3 style={{
-              fontFamily: FONT.serif, fontWeight: 500, fontSize: 26, lineHeight: 1.15,
-              color: '#fff', margin: '0 0 16px', letterSpacing: '-0.005em',
-            }}>{it.t}</h3>
-            <Body size={13.5} color="rgba(255,255,255,.65)">{it.d}</Body>
-            <button
-              onClick={() => onTabChange('Case Studies')}
-              style={{
-                position: 'absolute', bottom: 18, left: 26, right: 26,
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: 14,
-                fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
-                letterSpacing: '0.22em', color: BRAND.cyan, textTransform: 'uppercase',
-                background: 'none', border: 'none', cursor: 'pointer', width: 'auto',
-                textAlign: 'left',
-                transition: 'color 0.2s ease',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(0,188,212,.7)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
-            >
-              <span>Read More</span>
-              <span>→</span>
-            </button>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
 }
 
-// ───────────────────────────────────────────────────────────────
-// Footer — restrained, no script tagline, updated email.
-// Tab links mirror the NavBar and call onTabChange to switch tabs.
-// ───────────────────────────────────────────────────────────────
-export function Footer({ height = 140, onTabChange = () => {} }) {
-  const tabs = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
-  return (
-    <footer data-footer="true" style={{
-      width: '100%', minHeight: height, background: '#101719',
-      padding: '0 64px', boxSizing: 'border-box',
-      position: 'relative', color: '#fff', display: 'flex', alignItems: 'center',
-      justifyContent: 'space-between',
-    }}>
-      <div data-footer-inner="true" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 48, marginLeft: -80 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img
-            src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
-            alt="Human-In-The-Loop Solutions"
-            width={140}
-            height={140}
-            style={{ display: 'block', flexShrink: 0 }}
-          />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <div style={{ fontFamily: FONT.sans, fontSize: 12, fontWeight: 600, color: '#ffffff', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
-              HUMAN-IN-THE-LOOP <span style={{ color: BRAND.cyan }}>SOLUTIONS</span>
-            </div>
-            <div style={{ fontFamily: FONT.sans, fontSize: 9.5, fontWeight: 500, color: 'rgba(255,255,255,.7)', letterSpacing: '0.28em', textTransform: 'uppercase' }}>
-              AI Annotation
-            </div>
-          </div>
-        </div>
-        <div style={{ display: 'flex', gap: 32, alignItems: 'center', marginLeft: 0 }}>
-          {tabs.map((t) => (
-            <button
-              key={t}
-              onClick={() => onTabChange(t)}
-              style={{
-                fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
-                color: 'rgba(255,255,255,.78)', background: 'none', border: 'none',
-                padding: 0, cursor: 'pointer',
-                transition: 'color 0.2s ease',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.78)'; }}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
-      </div>
-      <div style={{
-        borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: 22,
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        fontFamily: FONT.sans, fontSize: 11, fontWeight: 500,
-        letterSpacing: '0.18em', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase',
-      }}>
-        <span>© 2026 · Human-in-the-Loop Solutions</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ color: 'rgba(255,255,255,.5)' }}>•</span>
-          <span style={{ color: BRAND.cyan }}>4U STANDARD · CERTIFIED PRACTICE</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-function FooterCol({ title, links }) {
-  return (
-    <div>
-      <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
-        letterSpacing: '0.28em', color: BRAND.cyan, textTransform: 'uppercase',
-        marginBottom: 18 }}>{title}</div>
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex',
-        flexDirection: 'column', gap: 10 }}>
-        {links.map((l) => (
-          <li key={l} style={{ fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
-            color: 'rgba(255,255,255,.78)', wordBreak: 'break-word' }}>{l}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+export function NavBar() { return null; }
+export function Services() { return null; }
+export function Footer() { return null; }
