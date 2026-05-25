@@ -77,9 +77,10 @@ export function NavBar({ width = 1440, transparent = false, active = 'Home' }) {
 export function Hero({ width = 1440, height = 820, withNav = false }) {
   return (
     <section style={{
-      width: '100%', height, background: PREMIUM_BG,
-      position: 'relative', overflow: 'hidden',
-    }}>
+  width: '100%', minHeight: '100vh', height: 'auto', background: PREMIUM_BG,
+  position: 'relative', overflow: 'hidden', padding: '120px 24px 60px 24px',
+  display: 'flex', flexDirection: 'column', justifyContent: 'center'
+}}>
       {/* Architectural lines — geometric, not decorative */}
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none"
         style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
@@ -96,7 +97,7 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 64px', borderBottom: '1px solid rgba(38,50,56,.12)',
+       padding: '0 4%', borderBottom: '1px solid rgba(38,50,56,.12)',
       }}>
         <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
           letterSpacing: '0.32em', color: BRAND.slate, textTransform: 'uppercase' }}>
@@ -108,23 +109,33 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
         </div>
       </div>
 
-      {/* Body — two-column composition */}
-      <div style={{
-        position: 'absolute', inset: '120px 64px 80px',
-        display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 64, alignItems: 'center',
-      }}>
-        {/* Left: title block */}
-        <div style={{ position: 'relative' }}>
-          <div style={{ marginBottom: 28 }}>
-            <Eyebrow color={BRAND.slate}>A Practice in Human–AI Alignment</Eyebrow>
-          </div>
-          <h1 style={{
-            fontFamily: FONT.serif, fontWeight: 500, fontSize: 96, lineHeight: 1.0,
-            color: BRAND.white, margin: 0, letterSpacing: '-0.02em',
-            textShadow: '0 1px 0 rgba(38,50,56,.08)',
-          }}>
-            Where instruction<br/>becomes <ItalCyan>intelligence</ItalCyan>.
-          </h1>
+     {/* Body – dynamic composition for mobile & desktop */}
+<div style={{
+  position: 'relative',
+  padding: '120px max(20px, 4%) 80px',
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: 40,
+  alignItems: 'center',
+}}>
+  {/* Left: title block */}
+  <div style={{ position: 'relative', flex: '1 1 500px', minWidth: '280px' }}>
+    <div style={{ marginBottom: 28 }}>
+      <Eyebrow color={BRAND.slate}>A Practice in Human-AI Alignment</Eyebrow>
+    </div>
+    <h1 style={{
+      fontFamily: FONT.serif, 
+      fontWeight: 500, 
+      fontSize: 'clamp(36px, 8vw, 96px)', 
+      lineHeight: '1.1',
+      color: BRAND.white, 
+      margin: 0, 
+      letterSpacing: '-0.02em',
+      textShadow: '0 1px 0 rgba(38,50,56,.08)',
+      wordBreak: 'break-word',
+    }}>
+      Where instruction<br/>becomes <ItalCyan>intelligence</ItalCyan>.
+    </h1>
           <div style={{ marginTop: 34, marginBottom: 28 }}>
             <Tagline size={62} color="#ffffff"/>
           </div>
