@@ -24,12 +24,21 @@ function MagnifyModal({ kind, h, body, icon, swatch, onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: tone.surf, borderLeft: `3px solid ${tone.stripe}`,
-          padding: '32px 36px', boxSizing: 'border-box',
+          background: tone.surf,
+          // White frame on three sides + coloured stripe on the left.
+          // Using longhand borders avoids the shorthand-vs-longhand collision
+          // that was causing the `border: 2px solid #ffffff` declaration to
+          // either override the stripe entirely or fail to render in places.
+          borderTop: '2px solid #ffffff',
+          borderRight: '2px solid #ffffff',
+          borderBottom: '2px solid #ffffff',
+          borderLeft: `3px solid ${tone.stripe}`,
+          // Tightened bottom padding eliminates the light strip of modal
+          // surface that read as 'white cut-off' below the swatch.
+          padding: '28px 32px 20px', boxSizing: 'border-box',
           color: tone.dark ? '#fff' : BRAND.slate,
           maxWidth: 720, maxHeight: '85vh', overflow: 'auto',
           borderRadius: 4, boxShadow: '0 20px 80px rgba(0,0,0,0.6)',
-          border: '2px solid #ffffff',
         }}>
         {/* Header with tag and icon */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
@@ -92,7 +101,12 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
         />
       )}
       <article style={{
-        width: '100%', height: '100%', background: PREMIUM_BG,
+        // Fixed height (CASE_H = 760) decouples the card from grid row
+        // stretch. With `height: '100%'`, align-items: stretch was
+        // inflating Case 01's article to ~1210px (matching Case 02 + its
+        // 450px marginTop), which created the giant gap above the footer
+        // and pushed Case 03's overlap on top of the footer area.
+        width: '100%', height: CASE_H, background: PREMIUM_BG,
         position: 'relative', overflow: 'hidden', boxSizing: 'border-box',
         padding: '36px 36px 14px',
         display: 'flex', flexDirection: 'column',
@@ -134,9 +148,12 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
         </Body>
       </header>
 
-      {/* Body — vertical narrative: problem → principle → solution */}
-      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column',
-        gap: 12 }}>
+      {/* Body — vertical narrative: problem → principle → solution.
+          flex: 1 + minHeight: 0 lets the three rows divide the remaining
+          space inside the 760px article evenly, so footer pins to the
+          bottom with no gap and no overlap. */}
+      <div style={{ flex: 1, minHeight: 0, position: 'relative',
+        display: 'flex', flexDirection: 'column', gap: 12 }}>
         <svg width="14" height="100%" viewBox="0 0 14 460" preserveAspectRatio="none"
           style={{ position: 'absolute', left: 20, top: 16, bottom: 16, height: 'calc(100% - 32px)' }}>
           <line x1="7" y1="0" x2="7" y2="460" stroke={BRAND.cyan} strokeOpacity=".55"
@@ -193,15 +210,20 @@ function CaseRow({ kind, h, body, icon, swatch, onMagnify }) {
     <div
       onClick={() => { if (isClickable) onMagnify({ h, body, icon, swatch }); }}
       style={{
+        // flex: 1 + minHeight: 0 lets the row claim its share of the
+        // middle area. Previously minHeight: 132 + maxHeight: '120px' +
+        // overflow: hidden forced the row to 132 and clipped the swatch
+        // mid-element — that mid-element clip was the 'white cut-off'
+        // showing the swatch's white-ish background sliced in half.
+        flex: 1, minHeight: 0,
         marginLeft: 44, position: 'relative',
         background: tone.surf, borderLeft: `2px solid ${tone.stripe}`,
         padding: '14px 16px', boxSizing: 'border-box',
         color: tone.dark ? '#fff' : BRAND.slate,
-        minHeight: 132,
         cursor: isClickable ? 'pointer' : 'default',
         transition: 'opacity 0.2s ease',
-        maxHeight: '120px',
         overflow: 'hidden',
+        display: 'flex', flexDirection: 'column',
       }}
       onMouseEnter={(e) => { if (isClickable) e.currentTarget.style.opacity = '0.9'; }}
       onMouseLeave={(e) => { if (isClickable) e.currentTarget.style.opacity = '1'; }}>
@@ -219,20 +241,20 @@ function CaseRow({ kind, h, body, icon, swatch, onMagnify }) {
         fontFamily: FONT.serif, fontWeight: 500, fontSize: 19, lineHeight: 1.2,
         color: tone.dark ? '#fff' : BRAND.slate, margin: '0 0 6px',
       }}>{h}</h4>
-      <Body size={12.5} color={tone.dark ? 'rgba(255,255,255,.78)' : 'rgba(38,50,56,.78)'}>
-        {body}
-      </Body>
-      {swatch && (
-        <div style={{
-          marginTop: 10, padding: '8px 10px',
-          background: tone.dark ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.55)',
-          borderLeft: `1.5px solid ${tone.dark ? BRAND.cyan : tone.stripe}`,
-          fontFamily: FONT.serif, fontSize: 12.5, fontStyle: 'italic',
-          color: tone.dark ? '#fff' : BRAND.slate, lineHeight: 1.45,
-        }}>
-          {swatch}
-        </div>
-      )}
+      {/* Body is line-clamped so it ellipsises cleanly inside the
+          flex-allocated row height rather than getting cut mid-glyph. */}
+      <div style={{
+        minHeight: 0, overflow: 'hidden',
+        display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',
+      }}>
+        <Body size={12.5} color={tone.dark ? 'rgba(255,255,255,.78)' : 'rgba(38,50,56,.78)'}>
+          {body}
+        </Body>
+      </div>
+      {/* Swatch intentionally omitted from the inline row — it's shown
+          full-size in MagnifyModal when the row is clicked. Rendering it
+          inline was the cause of the 132px-row overflow and the
+          'white cut-off' strip at the bottom of problem/solution rows. */}
     </div>
   );
 }
