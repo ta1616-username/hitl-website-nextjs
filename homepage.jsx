@@ -5,6 +5,49 @@ import { NavBar, Hero, Services, Footer } from './sections';
 import { CaseCard01, CaseCard02, CaseCard03, CASE_W, CASE_H } from './case-studies';
 
 // ───────────────────────────────────────────────────────────────
+// Mobile Responsive Overrides via CSS Injection
+// ───────────────────────────────────────────────────────────────
+function MobileStyles() {
+  return (
+    <style jsx global>{`
+      @media (max-width: 768px) {
+        /* Fix section paddings so content has room to breathe */
+        section {
+          padding: 48px 20px !important;
+        }
+        
+        /* Smoothly scale down massive heading sizes */
+        section h1, 
+        section h2,
+        [class*="SerifH"] {
+          font-size: 32px !important;
+          line-height: 1.2 !important;
+        }
+
+        /* Hero specific typography scaling if custom tags are used */
+        .hero-title {
+          font-size: 32px !important;
+        }
+
+        /* Force flexible grid layouts to stack vertically on small screens */
+        .grid-container, 
+        div[style*="display: grid"],
+        div[style*="display: flex"] {
+          display: flex !important;
+          flex-direction: column !important;
+        }
+
+        /* Adjust subscription strap layout for mobile */
+        div[style*="justify-content: space-between"] {
+          align-items: flex-start !important;
+          gap: 16px !important;
+        }
+      }
+    `}</style>
+  );
+}
+
+// ───────────────────────────────────────────────────────────────
 // Manifesto: "Instructive Geometry" philosophy
 // ───────────────────────────────────────────────────────────────
 function Manifesto() {
@@ -98,6 +141,7 @@ function CaseStudiesShowcase() {
 export function FullHomepage() {
   return (
     <div style={{ width: '100%', minHeight: '100vh' }}>
+      <MobileStyles />
       <NavBar/>
       <Hero/>
       <Services/>
