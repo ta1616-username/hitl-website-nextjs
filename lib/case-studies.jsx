@@ -73,7 +73,7 @@ function MagnifyModal({ kind, h, body, icon, swatch, onClose }) {
 }
 
 export const CASE_W = 480;
-export const CASE_H = 820;
+export const CASE_H = 760;
 
 // Shared card chrome.
 function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onExplore }) {
@@ -136,7 +136,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
 
       {/* Body — vertical narrative: problem → principle → solution */}
       <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column',
-        gap: 12 }}>
+        gap: 12, justifyContent: 'space-between' }}>
         <svg width="14" height="100%" viewBox="0 0 14 460" preserveAspectRatio="none"
           style={{ position: 'absolute', left: 20, top: 16, bottom: 16, height: 'calc(100% - 32px)' }}>
           <line x1="7" y1="0" x2="7" y2="460" stroke={BRAND.cyan} strokeOpacity=".55"
