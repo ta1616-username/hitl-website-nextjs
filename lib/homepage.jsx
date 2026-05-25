@@ -133,8 +133,8 @@ function CaseStudiesView({ onExploreCase }) {
         {/* Case Cards — custom layout with offset positioning */}
         <div style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0 }}>
           <div><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
-          <div style={{ marginTop: 200 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div style={{ gridColumn: '1 / 2', marginTop: -28 }}>
+          <div style={{ marginTop: 320 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div style={{ gridColumn: '1 / 2', marginTop: -80 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
