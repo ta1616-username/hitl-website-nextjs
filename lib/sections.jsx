@@ -95,12 +95,11 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
       flexDirection: 'column',
       justifyContent: 'center',
     }}>
-      {/* Architectural lines – restored and responsive */}
+      {/* Architectural lines */}
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none"
         style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <line x1="64" y1={height-1} x2={width-64} y2={height-1} stroke={BRAND.slate} strokeOpacity=".22" strokeWidth="1"/>
         <line x1="64" y1="120" x2={width-64} y2={120} stroke="#fff" strokeOpacity=".25" strokeWidth="1"/>
-        {/* Perspective grid lines */}
         {[0, 1, 2, 3, 4].map(i => (
           <line 
             key={i} 
@@ -147,17 +146,17 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
           </div>
           
           <h1 style={{
-  fontFamily: FONT.serif, 
-  fontWeight: 500, 
-  fontSize: 'clamp(34px, 7vw, 96px)', 
-  lineHeight: '1.15',
-  color: BRAND.white, 
-  margin: '0 0 24px 0', 
-  letterSpacing: '-0.02em',
-  textShadow: '0 1px 0 rgba(38,50,56,.08)',
-}}>
-  Where instruction<br/>becomes <span style={{ color: '#00e5ff', fontStyle: 'normal' }}>intelligence</span>.
-</h1>
+            fontFamily: FONT.serif, 
+            fontWeight: 500, 
+            fontSize: 'clamp(34px, 7vw, 96px)', 
+            lineHeight: '1.15',
+            color: BRAND.white, 
+            margin: '0 0 24px 0', 
+            letterSpacing: '-0.02em',
+            textShadow: '0 1px 0 rgba(38,50,56,.08)',
+          }}>
+            Where instruction<br/>becomes <span style={{ color: '#00e5ff', fontStyle: 'normal' }}>intelligence</span>.
+          </h1>
 
           <div style={{ 
             fontFamily: FONT.serif, 
@@ -181,7 +180,7 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
       </div>
     </section>
   );
-// ───────────────────────────────────────────────────────────────
+}// ───────────────────────────────────────────────────────────────
 // Services — four practice areas on slate ground. Read More
 // switches to the Case Studies tab.
 // ───────────────────────────────────────────────────────────────
