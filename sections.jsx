@@ -77,181 +77,89 @@ export function NavBar({ width = 1440, transparent = false, active = 'Home' }) {
 export function Hero({ width = 1440, height = 820, withNav = false }) {
   return (
     <section style={{
-  width: '100%', minHeight: '100vh', height: 'auto', background: PREMIUM_BG,
-  position: 'relative', overflow: 'hidden', padding: '120px 24px 60px 24px',
-  display: 'flex', flexDirection: 'column', justifyContent: 'center'
-}}>
-      {/* Architectural lines — geometric, not decorative */}
+      width: '100%',
+      minHeight: '100vh',
+      background: PREMIUM_BG,
+      position: 'relative',
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    }}>
+      {/* Architectural lines */}
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none"
         style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <line x1="64" y1={height-1} x2={width-64} y2={height-1} stroke={BRAND.slate} strokeOpacity=".22" strokeWidth="1"/>
-        <line x1="64" y1="120" x2={width-64} y2="120" stroke="#fff" strokeOpacity=".25" strokeWidth="1"/>
-        {/* perspective grid lines on the right */}
-        {[0,1,2,3,4].map(i => (
-          <line key={i} x1={width-560+i*120} y1="140" x2={width-380+i*120} y2={height-40}
-                stroke="#fff" strokeOpacity={0.06 + i*0.02} strokeWidth="1"/>
-        ))}
+        <line x1="64" y1="120" x2={width-64} y2={120} stroke="#fff" strokeOpacity=".25" strokeWidth="1"/>
       </svg>
 
-      {/* Top strap — eyebrow + ticker */}
+      {/* Top strap – eyebrow + ticker */}
       <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0, height: 64,
+        position: 'absolute', top: 0, left: 0, right: 0, minHeight: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-       padding: '0 4%', borderBottom: '1px solid rgba(38,50,56,.12)',
+        padding: '12px 4%', borderBottom: '1px solid rgba(38,50,56,.12)',
+        flexWrap: 'wrap', gap: 12
       }}>
-        <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
-          letterSpacing: '0.32em', color: BRAND.slate, textTransform: 'uppercase' }}>
+        <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600, letterSpacing: '0.32em', color: BRAND.slate, textTransform: 'uppercase' }}>
           Research-Led Practice
         </div>
-        <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 500,
-          letterSpacing: '0.28em', color: BRAND.slate, textTransform: 'uppercase' }}>
-          Operating Worldwide · London / Remote
+        <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 500, letterSpacing: '0.28em', color: BRAND.slate, textTransform: 'uppercase' }}>
+          Operating Worldwide ・ London / Remote
         </div>
       </div>
 
-     {/* Body – dynamic composition for mobile & desktop */}
-<div style={{
-  position: 'relative',
-  padding: '120px max(20px, 4%) 80px',
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: 40,
-  alignItems: 'center',
-}}>
-  {/* Left: title block */}
-  <div style={{ position: 'relative', flex: '1 1 500px', minWidth: '280px' }}>
-    <div style={{ marginBottom: 28 }}>
-      <Eyebrow color={BRAND.slate}>A Practice in Human-AI Alignment</Eyebrow>
-    </div>
-    <h1 style={{
-      fontFamily: FONT.serif, 
-      fontWeight: 500, 
-      fontSize: 'clamp(36px, 8vw, 96px)', 
-      lineHeight: '1.1',
-      color: BRAND.white, 
-      margin: 0, 
-      letterSpacing: '-0.02em',
-      textShadow: '0 1px 0 rgba(38,50,56,.08)',
-      wordBreak: 'break-word',
-    }}>
-      Where instruction<br/>becomes <ItalCyan>intelligence</ItalCyan>.
-    </h1>
-          <div style={{ marginTop: 34, marginBottom: 28 }}>
-            <Tagline size={62} color="#ffffff"/>
+      {/* Body – dynamic composition for mobile & desktop */}
+      <div style={{
+        position: 'relative',
+        padding: '120px max(20px, 5%) 60px',
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 40,
+        alignItems: 'center',
+        marginTop: 40
+      }}>
+        {/* Left: title block */}
+        <div style={{ position: 'relative', flex: '1 1 600px', minWidth: '280px' }}>
+          <div style={{ marginBottom: 28 }}>
+            <Eyebrow color={BRAND.slate}>A Practice in Human-AI Alignment</Eyebrow>
           </div>
+          
+          <h1 style={{
+            fontFamily: FONT.serif, 
+            fontWeight: 500, 
+            fontSize: 'clamp(34px, 7vw, 96px)', 
+            lineHeight: '1.15',
+            color: BRAND.white, 
+            margin: '0 0 24px 0', 
+            letterSpacing: '-0.02em',
+            textShadow: '0 1px 0 rgba(38,50,56,.08)',
+          }}>
+            Where instruction<br/>becomes <ItalCyan>intelligence</ItalCyan>.
+          </h1>
+
+          <div style={{ 
+            fontFamily: FONT.serif, 
+            fontSize: 'clamp(28px, 5vw, 62px)', 
+            color: '#ffffff', 
+            fontStyle: 'italic',
+            lineHeight: '1.2',
+            marginBottom: 34 
+          }}>
+            Bridging AI Potential
+          </div>
+
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
-              Human-in-the-Loop Solutions is a research-led practice in the craft of
-              Golden Responses — the carefully designed examples that teach modern
+              Human-in-the-Loop Solutions is a research-led practice in the craft of 
+              Golden Responses – the carefully designed examples that teach modern 
               language models to be correct, careful and humane under pressure.
             </Body>
           </div>
-          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-            <a style={{
-              fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: BRAND.white, background: BRAND.slate, padding: '15px 22px',
-              textDecoration: 'none',
-            }}>Explore Case Studies →</a>
-            <a style={{
-              fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: BRAND.slate, padding: '15px 22px',
-              textDecoration: 'none', borderBottom: `1.5px solid ${BRAND.cyan}`,
-            }}>Read the Practice</a>
-          </div>
         </div>
-
-        {/* Right: instructive geometry — large composition */}
-        <div style={{ position: 'relative', height: 520 }}>
-          <HeroGeometry/>
-          {/* corner caption */}
-          <div style={{ position: 'absolute', bottom: -20, right: 0,
-            fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 500,
-            letterSpacing: '0.28em', color: 'rgba(38,50,56,.7)', textTransform: 'uppercase' }}>
-            Fig. 01 · The Loop
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom counter strap */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 64, right: 64, height: 80,
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', alignItems: 'center',
-        borderTop: '1px solid rgba(38,50,56,.18)',
-      }}>
-        {[
-          ['3', 'Live Case Studies'],
-          ['2.4k', 'Annotated Pairs'],
-          ['11', 'Model Families'],
-          ['100%', 'Human-Audited'],
-        ].map(([n, l]) => (
-          <div key={l} style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingRight: 20 }}>
-            <span style={{ fontFamily: FONT.serif, fontWeight: 500, fontSize: 36, color: BRAND.white,
-              letterSpacing: '-0.02em' }}>{n}</span>
-            <span style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
-              letterSpacing: '0.24em', color: BRAND.slate, textTransform: 'uppercase' }}>{l}</span>
-          </div>
-        ))}
       </div>
     </section>
   );
 }
-
-// "Fig. 01 — The Loop": geometric mark, only circles + lines.
-export function HeroGeometry() {
-  return (
-    <svg viewBox="0 0 460 520" width="100%" height="100%" style={{ display: 'block' }}>
-      {/* large concentric rings */}
-      <circle cx="230" cy="260" r="220" stroke="#ffffff" strokeOpacity=".30" strokeWidth="1" fill="none"/>
-      <circle cx="230" cy="260" r="170" stroke="#ffffff" strokeOpacity=".22" strokeWidth="1" fill="none"/>
-      <circle cx="230" cy="260" r="120" stroke="#ffffff" strokeOpacity=".18" strokeWidth="1" fill="none"/>
-
-      {/* central cyan disc */}
-      <circle cx="230" cy="260" r="46" fill={BRAND.cyan}/>
-      <text x="230" y="252" textAnchor="middle" fontFamily={FONT.sans} fontSize="9" fontWeight="600"
-        letterSpacing="2.2" fill={BRAND.slate}>GOLDEN</text>
-      <text x="230" y="268" textAnchor="middle" fontFamily={FONT.sans} fontSize="9" fontWeight="600"
-        letterSpacing="2.2" fill={BRAND.slate}>RESPONSE</text>
-
-      {/* orbit nodes */}
-      <g>
-        <circle cx="80"  cy="160" r="9" fill={BRAND.slate}/>
-        <circle cx="380" cy="120" r="9" fill={BRAND.slate}/>
-        <circle cx="410" cy="350" r="9" fill={BRAND.slate}/>
-        <circle cx="120" cy="420" r="9" fill={BRAND.slate}/>
-      </g>
-
-      {/* connector lines from each node to center */}
-      <g stroke="#ffffff" strokeOpacity=".55" strokeWidth="1.1">
-        <line x1="89" y1="166" x2="190" y2="245"/>
-        <line x1="371" y1="126" x2="266" y2="240"/>
-        <line x1="401" y1="346" x2="266" y2="277"/>
-        <line x1="129" y1="416" x2="195" y2="290"/>
-      </g>
-
-      {/* tick labels on nodes */}
-      <g fontFamily={FONT.sans} fontSize="10" fontWeight="600" letterSpacing="2.2" fill={BRAND.slate}>
-        <text x="100" y="148">PROMPT</text>
-        <text x="354" y="106" textAnchor="end" transform="translate(60 0)">RULES</text>
-        <text x="430" y="338" textAnchor="end" transform="translate(60 0)">AUDIT</text>
-        <text x="142" y="416">REPLY</text>
-      </g>
-
-      {/* small square at top-right corner — boundary motif */}
-      <rect x="424" y="44" width="22" height="22" stroke={BRAND.slate} strokeWidth="1.2" fill="none"/>
-      <rect x="430" y="50" width="10" height="10" fill={BRAND.cyan}/>
-
-      {/* horizontal axis label */}
-      <line x1="20" y1="500" x2="440" y2="500" stroke={BRAND.slate} strokeOpacity=".35" strokeWidth="1"/>
-      <text x="20" y="494" fontFamily={FONT.sans} fontSize="10" fontWeight="600"
-        letterSpacing="2.4" fill={BRAND.slate}>FROM INPUT</text>
-      <text x="440" y="494" textAnchor="end" fontFamily={FONT.sans} fontSize="10" fontWeight="600"
-        letterSpacing="2.4" fill={BRAND.slate}>TO INSTRUCTION</text>
-    </svg>
-  );
-}
-
 // ───────────────────────────────────────────────────────────────
 // Services — four practice areas on slate ground.
 // ───────────────────────────────────────────────────────────────
