@@ -18,3 +18,26 @@ html, body {
 body {
   overflow-x: hidden;
 }
+
+/* ───────────────────────────────────────────────────────────────
+   Human-in-the-Loop Solutions: Mobile Layout & Type Fixes
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Prevent large text from getting cut off or wrapping awkwardly */
+  h1, h2, [class*="SerifH"], .hero-title {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Reduce overly restrictive padding on small screens */
+  section, [id="research"], [id="case-studies"] {
+    padding: 48px 20px !important;
+  }
+
+  /* Prevent elements from breaking past the screen edge */
+  div, section, main {
+    max-width: 100% !important;
+  }
+}
