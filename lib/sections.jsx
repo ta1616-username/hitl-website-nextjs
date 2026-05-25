@@ -95,11 +95,24 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
       flexDirection: 'column',
       justifyContent: 'center',
     }}>
-      {/* Architectural lines */}
+      {/* Architectural lines – restored and responsive */}
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none"
         style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <line x1="64" y1={height-1} x2={width-64} y2={height-1} stroke={BRAND.slate} strokeOpacity=".22" strokeWidth="1"/>
         <line x1="64" y1="120" x2={width-64} y2={120} stroke="#fff" strokeOpacity=".25" strokeWidth="1"/>
+        {/* Perspective grid lines */}
+        {[0, 1, 2, 3, 4].map(i => (
+          <line 
+            key={i} 
+            x1={width - 560 + i * 120} 
+            y1="140" 
+            x2={width - 380 + i * 120} 
+            y2={height - 40} 
+            stroke="#fff" 
+            strokeOpacity={0.06 + i * 0.02} 
+            strokeWidth="1"
+          />
+        ))}
       </svg>
 
       {/* Top strap – eyebrow + ticker */}
@@ -143,7 +156,7 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
             letterSpacing: '-0.02em',
             textShadow: '0 1px 0 rgba(38,50,56,.08)',
           }}>
-            Where instruction<br/>becomes <ItalCyan>intelligence</ItalCyan>.
+            Where instruction<br/>becomes <span style={{ color: BRAND.cyan || '#00e5ff', fontStyle: 'normal' }}>intelligence</span>.
           </h1>
 
           <div style={{ 
@@ -168,7 +181,6 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
       </div>
     </section>
   );
-}
 // ───────────────────────────────────────────────────────────────
 // Services — four practice areas on slate ground. Read More
 // switches to the Case Studies tab.
