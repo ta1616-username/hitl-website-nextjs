@@ -13,6 +13,7 @@ function MagnifyModal({ kind, h, body, icon, swatch, onClose }) {
 
   return (
     <div
+      data-magnify-modal="true"
       onClick={onClose}
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
@@ -22,6 +23,7 @@ function MagnifyModal({ kind, h, body, icon, swatch, onClose }) {
         animation: 'fadeIn 0.2s ease',
       }}>
       <div
+        data-magnify-modal-content="true"
         onClick={(e) => e.stopPropagation()}
         style={{
           background: tone.surf,
@@ -100,7 +102,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
           onClose={() => setMagnified(null)}
         />
       )}
-      <article style={{
+      <article data-case-card="true" style={{
         // Fixed height (CASE_H = 760) decouples the card from grid row
         // stretch. With `height: '100%'`, align-items: stretch was
         // inflating Case 01's article to ~1210px (matching Case 02 + its
@@ -112,7 +114,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
         display: 'flex', flexDirection: 'column',
       }}>
       {/* watermark grid in corner */}
-      <svg width="120" height="120" viewBox="0 0 120 120"
+      <svg data-case-watermark="true" width="120" height="120" viewBox="0 0 120 120"
         style={{ position: 'absolute', top: -10, right: -10, opacity: .25, pointerEvents: 'none' }}>
         {[0,1,2,3,4,5].map(i => (
           <line key={i} x1={i*22} y1="0" x2={i*22} y2="120" stroke={BRAND.slate} strokeWidth=".6"/>
@@ -178,6 +180,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
           Read: Annotated walkthrough
         </span>
         <button
+          data-explore-btn="true"
           onClick={onExplore}
           style={{
             fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
@@ -208,6 +211,7 @@ function CaseRow({ kind, h, body, icon, swatch, onMagnify }) {
 
   return (
     <div
+      data-case-row="true"
       onClick={() => { if (isClickable) onMagnify({ h, body, icon, swatch }); }}
       style={{
         // flex: 1 + minHeight: 0 lets the row claim its share of the

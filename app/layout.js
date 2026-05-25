@@ -35,6 +35,12 @@ export const metadata = {
   description: 'Where instruction becomes intelligence. Bridging AI Potential with Human Expertise.',
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable} ${italianno.variable}`}>
