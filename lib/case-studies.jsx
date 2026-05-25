@@ -29,6 +29,7 @@ function MagnifyModal({ kind, h, body, icon, swatch, onClose }) {
           color: tone.dark ? '#fff' : BRAND.slate,
           maxWidth: 720, maxHeight: '85vh', overflow: 'auto',
           borderRadius: 4, boxShadow: '0 20px 80px rgba(0,0,0,0.6)',
+          border: '2px solid #ffffff',
         }}>
         {/* Header with tag and icon */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
@@ -93,7 +94,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
       <article style={{
         width: '100%', height: '100%', background: PREMIUM_BG,
         position: 'relative', overflow: 'hidden', boxSizing: 'border-box',
-        padding: '36px 36px 28px',
+        padding: '36px 36px 0px',
         display: 'flex', flexDirection: 'column',
       }}>
       {/* watermark grid in corner */}
