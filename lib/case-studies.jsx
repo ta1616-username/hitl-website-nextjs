@@ -73,7 +73,7 @@ function MagnifyModal({ kind, h, body, icon, swatch, onClose }) {
 }
 
 export const CASE_W = 480;
-export const CASE_H = 760;
+export const CASE_H = 820;
 
 // Shared card chrome.
 function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onExplore }) {
@@ -94,7 +94,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
       <article style={{
         width: '100%', height: '100%', background: PREMIUM_BG,
         position: 'relative', overflow: 'hidden', boxSizing: 'border-box',
-        padding: '36px 36px 0px',
+        padding: '36px 36px 14px',
         display: 'flex', flexDirection: 'column',
       }}>
       {/* watermark grid in corner */}
