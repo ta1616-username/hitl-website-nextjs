@@ -455,3 +455,37 @@ export function FullHomepage() {
     </div>
   );
 }
+// ───────────────────────────────────────────────────────────────
+// Mobile Responsive Overrides via Dynamic CSS Injection
+// ───────────────────────────────────────────────────────────────
+if (typeof window !== 'undefined') {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @media (max-width: 768px) {
+      /* Fluid scale down for giant desktop headers */
+      h1, h2, [style*="font-size: 96"], [style*="fontSize: 96"], .hero-title {
+        font-size: clamp(34px, 8vw, 56px) !important;
+        line-height: 1.15 !important;
+      }
+      
+      /* Scale down the dynamic tagline text */
+      [style*="font-size: 62"], [style*="fontSize: 62"] {
+        font-size: clamp(26px, 6vw, 38px) !important;
+        line-height: 1.2 !important;
+      }
+
+      /* Break down rigid multi-column layouts into responsive rows */
+      [style*="display: grid"], [style*="display:flex"], [style*="display: flex"] {
+        grid-template-columns: 1fr !important;
+        flex-direction: column !important;
+      }
+
+      /* Release fixed margins so content matches phone screens */
+      [style*="inset:"], [style*="padding:"] {
+        inset: auto !important;
+        padding: 80px 20px 40px 20px !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
