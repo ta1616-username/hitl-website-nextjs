@@ -147,17 +147,17 @@ export function Hero({ width = 1440, height = 820, withNav = false }) {
           </div>
           
           <h1 style={{
-            fontFamily: FONT.serif, 
-            fontWeight: 500, 
-            fontSize: 'clamp(34px, 7vw, 96px)', 
-            lineHeight: '1.15',
-            color: BRAND.white, 
-            margin: '0 0 24px 0', 
-            letterSpacing: '-0.02em',
-            textShadow: '0 1px 0 rgba(38,50,56,.08)',
-          }}>
-            Where instruction<br/>becomes <span style={{ color: BRAND.cyan || '#00e5ff', fontStyle: 'normal' }}>intelligence</span>.
-          </h1>
+  fontFamily: FONT.serif, 
+  fontWeight: 500, 
+  fontSize: 'clamp(34px, 7vw, 96px)', 
+  lineHeight: '1.15',
+  color: BRAND.white, 
+  margin: '0 0 24px 0', 
+  letterSpacing: '-0.02em',
+  textShadow: '0 1px 0 rgba(38,50,56,.08)',
+}}>
+  Where instruction<br/>becomes <span style={{ color: '#00e5ff', fontStyle: 'normal' }}>intelligence</span>.
+</h1>
 
           <div style={{ 
             fontFamily: FONT.serif, 
