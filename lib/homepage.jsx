@@ -42,7 +42,7 @@ function PracticeView({ on4UClick }) {
       display: 'flex', justifyContent: 'center',
     }}>
       <div style={{ maxWidth: 920, width: '100%' }}>
-        <Eyebrow color={BRAND.cyan}>OUR PHILOSOPHY</Eyebrow>
+        <Eyebrow color={BRAND.cyan}>MY PHILOSOPHY</Eyebrow>
         <div style={{ height: 18 }}/>
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
           Instructive Geometry
@@ -77,7 +77,7 @@ function PracticeView({ on4UClick }) {
         </div>
 
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
-          We believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. Our practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
+          I believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. My practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
         </Body>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
           Every annotation, every labelled example, every piece of feedback you provide teaches the system not just what to do, but <em style={{ fontStyle: 'italic' }}>how to think</em>. That is the instructive part. The geometry is the pattern: the repeatable, scalable structure that allows human wisdom to flow into AI capability at scale.

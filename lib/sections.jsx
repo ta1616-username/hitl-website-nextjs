@@ -242,7 +242,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
   const items = [
     {
       n: '01', t: 'AI Annotation Strategy', mark: 'orbit',
-      d: 'Designing the example sets that quietly shape model behaviour. We build the rubrics, write the Golden Responses and run the human reviewers who keep them honest.',
+      d: 'Designing the example sets that quietly shape model behaviour. I build the rubrics, write the Golden Responses and run the human reviewers who keep them honest.',
     },
     {
       n: '02', t: 'Alignment Research', mark: 'flow',
@@ -272,12 +272,12 @@ export function Services({ height = 760, onTabChange = () => {} }) {
           <Eyebrow color={BRAND.cyan} width={36}>Practice: Four Disciplines</Eyebrow>
           <div style={{ height: 24 }}/>
           <SerifH size={72} weight={500}>
-            What we do, in <ItalCyan>careful</ItalCyan> detail.
+            What I do, in <ItalCyan>careful</ItalCyan> detail.
           </SerifH>
         </div>
         <div style={{ paddingBottom: 8 }}>
           <Body size={16} color="rgba(255,255,255,.72)">
-            Our work sits between language, instruction and judgement.
+            My work sits between language, instruction and judgement.
             Four disciplines, one practice: each grounded in the same
             standard. Every example is correct, uniform, useful, understandable.
           </Body>
