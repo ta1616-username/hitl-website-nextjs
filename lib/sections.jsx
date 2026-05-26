@@ -135,8 +135,8 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Human-in-the-Loop Solutions is a research-led practice in the craft of
-              Golden Responses: the carefully designed examples that teach modern
-              language models to be correct, careful and humane under pressure.
+              Golden Responses: the carefully designed examples that teach large
+              language models (LLMs) to be correct, careful and humane under the microscope.
             </Body>
           </div>
           <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
@@ -242,7 +242,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
   const items = [
     {
       n: '01', t: 'AI Annotation Strategy', mark: 'orbit',
-      d: 'Designing the example sets that quietly shape model behaviour. I build the rubrics, write the Golden Responses and run the human reviewers who keep them honest.',
+      d: 'Designing the example sets that quietly shape model behaviour. My approach encompasses rubric construction and evaluation, fine-tuning Golden Responses and casting a critical human eye over responses to verify honesty and integrity.',
     },
     {
       n: '02', t: 'Alignment Research', mark: 'flow',
@@ -250,11 +250,11 @@ export function Services({ height = 760, onTabChange = () => {} }) {
     },
     {
       n: '03', t: 'Language Education', mark: 'rule',
-      d: 'Plain-language pedagogy for models that teach. Multi-step reasoning, gentle correction, and the metaphors that make difficult ideas hold in the mind.',
+      d: 'Accessible language to teach models that learn. Multi-step reasoning, gentle correction and the metaphors that make difficult ideas hold in the mind.',
     },
     {
-      n: '04', t: 'Organisational Learning', mark: 'square',
-      d: 'Embedding annotation craft into your team. Reviewer training, calibration sessions and the small instruments that make a Golden standard repeatable.',
+      n: '04', t: 'Quality Assurance & Calibration', mark: 'square',
+      d: 'Verifying that every response meets the standard. The feedback loops, comparison frameworks and the attention to detail that keeps annotation honest at scale.',
     },
   ];
   return (
@@ -278,8 +278,8 @@ export function Services({ height = 760, onTabChange = () => {} }) {
         <div style={{ paddingBottom: 8 }}>
           <Body size={16} color="rgba(255,255,255,.72)">
             My work sits between language, instruction and judgement.
-            Four disciplines, one practice: each grounded in the same
-            standard. Every example is correct, uniform, useful, understandable.
+            Using RLHF (Rehearsed Learning through Human Feedback), my focus is to ensure that
+            every example is correct, uniform, useful, understandable.
           </Body>
           <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
             fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan, letterSpacing: '0.18em' }}>

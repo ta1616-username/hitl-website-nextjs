@@ -45,7 +45,7 @@ function PracticeView({ on4UClick }) {
         <Eyebrow color={BRAND.cyan}>MY PHILOSOPHY</Eyebrow>
         <div style={{ height: 18 }}/>
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
-          Instructive Geometry
+          Instructive Flow
         </SerifH>
 
         {/* 4U Standard badge — sits between the heading and the philosophy
@@ -77,10 +77,10 @@ function PracticeView({ on4UClick }) {
         </div>
 
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
-          I believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. My practice is built on a simple but precise geometry: constraint clarifies intent. When humans define the rules, the principles, and the boundaries, AI systems learn to honour them. When AI systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
+          I believe that human judgment and LLM capability are not competitors. They are complementary forces that amplify each other. My practice is built on a simple but precise ethos: instructional constraints clarify intent. When we define the rules, the principles and the boundaries, LLM systems learn to honour them. When LLM systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
         </Body>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
-          Every annotation, every labelled example, every piece of feedback you provide teaches the system not just what to do, but <em style={{ fontStyle: 'italic' }}>how to think</em>. That is the instructive part. The geometry is the pattern: the repeatable, scalable structure that allows human wisdom to flow into AI capability at scale.
+          Every annotation, every labelled example, every piece of feedback that we provide teaches the system not just what to do, but <em style={{ fontStyle: 'italic' }}>how to think</em>. That is the instructive part. The flow is the pattern: the repeatable, scalable structure that allows human wisdom to move into LLM capability at scale.
         </Body>
 
         {/* Four principles */}
@@ -88,8 +88,8 @@ function PracticeView({ on4UClick }) {
           marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28,
         }}>
           {[
-            ['CORRECT', 'Every example is factually right and contractually compliant.'],
-            ['UNIFORM', 'The same situation produces the same shape of answer, every time.'],
+            ['CORRECT', 'Every example is truthful, precisely reasoned and thoughtfully considered. Something you can trust.'],
+            ['UNIFORM', 'When the same situation arises, the response is the same; conscientious, dependable and grounded in principle.'],
             ['USEFUL', 'The answer moves the reader forward, not in a circle.'],
             ['UNDERSTANDABLE', 'A person who is not an expert can read it and feel met.'],
           ].map(([term, def]) => (
@@ -128,7 +128,7 @@ function CaseStudiesView({ onExploreCase }) {
             Where Annotation Meets Insight
           </SerifH>
           <Body size={16} color="#6B7A88" style={{ marginTop: 16, maxWidth: 680 }}>
-            Three snapshots from our annotation research. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something about how AI learns to think.
+            Three snapshots from my annotation research. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something about how LLMs learn to think.
           </Body>
         </div>
 
@@ -217,10 +217,10 @@ function ContactView() {
         <Eyebrow color={BRAND.cyan}>GET IN TOUCH</Eyebrow>
         <div style={{ height: 18 }}/>
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
-          Let&rsquo;s talk.
+          Let&rsquo;s talk!
         </SerifH>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 24 }}>
-          Whether you have a project in mind, a question about the practice, or you would simply like to compare notes on annotation craft, I would love to hear from you.
+          Whether it&rsquo;s a collaboration you have in mind, a project that needs assistance or you&rsquo;re quite simply a curious cat about the world of AI annotation, I&rsquo;d love to hear from you.
         </Body>
 
         <div style={{
@@ -273,11 +273,6 @@ function ContactView() {
           </div>
         </div>
 
-        <div style={{ marginTop: 40 }}>
-          <Body size={14} color="rgba(38,50,56,.7)">
-            Operating worldwide, remote. Responses usually within two working days.
-          </Body>
-        </div>
       </div>
     </section>
   );
