@@ -77,7 +77,7 @@ function PracticeView({ on4UClick }) {
         </div>
 
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
-          I believe that human judgment and LLM capability are not competitors. They are complementary forces that amplify each other. My practice is built on a simple but precise ethos: instructional constraints clarify intent. When we define the rules, the principles and the boundaries, LLM systems learn to honour them. When LLM systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
+          I believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. My practice is built on a simple but precise ethos: instructional constraints clarify intent. When we define the rules, the principles and the boundaries, LLM systems learn to honour them. When LLM systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
         </Body>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
           Every annotation, every labelled example, every piece of feedback that we provide teaches the system not just what to do, but <em style={{ fontStyle: 'italic' }}>how to think</em>. That is the instructive part. The flow is the pattern: the repeatable, scalable structure that allows human wisdom to move into LLM capability at scale.
