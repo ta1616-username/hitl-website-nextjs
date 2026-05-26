@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Italianno&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +7,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #ffffff;
   color: #263238;
   line-height: 1.6;
@@ -19,25 +17,396 @@ body {
   overflow-x: hidden;
 }
 
-/* ───────────────────────────────────────────────────────────────
-   Human-in-the-Loop Solutions: Mobile Layout & Type Fixes
-   ─────────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   Responsive design: mobile-first approach.
+   Adjust typography, spacing, and layout for smaller screens.
+   ───────────────────────────────────────────────────────────── */
+
+/* Mobile: up to 767px */
+@media (max-width: 767px) {
+  html, body {
+    font-size: 14px;
+  }
+
+  body {
+    line-height: 1.5;
+  }
+}
+
+/* Small mobile: up to 480px */
+@media (max-width: 480px) {
+  html, body {
+    font-size: 13px;
+  }
+
+  body {
+    line-height: 1.4;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Case-studies grid container — collapse the 2-column staircase
+   to a single column below the width where two 480px cards stop
+   fitting side by side. Reset the marginTop offsets that only
+   make sense in the 2-column choreography.
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  div[data-case-grid] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  div[data-case-grid] > div[data-case-grid-cell] {
+    margin-top: 0 !important;
+    grid-column: auto !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Case studies component responsive overrides (case cards,
+   rows, modal, explore button, watermark, timeline SVG).
+   Targets data attributes added to case-studies.jsx elements.
+   ───────────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
-  /* Prevent large text from getting cut off or wrapping awkwardly */
-  h1, h2, [class*="SerifH"], .hero-title {
-    font-size: 32px !important;
-    line-height: 1.2 !important;
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
+  article[data-case-card] {
+    height: 620px !important;
+    padding: 24px 24px 12px !important;
   }
 
-  /* Reduce overly restrictive padding on small screens */
-  section, [id="research"], [id="case-studies"] {
-    padding: 48px 20px !important;
+  article[data-case-card] h3 {
+    font-size: 26px !important;
   }
 
-  /* Prevent elements from breaking past the screen edge */
-  div, section, main {
+  article[data-case-card] header > div:first-child {
+    font-size: 9px !important;
+  }
+
+  article[data-case-card] h4 {
+    font-size: 16px !important;
+  }
+
+  div[data-magnify-modal] {
+    padding: 12px !important;
+  }
+
+  div[data-magnify-modal-content] {
     max-width: 100% !important;
+    padding: 20px 20px 14px !important;
+  }
+
+  div[data-magnify-modal-content] h3 {
+    font-size: 24px !important;
+  }
+
+  svg[data-case-timeline] {
+    opacity: 0.15 !important;
+  }
+
+  div[data-case-row] {
+    margin-left: 30px !important;
+    padding: 10px 12px !important;
+  }
+
+  div[data-case-row] h4 {
+    font-size: 16px !important;
+  }
+
+  button[data-explore-btn] {
+    font-size: 11px !important;
+    padding: 7px 12px 7px 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  article[data-case-card] {
+    height: 520px !important;
+    padding: 16px 16px 10px !important;
+  }
+
+  article[data-case-card] h3 {
+    font-size: 22px !important;
+    margin: 14px 0 8px !important;
+    line-height: 1.1 !important;
+  }
+
+  article[data-case-card] header {
+    margin-bottom: 12px !important;
+  }
+
+  article[data-case-card] header > div:last-child {
+    gap: 6px !important;
+  }
+
+  article[data-case-card] header > div:last-child span:last-child {
+    font-size: 28px !important;
+  }
+
+  div[data-case-row] {
+    margin-left: 24px !important;
+    padding: 8px 10px !important;
+    gap: 6px !important;
+  }
+
+  div[data-case-row] h4 {
+    font-size: 14px !important;
+    margin: 0 0 4px !important;
+  }
+
+  div[data-case-row] > div:first-child {
+    gap: 8px !important;
+  }
+
+  div[data-magnify-modal] {
+    padding: 8px !important;
+  }
+
+  div[data-magnify-modal-content] {
+    max-height: 80vh !important;
+    padding: 16px 16px 12px !important;
+    border-radius: 2px !important;
+  }
+
+  div[data-magnify-modal-content] h3 {
+    font-size: 20px !important;
+    margin: 0 0 10px !important;
+  }
+
+  svg[data-case-watermark] {
+    opacity: 0.05 !important;
+  }
+
+  button[data-explore-btn] {
+    padding: 6px 10px 6px 12px !important;
+    font-size: 10px !important;
+    gap: 6px !important;
+  }
+
+  button[data-explore-btn] span {
+    font-size: 12px !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NavBar / Hero / Services / Practice / Case Studies section /
+   Footer — these were entirely uncovered by the original mobile
+   CSS, which is why the page still felt 'desktop' on iPhone.
+   The case-card rules above only shrink the cards; the *page
+   around them* needs its own set of overrides.
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* NavBar — much smaller logo, wrap nav, shrink fonts. */
+  header[data-navbar] {
+    height: auto !important;
+    min-height: 80px !important;
+    padding: 12px 16px !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  header[data-navbar] > button > img {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  /* Hide the wordmark text next to the logo at small widths
+     so the nav buttons have room. The logo itself carries the
+     branding. */
+  header[data-navbar] > button > div {
+    display: none !important;
+  }
+
+  header[data-navbar] nav {
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+  }
+
+  header[data-navbar] nav button {
+    font-size: 10px !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  /* Hero — drop absolute positioning, stack the two-column
+     layout, scale the headline so words don't break. */
+  section[data-hero] {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 32px 16px 48px !important;
+  }
+
+  div[data-hero-topbar] {
+    display: none !important;
+  }
+
+  div[data-hero-grid] {
+    position: static !important;
+    inset: auto !important;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 0 !important;
+  }
+
+  h1[data-hero-title] {
+    font-size: 40px !important;
+    line-height: 1.05 !important;
+  }
+
+  /* Services — collapse 4-col to 1-col, restrain padding,
+     and let the header above also stack instead of staying
+     in its 2-col grid. */
+  section[data-services] {
+    padding: 48px 16px !important;
+  }
+
+  section[data-services] > div:first-of-type {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  div[data-services-grid] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Case studies section — shrink horizontal padding so cards
+     have room to breathe in single column. */
+  section[data-case-studies-section] {
+    padding: 40px 16px !important;
+  }
+
+  /* Practice — kill the negative marginRight that pushes the 4U
+     badge 200px offscreen, centre the badge, shrink padding,
+     and pull the body text back up (it has marginTop: -60). */
+  section[data-practice] {
+    padding: 48px 16px !important;
+  }
+
+  div[data-fouru-badge] {
+    margin-right: 0 !important;
+    margin-bottom: 16px !important;
+    justify-content: center !important;
+  }
+
+  div[data-fouru-badge] img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  /* The body paragraph after the 4U badge uses inline
+     marginTop: -60 to overlap the badge on desktop — that
+     overlap is wrong on mobile because the badge is centred,
+     so reset it. */
+  section[data-practice] p {
+    margin-top: 18px !important;
+  }
+
+  /* Footer — stack the logo and nav vertically, smaller logo,
+     normal margin-left. */
+  footer[data-footer] {
+    min-height: 0 !important;
+    padding: 24px 16px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  div[data-footer-inner] {
+    margin-left: 0 !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  div[data-footer-inner] > div:first-child > img {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  div[data-footer-inner] > div:last-child {
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Tighter values for phones. */
+  h1[data-hero-title] {
+    font-size: 32px !important;
+  }
+
+  section[data-hero] {
+    padding: 24px 14px 36px !important;
+  }
+
+  section[data-services] {
+    padding: 36px 14px !important;
+  }
+
+  section[data-case-studies-section] {
+    padding: 32px 14px !important;
+  }
+
+  section[data-practice] {
+    padding: 36px 14px !important;
+  }
+
+  div[data-fouru-badge] img {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  header[data-navbar] nav button {
+    font-size: 9px !important;
+    letter-spacing: 0.14em !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Quick-win UX fixes (Hero CTAs, geometry size, footer touch
+   targets, secondary-CTA hit zone). These address the issues
+   the section-collapse overrides above don't reach.
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Cap the HeroGeometry wrapper so the figure doesn't push
+     the next section below the fold on phones. The SVG inside
+     already fills 100%/100% of its wrapper, so resizing the
+     wrapper resizes the figure proportionally. */
+  div[data-hero-geometry] {
+    height: auto !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+    aspect-ratio: 460 / 520;
+  }
+
+  /* CTAs in the Hero stack full-width when wrapped. The inline
+     style already sets flexWrap: wrap; this rule makes each
+     wrapped button claim its whole row instead of sitting at
+     content-width. */
+  button[data-hero-cta] {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* The 'Read the Practice' button is borderless text on desktop.
+     On mobile, give it a faint cyan tint so the tappable area is
+     visible — the underline alone reads as a link, not a button. */
+  button[data-hero-cta="secondary"] {
+    background: rgba(0, 188, 212, 0.08) !important;
+  }
+
+  /* Footer tab buttons — meet WCAG 2.5.5 Target Size by adding
+     padding to bring the touchable area above 44px without
+     changing the visible text weight. */
+  button[data-footer-tab] {
+    padding: 12px 8px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
   }
 }
