@@ -363,3 +363,50 @@ body {
     letter-spacing: 0.14em !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Quick-win UX fixes (Hero CTAs, geometry size, footer touch
+   targets, secondary-CTA hit zone). These address the issues
+   the section-collapse overrides above don't reach.
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Cap the HeroGeometry wrapper so the figure doesn't push
+     the next section below the fold on phones. The SVG inside
+     already fills 100%/100% of its wrapper, so resizing the
+     wrapper resizes the figure proportionally. */
+  div[data-hero-geometry] {
+    height: auto !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+    aspect-ratio: 460 / 520;
+  }
+
+  /* CTAs in the Hero stack full-width when wrapped. The inline
+     style already sets flexWrap: wrap; this rule makes each
+     wrapped button claim its whole row instead of sitting at
+     content-width. */
+  button[data-hero-cta] {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* The 'Read the Practice' button is borderless text on desktop.
+     On mobile, give it a faint cyan tint so the tappable area is
+     visible — the underline alone reads as a link, not a button. */
+  button[data-hero-cta="secondary"] {
+    background: rgba(0, 188, 212, 0.08) !important;
+  }
+
+  /* Footer tab buttons — meet WCAG 2.5.5 Target Size by adding
+     padding to bring the touchable area above 44px without
+     changing the visible text weight. */
+  button[data-footer-tab] {
+    padding: 12px 8px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+}
