@@ -145,7 +145,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
           color: '#fff', margin: '20px 0 12px', letterSpacing: '-0.015em',
           textWrap: 'pretty',
         }}>{title}</h3>
-        <Body size={14.5} color="rgba(38,50,56,.72)" style={{ maxWidth: 380, marginBottom: 22 }}>
+        <Body size={13} color="rgba(38,50,56,.72)" style={{ maxWidth: 380, marginBottom: 22 }}>
           {lede}
         </Body>
       </header>
@@ -251,7 +251,7 @@ function CaseRow({ kind, h, body, icon, swatch, onMagnify }) {
         minHeight: 0, overflow: 'hidden',
         display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',
       }}>
-        <Body size={13.5} color={tone.dark ? 'rgba(255,255,255,.78)' : 'rgba(38,50,56,.78)'}>
+        <Body size={12.5} color={tone.dark ? 'rgba(255,255,255,.78)' : 'rgba(38,50,56,.78)'}>
           {body}
         </Body>
       </div>
