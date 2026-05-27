@@ -272,7 +272,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
   const items = [
     {
       n: '01', t: 'AI Annotation Strategy', mark: 'orbit',
-      d: 'Designing the example sets that quietly shape model behaviour. We build the rubrics, write the Golden Responses and run the human reviewers who keep them honest.',
+      d: 'My approach encompasses rubric construction and evaluation, fine-tuning Golden Responses and casting a critical human eye over responses to verify honesty and integrity.',
     },
     {
       n: '02', t: 'Alignment Research', mark: 'flow',
@@ -280,11 +280,11 @@ export function Services({ height = 760, onTabChange = () => {} }) {
     },
     {
       n: '03', t: 'Language Education', mark: 'rule',
-      d: 'Plain-language pedagogy for models that teach. Multi-step reasoning, gentle correction, and the metaphors that make difficult ideas hold in the mind.',
+      d: 'Accessible language to teach models that learn. Multi-step reasoning, gentle correction and the metaphors that make difficult ideas hold in the mind.',
     },
     {
-      n: '04', t: 'Organisational Learning', mark: 'square',
-      d: 'Embedding annotation craft into your team. Reviewer training, calibration sessions and the small instruments that make a Golden standard repeatable.',
+      n: '04', t: 'Quality Assurance & Calibration', mark: 'square',
+      d: 'Verifying that every response meets the standard. The feedback loops, comparison frameworks and the attention to detail that keeps annotation honest at scale.',
     },
   ];
   return (
