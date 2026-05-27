@@ -302,14 +302,14 @@ export function Services({ height = 760, onTabChange = () => {} }) {
           <Eyebrow color={BRAND.cyan} width={36}>Practice: Four Disciplines</Eyebrow>
           <div style={{ height: 24 }}/>
           <SerifH size={72} weight={500}>
-            What we do, in <ItalCyan>careful</ItalCyan> detail.
+            What I do, in <ItalCyan>careful</ItalCyan> detail.
           </SerifH>
         </div>
         <div style={{ paddingBottom: 8 }}>
           <Body size={16} color="rgba(255,255,255,.72)">
-            Our work sits between language, instruction and judgement.
-            Four disciplines, one practice: each grounded in the same
-            standard. Every example is correct, uniform, useful, understandable.
+            My work sits between language, instruction and judgement.
+            Using RLHF (Rehearsed Learning through Human Feedback),
+            my focus is to ensure that every example is correct, uniform, useful, understandable.
           </Body>
           <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
             fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan, letterSpacing: '0.18em' }}>
