@@ -76,8 +76,15 @@ export function Wordmark({ inverse = true, scale = 1 }) {
 export function Tagline({ size = 44, color = '#ffffff', opacity = 1 }) {
   return (
     <span style={{
-      fontFamily: FONT.serif, fontSize: size, lineHeight: 1, color, opacity,
-      whiteSpace: 'nowrap', letterSpacing: '0.01em', fontStyle: 'italic', fontWeight: 400,
+      fontFamily: FONT.serif,
+      // Fluid font-size: minimum 20px on phones, scales with viewport
+      // width, capped at the size prop. Prevents overflow on mobile.
+      fontSize: `clamp(1.25rem, 4.5vw, ${size}px)`,
+      lineHeight: 1.15, color, opacity,
+      // whiteSpace removed so the tagline wraps when it can't fit.
+      // On desktop at default 44px it still sits on one line.
+      letterSpacing: '0.01em', fontStyle: 'italic', fontWeight: 400,
+      display: 'inline-block', maxWidth: '100%',
     }}>
       Bridging AI Potential with Human Expertise
     </span>
