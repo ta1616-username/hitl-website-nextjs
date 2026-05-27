@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { BRAND, FONT, PREMIUM_BG, Wordmark, Eyebrow, SerifH, ItalCyan, Body, Tagline, GeoMark } from './brand';
 
 // ───────────────────────────────────────────────────────────────
@@ -29,18 +28,15 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
         }}
         aria-label="Go to Home"
       >
-        {/* next/image serves a small variant on phones via the
-            sizes prop, so the same asset isn't shipped at 160×160
-            when it'll be displayed at 56×56. priority because the
-            logo is above the fold on every page. */}
-        <Image
+        {/* Plain <img> tag — next/image was failing to load this
+            asset on iOS Safari with a 'broken image' placeholder.
+            Reverted for reliability. */}
+        <img
           src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
           alt="Human-in-the-Loop Solutions"
           width={160}
           height={160}
-          sizes="(max-width: 768px) 56px, 160px"
-          priority
-          style={{ display: 'block', borderRadius: 8 }}
+          style={{ display: 'block', borderRadius: 8, width: 'clamp(48px, 12vw, 160px)', height: 'auto', maxHeight: 160 }}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4, lineHeight: 1 }}>
           <div style={{
@@ -93,7 +89,10 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
 export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
   return (
     <section data-hero="true" style={{
-      width: '100%', height, background: PREMIUM_BG,
+      // height changed from fixed prop to auto with minHeight, so the
+      // section grows with content on mobile (when the grid stacks).
+      width: '100%', minHeight: 'clamp(540px, 60vw, 820px)',
+      background: PREMIUM_BG,
       position: 'relative', overflow: 'hidden',
     }}>
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none"
@@ -106,10 +105,12 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         ))}
       </svg>
 
+      {/* Top bar — uses clamp() for fluid horizontal padding so it
+          shrinks on mobile without needing CSS overrides. */}
       <div data-hero-topbar="true" style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 64px', borderBottom: '1px solid rgba(38,50,56,.12)',
+        padding: '0 clamp(16px, 4vw, 64px)', borderBottom: '1px solid rgba(38,50,56,.12)',
       }}>
         <div style={{ fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
           letterSpacing: '0.32em', color: BRAND.slate, textTransform: 'uppercase' }}>
@@ -121,23 +122,39 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         </div>
       </div>
 
+      {/* Inner grid — switched from absolute positioning to static
+          flow so it stacks naturally on mobile. The grid uses
+          auto-fit + minmax so it collapses to one column when the
+          container is narrower than 2 × 320px = 640px. This works
+          without any external CSS rules. */}
       <div data-hero-grid="true" style={{
-        position: 'absolute', inset: '120px 64px 40px',
-        display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 64, alignItems: 'center',
+        position: 'relative',
+        padding: '120px clamp(16px, 4vw, 64px) 40px',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+        gap: 'clamp(24px, 4vw, 64px)',
+        alignItems: 'center',
       }}>
         <div style={{ position: 'relative' }}>
           <div style={{ marginBottom: 28 }}>
             <Eyebrow color={BRAND.slate}>A Practice in Human-AI Alignment</Eyebrow>
           </div>
+          {/* clamp(min, fluid, max) — title is 36px minimum on phones,
+              scales with viewport width, caps at 96px on desktop.
+              Works without any CSS rules — pure inline style. */}
           <h1 data-hero-title="true" style={{
-            fontFamily: FONT.serif, fontWeight: 500, fontSize: 96, lineHeight: 1.0,
+            fontFamily: FONT.serif, fontWeight: 500,
+            fontSize: 'clamp(2.25rem, 7vw, 6rem)',
+            lineHeight: 1.05,
             color: BRAND.white, margin: 0, letterSpacing: '-0.02em',
             textShadow: '0 1px 0 rgba(38,50,56,.08)',
           }}>
             Where instruction<br/>becomes <span style={{ color: BRAND.cyan }}>intelligence</span>.
           </h1>
-          <div style={{ marginTop: 34, marginBottom: 28 }}>
-            <Tagline size={62} color="#ffffff"/>
+          {/* Tagline overflow-wrapped + sized down to 36 (still
+              elegant on desktop, no longer spilling on mobile). */}
+          <div style={{ marginTop: 34, marginBottom: 28, overflow: 'hidden', wordBreak: 'break-word' }}>
+            <Tagline size={36} color="#ffffff"/>
           </div>
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
@@ -367,15 +384,13 @@ export function Footer({ height = 140, onTabChange = () => {} }) {
     }}>
       <div data-footer-inner="true" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 48, marginLeft: -80 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {/* Footer logo — no priority because it's below the fold.
-              Same sizes hint so phones get the small variant. */}
-          <Image
+          {/* Plain <img> for reliability — see header note. */}
+          <img
             src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
             alt="Human-In-The-Loop Solutions"
             width={140}
             height={140}
-            sizes="(max-width: 768px) 56px, 140px"
-            style={{ display: 'block', flexShrink: 0 }}
+            style={{ display: 'block', flexShrink: 0, width: 'clamp(48px, 11vw, 140px)', height: 'auto', maxHeight: 140 }}
           />
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <div style={{ fontFamily: FONT.sans, fontSize: 12, fontWeight: 600, color: '#ffffff', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
