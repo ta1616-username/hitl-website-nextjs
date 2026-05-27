@@ -376,11 +376,10 @@ body {
      already fills 100%/100% of its wrapper, so resizing the
      wrapper resizes the figure proportionally. */
   div[data-hero-geometry] {
-    height: auto !important;
-    max-width: 280px !important;
-    margin: 0 auto !important;
-    aspect-ratio: 460 / 520;
-  }
+  height: 316px !important;
+  max-width: 280px !important;
+  margin: 0 auto !important;
+}
 
   /* CTAs in the Hero stack full-width when wrapped. The inline
      style already sets flexWrap: wrap; this rule makes each
