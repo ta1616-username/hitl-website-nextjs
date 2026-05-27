@@ -145,7 +145,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           <h1 data-hero-title="true" style={{
             fontFamily: FONT.serif, fontWeight: 500,
             fontSize: 'clamp(2.25rem, 7vw, 6rem)',
-            lineHeight: 1.05,
+            lineHeight: 1.25,
             color: BRAND.white, margin: 0, letterSpacing: '-0.02em',
             textShadow: '0 1px 0 rgba(38,50,56,.08)',
           }}>
