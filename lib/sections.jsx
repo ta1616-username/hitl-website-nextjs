@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { BRAND, FONT, PREMIUM_BG, Wordmark, Eyebrow, SerifH, ItalCyan, Body, Tagline, GeoMark } from './brand';
 
 // ───────────────────────────────────────────────────────────────
@@ -28,11 +29,17 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
         }}
         aria-label="Go to Home"
       >
-        <img
+        {/* next/image serves a small variant on phones via the
+            sizes prop, so the same asset isn't shipped at 160×160
+            when it'll be displayed at 56×56. priority because the
+            logo is above the fold on every page. */}
+        <Image
           src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
           alt="Human-in-the-Loop Solutions"
           width={160}
           height={160}
+          sizes="(max-width: 768px) 56px, 160px"
+          priority
           style={{ display: 'block', borderRadius: 8 }}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4, lineHeight: 1 }}>
@@ -135,12 +142,16 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Human-in-the-Loop Solutions is a research-led practice in the craft of
-              Golden Responses: the carefully designed examples that teach large
-              language models (LLMs) to be correct, careful and humane under the microscope.
+              Golden Responses: the carefully designed examples that teach modern
+              language models to be correct, careful and humane under pressure.
             </Body>
           </div>
-          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+          {/* flexWrap allows the two CTAs to wrap onto separate
+              rows when they can't fit side-by-side. On phones
+              the globals.css rule makes each button full-width. */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, rowGap: 10, alignItems: 'center' }}>
             <button
+              data-hero-cta="primary"
               onClick={() => onTabChange('Case Studies')}
               style={{
                 fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
@@ -155,6 +166,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
               Explore Case Studies →
             </button>
             <button
+              data-hero-cta="secondary"
               onClick={() => onTabChange('Practice')}
               style={{
                 fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
@@ -172,7 +184,10 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           </div>
         </div>
 
-        <div style={{ position: 'relative', height: 520 }}>
+        {/* data-hero-geometry lets globals.css cap the wrapper at
+            ~280px wide on phones, so the figure doesn't push the
+            rest of the page below the fold when the Hero stacks. */}
+        <div data-hero-geometry="true" style={{ position: 'relative', height: 520 }}>
           <HeroGeometry/>
           <div style={{ position: 'absolute', bottom: -20, right: 0,
             fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 500,
@@ -242,7 +257,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
   const items = [
     {
       n: '01', t: 'AI Annotation Strategy', mark: 'orbit',
-      d: 'Designing the example sets that quietly shape model behaviour. My approach encompasses rubric construction and evaluation, fine-tuning Golden Responses and casting a critical human eye over responses to verify honesty and integrity.',
+      d: 'Designing the example sets that quietly shape model behaviour. We build the rubrics, write the Golden Responses and run the human reviewers who keep them honest.',
     },
     {
       n: '02', t: 'Alignment Research', mark: 'flow',
@@ -250,11 +265,11 @@ export function Services({ height = 760, onTabChange = () => {} }) {
     },
     {
       n: '03', t: 'Language Education', mark: 'rule',
-      d: 'Accessible language to teach models that learn. Multi-step reasoning, gentle correction and the metaphors that make difficult ideas hold in the mind.',
+      d: 'Plain-language pedagogy for models that teach. Multi-step reasoning, gentle correction, and the metaphors that make difficult ideas hold in the mind.',
     },
     {
-      n: '04', t: 'Quality Assurance & Calibration', mark: 'square',
-      d: 'Verifying that every response meets the standard. The feedback loops, comparison frameworks and the attention to detail that keeps annotation honest at scale.',
+      n: '04', t: 'Organisational Learning', mark: 'square',
+      d: 'Embedding annotation craft into your team. Reviewer training, calibration sessions and the small instruments that make a Golden standard repeatable.',
     },
   ];
   return (
@@ -272,14 +287,14 @@ export function Services({ height = 760, onTabChange = () => {} }) {
           <Eyebrow color={BRAND.cyan} width={36}>Practice: Four Disciplines</Eyebrow>
           <div style={{ height: 24 }}/>
           <SerifH size={72} weight={500}>
-            What I do, in <ItalCyan>careful</ItalCyan> detail.
+            What we do, in <ItalCyan>careful</ItalCyan> detail.
           </SerifH>
         </div>
         <div style={{ paddingBottom: 8 }}>
           <Body size={16} color="rgba(255,255,255,.72)">
-            My work sits between language, instruction and judgement.
-            Using RLHF (Rehearsed Learning through Human Feedback), my focus is to ensure that
-            every example is correct, uniform, useful, understandable.
+            Our work sits between language, instruction and judgement.
+            Four disciplines, one practice: each grounded in the same
+            standard. Every example is correct, uniform, useful, understandable.
           </Body>
           <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
             fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan, letterSpacing: '0.18em' }}>
@@ -342,18 +357,24 @@ export function Footer({ height = 140, onTabChange = () => {} }) {
   const tabs = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
   return (
     <footer data-footer="true" style={{
-      width: '100%', minHeight: height, background: '#101719',
+      // Matched to the NavBar background so the cyan 'SOLUTIONS'
+      // word and the logo cyan read identically in the header
+      // and footer. Same charcoal at 0.92 alpha.
+      width: '100%', minHeight: height, background: 'rgba(38,50,56,0.92)',
       padding: '0 64px', boxSizing: 'border-box',
       position: 'relative', color: '#fff', display: 'flex', alignItems: 'center',
       justifyContent: 'space-between',
     }}>
       <div data-footer-inner="true" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 48, marginLeft: -80 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img
+          {/* Footer logo — no priority because it's below the fold.
+              Same sizes hint so phones get the small variant. */}
+          <Image
             src="/Human-In-The-Loop_Solutions-no-bckgrnd.png"
             alt="Human-In-The-Loop Solutions"
             width={140}
             height={140}
+            sizes="(max-width: 768px) 56px, 140px"
             style={{ display: 'block', flexShrink: 0 }}
           />
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -369,6 +390,7 @@ export function Footer({ height = 140, onTabChange = () => {} }) {
           {tabs.map((t) => (
             <button
               key={t}
+              data-footer-tab="true"
               onClick={() => onTabChange(t)}
               style={{
                 fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
