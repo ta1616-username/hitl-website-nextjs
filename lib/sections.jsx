@@ -309,7 +309,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
           <Body size={16} color="rgba(255,255,255,.72)">
             My work sits between language, instruction and judgement.
             Using RLHF (Rehearsed Learning through Human Feedback),
-            my focus is to ensure that every example is correct, uniform, useful, understandable.
+            my focus is to ensure that every example is correct, uniform, useful and understandable.
           </Body>
           <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
             fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan, letterSpacing: '0.18em' }}>
