@@ -408,4 +408,10 @@ body {
     display: inline-flex !important;
     align-items: center !important;
   }
+  /* Hide the decorative horizontal rule in the Services section
+     on mobile — its fixed top: 64 lands between stacked content
+     rather than across the top as intended on desktop. */
+  div[data-services-rule] {
+    display: none !important;
+  }
 }
