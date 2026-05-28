@@ -293,7 +293,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
       position: 'relative', padding: '88px 64px', boxSizing: 'border-box',
       color: '#fff',
     }}>
-      <div style={{ position: 'absolute', left: 64, right: 64, top: 64, height: 1,
+      <div data-services-rule="true" style={{ position: 'absolute', left: 64, right: 64, top: 64, height: 1,
         background: 'rgba(255,255,255,.10)' }}/>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 64, alignItems: 'end',
