@@ -123,7 +123,7 @@ function CaseStudiesView({ onExploreCase }) {
             against the gradient (#8 in the refinement brief). */}
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color='#007A8A'>EDGE CASES & RESEARCH</Eyebrow>
-          <div style={{ height: 18 }}/>
+          <div style={{ height: 26 }}/>
           <SerifH size={48} color={BRAND.slate} weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
@@ -147,7 +147,7 @@ function CaseStudiesView({ onExploreCase }) {
         {/* Infographics gallery */}
         <div style={{ marginBottom: 60 }}>
           <Eyebrow color='#007A8A'>ANNOTATED INFOGRAPHICS</Eyebrow>
-          <div style={{ height: 14 }}/>
+          <div style={{ height: 26 }}/>
           <SerifH size={36} color="#ffffff" weight={500} leading={1.2}>
             The full walkthrough.
           </SerifH>
