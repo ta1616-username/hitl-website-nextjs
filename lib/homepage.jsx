@@ -42,7 +42,7 @@ function PracticeView({ on4UClick }) {
       display: 'flex', justifyContent: 'center',
     }}>
       <div style={{ maxWidth: 920, width: '100%' }}>
-        <Eyebrow color='#0099AA''>MY PHILOSOPHY</Eyebrow>
+        <Eyebrow color='#0099AA'>MY PHILOSOPHY</Eyebrow>
         <div style={{ height: 18 }}/>
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
           Instructive Flow
@@ -122,7 +122,7 @@ function CaseStudiesView({ onExploreCase }) {
         {/* Header — title and lede in soft grey for calmer contrast
             against the gradient (#8 in the refinement brief). */}
         <div style={{ marginBottom: 56 }}>
-          <Eyebrow color='#0099AA''>EDGE CASES & RESEARCH</Eyebrow>
+          <Eyebrow color='#0099AA'>EDGE CASES & RESEARCH</Eyebrow>
           <div style={{ height: 18 }}/>
           <SerifH size={48} color={BRAND.slate} weight={500} leading={1.15}>
             Where Annotation Meets Insight
@@ -146,7 +146,7 @@ function CaseStudiesView({ onExploreCase }) {
 
         {/* Infographics gallery */}
         <div style={{ marginBottom: 60 }}>
-          <Eyebrow color='#0099AA''>ANNOTATED INFOGRAPHICS</Eyebrow>
+          <Eyebrow color='#0099AA'>ANNOTATED INFOGRAPHICS</Eyebrow>
           <div style={{ height: 14 }}/>
           <SerifH size={36} color="#ffffff" weight={500} leading={1.2}>
             The full walkthrough.
@@ -214,7 +214,7 @@ function ContactView() {
       display: 'flex', justifyContent: 'center',
     }}>
       <div style={{ maxWidth: 720, width: '100%' }}>
-        <Eyebrow color='#0099AA''>GET IN TOUCH</Eyebrow>
+        <Eyebrow color='#0099AA'>GET IN TOUCH</Eyebrow>
         <div style={{ height: 18 }}/>
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
           Let&rsquo;s talk!
