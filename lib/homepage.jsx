@@ -88,7 +88,7 @@ function PracticeView({ on4UClick }) {
           marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28,
         }}>
           {[
-            ['CORRECT', 'Every example is truthful, precisely reasoned and thoughtfully considered. Something you can trust.'],
+            ['UNEQUIVOCALLY CORRECT', 'Every example is truthful, precisely reasoned and thoughtfully considered. Something you can trust.'],
             ['UNIFORM', 'When the same situation arises, the response is the same; conscientious, dependable and grounded in principle.'],
             ['USEFUL', 'The answer moves the reader forward, not in a circle.'],
             ['UNDERSTANDABLE', 'A person who is not an expert can read it and feel met.'],
@@ -124,10 +124,10 @@ function CaseStudiesView({ onExploreCase }) {
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color={BRAND.cyan}>EDGE CASES & RESEARCH</Eyebrow>
           <div style={{ height: 18 }}/>
-          <SerifH size={48} color="#6B7A88" weight={500} leading={1.15}>
+          <SerifH size={48} color={BRAND.slate} weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
-          <Body size={16} color="#6B7A88" style={{ marginTop: 16, maxWidth: 680 }}>
+          <Body size={16} color={BRAND.slate} style={{ marginTop: 16, maxWidth: 680 }}>
             Three snapshots from my annotation research. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something about how LLMs learn to think.
           </Body>
         </div>
