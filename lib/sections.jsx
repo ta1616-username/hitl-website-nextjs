@@ -156,9 +156,9 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           </div>
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
-              Human-in-the-Loop Solutions is a research-led practice in the craft of
-              Golden Responses: the carefully designed examples that teach large
-              language models (LLMs) to be correct, careful and humane under the microscope.
+              Welcome! I'm Tommy, a remote-based AI Annotation Strategist at the heart of
+              Human-In-The-Loop Solutions. I curate Golden Reponses, which are the carefully designed
+              examples that teach large language models (LLMs) to be correct, careful and humane.
             </Body>
           </div>
           {/* flexWrap allows the two CTAs to wrap onto separate
