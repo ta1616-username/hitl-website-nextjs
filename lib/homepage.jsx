@@ -5,12 +5,7 @@ import { BRAND, FONT, PREMIUM_BG, Body, SerifH, Eyebrow } from './brand';
 import { NavBar, Hero, Services, Footer } from './sections';
 import { CaseCard01, CaseCard02, CaseCard03, CASE_W } from './case-studies';
 
-// ───────────────────────────────────────────────────────────────
 // Infographic data — JPGs live in /public/infographics/.
-// You must copy the three JPGs from your local
-// Infographics folder into hitl-website-nextjs/public/infographics/
-// using these filenames before deploying.
-// ───────────────────────────────────────────────────────────────
 const INFOGRAPHICS = [
   {
     id: '01',
@@ -32,9 +27,7 @@ const INFOGRAPHICS = [
   },
 ];
 
-// ───────────────────────────────────────────────────────────────
-// Practice tab content — the Manifesto, given room to breathe.
-// ───────────────────────────────────────────────────────────────
+// Practice tab content — the Manifesto.
 function PracticeView({ on4UClick }) {
   return (
     <section data-practice="true" style={{
@@ -48,10 +41,6 @@ function PracticeView({ on4UClick }) {
           Instructive Flow
         </SerifH>
 
-        {/* 4U Standard badge — sits between the heading and the philosophy
-            text so the symbol introduces the standard the prose explains.
-            data-fouru-badge lets globals.css reset the negative marginRight
-            on mobile (which otherwise pushes the badge 200px offscreen). */}
         <div data-fouru-badge="true" style={{
           marginTop: 0, marginBottom: -80,
           display: 'flex', justifyContent: 'flex-end',
@@ -79,8 +68,7 @@ function PracticeView({ on4UClick }) {
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
           I believe that the difference between an example that teaches and one that misleads is about precision. A response can be warm, fluent and well-formed and still be wrong by a single word. When language models learn from examples that are not unequivocally correct, the model learns the wrong rule. Multiply that across thousands of examples, and a small slip becomes an <em style={{ fontStyle: 'italic' }}>ingrained habit</em>.
         </Body>
-        
-        {/* Four principles */}
+
         <div style={{
           marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28,
         }}>
@@ -108,16 +96,11 @@ function PracticeView({ on4UClick }) {
   );
 }
 
-// ───────────────────────────────────────────────────────────────
-// Case Studies tab — the three narrative cards plus the
-// infographic gallery (thumbnails open a modal at full size).
-// ───────────────────────────────────────────────────────────────
+// Case Studies tab.
 function CaseStudiesView({ onExploreCase }) {
   return (
     <section data-case-studies-section="true" style={{ width: '100%', padding: '80px 40px', background: PREMIUM_BG }}>
       <div style={{ maxWidth: 1480, margin: '0 auto' }}>
-        {/* Header — title and lede in soft grey for calmer contrast
-            against the gradient (#8 in the refinement brief). */}
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color='#007A8A'>EDGE CASES & RESEARCH</Eyebrow>
           <div style={{ height: 36 }}/>
@@ -129,10 +112,6 @@ function CaseStudiesView({ onExploreCase }) {
           </Body>
         </div>
 
-        {/* Case Cards — custom layout with offset positioning.
-            data-case-grid lets globals.css collapse the 2-column
-            staircase to a single column on mobile (and reset the
-            marginTop offsets, which only make sense in 2-col). */}
         <div data-case-grid="true" style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0 }}>
           <div data-case-grid-cell="1"><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
           <div data-case-grid-cell="2" style={{ marginTop: 450 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
@@ -141,7 +120,6 @@ function CaseStudiesView({ onExploreCase }) {
           </div>
         </div>
 
-        {/* Infographics gallery */}
         <div style={{ marginBottom: 60 }}>
           <Eyebrow color='#007A8A'>ANNOTATED INFOGRAPHICS</Eyebrow>
           <div style={{ height: 36 }}/>
@@ -201,9 +179,7 @@ function CaseStudiesView({ onExploreCase }) {
   );
 }
 
-// ───────────────────────────────────────────────────────────────
-// Contact tab — short, warm, direct.
-// ───────────────────────────────────────────────────────────────
+// Contact tab.
 function ContactView() {
   return (
     <section style={{
@@ -229,7 +205,7 @@ function ContactView() {
             letterSpacing: '0.28em', color: BRAND.cyan, textTransform: 'uppercase',
             marginBottom: 12,
           }}>EMAIL</div>
-          
+          <a
             href="mailto:hello@human-in-the-loop-solutions.org"
             style={{
               fontFamily: FONT.serif, fontSize: 28, fontWeight: 500,
@@ -252,7 +228,7 @@ function ContactView() {
               letterSpacing: '0.28em', color: BRAND.cyan, textTransform: 'uppercase',
               marginBottom: 12,
             }}>CONNECT</div>
-            
+            <a
               href="https://www.linkedin.com/company/human-in-the-loop-solutions/"
               target="_blank"
               rel="noopener noreferrer"
@@ -265,10 +241,10 @@ function ContactView() {
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
               onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
             >
-              LinkedIn →
+              LinkedIn &rarr;
             </a>
           </div>
-          
+          <a
             href="https://wa.me/message/YAPQ274UKEPYL1"
             target="_blank"
             rel="noopener noreferrer"
@@ -300,9 +276,7 @@ function ContactView() {
   );
 }
 
-// ───────────────────────────────────────────────────────────────
-// 4U Standard modal — magnifying glass effect for the badge.
-// ───────────────────────────────────────────────────────────────
+// 4U Standard modal.
 function FourUModal({ onClose }) {
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
@@ -342,17 +316,14 @@ function FourUModal({ onClose }) {
           marginTop: 28, fontFamily: FONT.serif, fontSize: 24, fontWeight: 500,
           color: BRAND.slate, textAlign: 'center', lineHeight: 1.3, letterSpacing: '-0.01em',
         }}>
-          Unequivocally Correct · Uniform · Useful · Understandable
+          Unequivocally Correct &middot; Uniform &middot; Useful &middot; Understandable
         </div>
       </div>
     </div>
   );
 }
 
-// ───────────────────────────────────────────────────────────────
 // Infographic modal overlay.
-// Closes on Esc, backdrop click, or the close button.
-// ───────────────────────────────────────────────────────────────
 function InfographicModal({ caseId, onClose }) {
   const item = INFOGRAPHICS.find((g) => g.id === caseId);
 
@@ -418,7 +389,7 @@ function InfographicModal({ caseId, onClose }) {
               cursor: 'pointer',
             }}
           >
-            Close ✕
+            Close &times;
           </button>
         </div>
         <img
@@ -431,9 +402,7 @@ function InfographicModal({ caseId, onClose }) {
   );
 }
 
-// ───────────────────────────────────────────────────────────────
 // Full Homepage — tab-aware composition.
-// ───────────────────────────────────────────────────────────────
 export function FullHomepage() {
   const [activeTab, setActiveTab] = useState('Home');
   const [selectedCase, setSelectedCase] = useState(null);
