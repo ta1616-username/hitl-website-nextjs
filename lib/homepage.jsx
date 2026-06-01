@@ -77,12 +77,12 @@ function PracticeView({ on4UClick }) {
         </div>
 
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
-          I believe that human judgment and AI capability are not competitors. They are complementary forces that amplify each other. My practice is built on a simple but precise ethos: instructional constraints clarify intent. When we define the rules, the principles and the boundaries, LLM systems learn to honour them. When LLM systems learn to honour those boundaries with rigour, they become trustworthy partners in work that matters.
+          I believe that the difference between an example that teaches and one that misleads is about precision. A response can be warm, fluent and well-formed and still be wrong by a single word. When language models learn from examples that are not unequivocally correct, the model learns the wrong rule. Multiply that across thousands of examples, and a small slip becomes a <em style={{ fontStyle: 'italic' }}>fixed habit</em>.
         </Body>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
-          Every annotation, every labelled example, every piece of feedback that we provide teaches the system not just what to do, but <em style={{ fontStyle: 'italic' }}>how to think</em>. That is the instructive part. The flow is the pattern: the repeatable, scalable structure that allows human wisdom to move into LLM capability at scale.
+          Unequivocally Correct is the first of the 4U Standard, because everything else rests on it. An example that is uniform but wrong is consistently wrong. An example that is useful but wrong is dangerously useful. Every annotation I write, every Golden Response I review, asks the same question first: is this correct beyond reasonable doubt? If the answer is anything short of yes, the example is not yet finished.
         </Body>
-
+        
         {/* Four principles */}
         <div style={{
           marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28,
