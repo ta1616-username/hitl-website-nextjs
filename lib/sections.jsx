@@ -158,7 +158,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Human-in-the-Loop Solutions is a research-led practice in the craft of
               Golden Responses: the carefully designed examples that teach large
-              language models (LLMs) to be correct, careful and humane under pressure.
+              language models (LLMs) to be correct, careful and humane under the microscope.
             </Body>
           </div>
           {/* flexWrap allows the two CTAs to wrap onto separate
