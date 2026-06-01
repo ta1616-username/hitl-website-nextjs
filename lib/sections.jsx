@@ -307,14 +307,14 @@ export function Services({ height = 760, onTabChange = () => {} }) {
         </div>
         <div style={{ paddingBottom: 8 }}>
           <Body size={16} color="rgba(255,255,255,.72)">
-            My work sits between language, instruction and judgement.
+            I'm Tommy, and my work sits between language, instruction and judgement.
             Using RLHF (Rehearsed Learning through Human Feedback),
-            my focus is to ensure that every example is correct, uniform, useful and understandable.
+            my focus is to ensure that every example is unequivocally correct, uniform, useful and understandable.
           </Body>
           <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
             fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan, letterSpacing: '0.18em' }}>
             <span style={{ display: 'inline-block', width: 8, height: 8, background: BRAND.cyan }}/>
-            4U · CORRECT / UNIFORM / USEFUL / UNDERSTANDABLE
+            4U · UNEQUIVOCALLY CORRECT / UNIFORM / USEFUL / UNDERSTANDABLE
           </div>
         </div>
       </div>
