@@ -77,10 +77,10 @@ function PracticeView({ on4UClick }) {
         </div>
 
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
-          I believe that the difference between an example that teaches and one that misleads is about precision. A response can be warm, fluent and well-formed and still be wrong by a single word. When language models learn from examples that are not unequivocally correct, the model learns the wrong rule. Multiply that across thousands of examples, and a small slip becomes a <em style={{ fontStyle: 'italic' }}>fixed habit</em>.
+          I believe that the difference between an example that teaches and one that misleads is about precision. A response can be warm, fluent and well-formed and still be wrong by a single word. When language models learn from examples that are not unequivocally correct, the model learns the wrong rule. Multiply that across thousands of examples, and a small slip becomes an <em style={{ fontStyle: 'italic' }}>ingrained habit</em>.
         </Body>
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 20, maxWidth: 760 }}>
-          Unequivocally Correct is the first of the 4U Standard, because everything else rests on it. An example that is uniform but wrong is consistently wrong. An example that is useful but wrong is dangerously useful. Every annotation I write, every Golden Response I review, asks the same question first: is this correct beyond reasonable doubt? If the answer is anything short of yes, the example is not yet finished.
+          Unequivocally Correct is the first of the 4U Standard, because everything else rests on it. Any example that is uniform but wrong is consistently wrong. Any example that is useful but wrong is dangerously useful. With every Golden Response I review, asks the same question first: is this correct beyond reasonable doubt?
         </Body>
         
         {/* Four principles */}
