@@ -268,7 +268,7 @@ function ContactView() {
               LinkedIn →
             </a>
           </div>
-          
+          <a             
             href="https://wa.me/message/YAPQ274UKEPYL1"
             target="_blank"
             rel="noopener noreferrer"
