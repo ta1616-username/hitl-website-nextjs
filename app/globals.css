@@ -206,10 +206,7 @@ body {
     gap: 12px !important;
   }
 
-  header[data-navbar] > button > img {
-    width: 56px !important;
-    height: 56px !important;
-  }
+  
 
   /* Hide the wordmark text next to the logo at small widths
      so the nav buttons have room. The logo itself carries the
