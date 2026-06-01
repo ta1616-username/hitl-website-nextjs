@@ -219,10 +219,11 @@ body {
     gap: 12px !important;
     flex-wrap: wrap !important;
     justify-content: flex-start !important;
+    width: 100% !important;
   }
 
   header[data-navbar] nav button {
-    font-size: 10px !important;
+    font-size: 11px !important;
     letter-spacing: 0.16em !important;
   }
 
