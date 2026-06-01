@@ -307,7 +307,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
         </div>
         <div style={{ paddingBottom: 8 }}>
           <Body size={16} color="rgba(255,255,255,.72)">
-            I'm Tommy, and my work sits between language, instruction and judgement.
+            My work sits between language, instruction and judgement.
             Using RLHF (Rehearsed Learning through Human Feedback),
             my focus is to ensure that every example is unequivocally correct, uniform, useful and understandable.
           </Body>
