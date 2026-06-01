@@ -36,7 +36,7 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
           alt="Human-in-the-Loop Solutions"
           width={160}
           height={160}
-          style={{ display: 'block', borderRadius: 8, width: 'clamp(48px, 12vw, 160px)', height: 'auto', maxHeight: 160 }}
+          style={{ display: 'block', borderRadius: 8, width: 160, height: 160 }}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4, lineHeight: 1 }}>
           <div style={{
