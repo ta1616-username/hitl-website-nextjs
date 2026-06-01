@@ -324,8 +324,16 @@ body {
   }
 
   div[data-footer-inner] > div:last-child {
-    flex-wrap: wrap !important;
-    gap: 16px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  div[data-footer-inner] > div:last-child button {
+    width: 100% !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
   }
 }
 
