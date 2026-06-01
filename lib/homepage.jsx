@@ -42,7 +42,7 @@ function PracticeView({ on4UClick }) {
       display: 'flex', justifyContent: 'center',
     }}>
       <div style={{ maxWidth: 920, width: '100%' }}>
-        <Eyebrow color='#0099AA'>MY PHILOSOPHY</Eyebrow>
+        <Eyebrow color="#00B4C8">MY PHILOSOPHY</Eyebrow>
         <div style={{ height: 18 }}/>
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
           Instructive Flow
