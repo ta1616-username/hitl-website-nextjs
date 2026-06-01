@@ -88,10 +88,10 @@ function PracticeView({ on4UClick }) {
           marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28,
         }}>
           {[
-            ['UNEQUIVOCALLY CORRECT', 'Every example is truthful, precisely reasoned and thoughtfully considered. Something you can trust.'],
-            ['UNIFORM', 'When the same situation arises, the response is the same; conscientious, dependable and grounded in principle.'],
-            ['USEFUL', 'The answer moves the reader forward, not in a circle.'],
-            ['UNDERSTANDABLE', 'A person who is not an expert can read it and feel met.'],
+            ['UNEQUIVOCALLY CORRECT', 'Every response is truthful, precisely reasoned and thoughtfully considered.'],
+            ['UNIFORM', 'When the same situation arises, the response is the same; conscientious, dependable and grounded.'],
+            ['USEFUL', 'The answer moves the reader forward, not in a squiggle.'],
+            ['UNDERSTANDABLE', 'A person who is not an expert can read the response and feel met.'],
           ].map(([term, def]) => (
             <div key={term} style={{
               padding: '20px 24px',
