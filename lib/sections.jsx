@@ -156,10 +156,10 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           </div>
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
-              Welcome! I'm Tommy, a remote-based AI Annotation Strategist at the heart of
-              Human-In-The-Loop Solutions. I train AI platforms called LLMs (large language models)
-              to change from providing you with off-the-mark answers to "Golden Responses" - replies 
-              that are correct, careful and humane.
+              Welcome! I'm Tommy, a remote-based AI Annotator at the heart of Human-In-The-Loop Solutions. I
+             optimize AI models, specifically working on the data pipelines that power Large Language Models(LLMs). 
+             In short, I train and fine-tune AI models to provide "Golden Responses" that are safer, more accurate 
+             and more humane.
             </Body>
           </div>
           {/* flexWrap allows the two CTAs to wrap onto separate
