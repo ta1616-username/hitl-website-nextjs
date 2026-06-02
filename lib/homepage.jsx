@@ -192,10 +192,10 @@ function ContactView() {
         <SerifH size={56} color={BRAND.slate} weight={500} leading={1.12}>
           Let&rsquo;s talk!
         </SerifH>
-        <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 24 }}>
-          Whether it&rsquo;s a collaboration you have in mind, a project that needs assistance or you&rsquo;re quite simply a curious cat about the world of AI annotation, I&rsquo;d love to hear from you.
-        </Body>
-<div style={{ marginTop: 32, marginBottom: 8, display: 'flex', justifyContent: 'flex-end' }}>
+        <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+          <Body size={17} color={BRAND.slate} weight={400} style={{ flex: 1, minWidth: 240 }}>
+            Whether it&rsquo;s a collaboration you have in mind, a project that needs assistance or you&rsquo;re quite simply a curious cat about the world of AI annotation, I&rsquo;d love to hear from you.
+          </Body>
           <img
             src="/Portrait.jpeg"
             alt="Tommy, AI Annotation Strategist"
@@ -205,6 +205,7 @@ function ContactView() {
               display: 'block',
               borderRadius: 8,
               boxShadow: '0 10px 30px rgba(38,50,56,.22)',
+              flexShrink: 0,
             }}
           />
         </div>
