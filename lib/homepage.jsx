@@ -104,7 +104,7 @@ function CaseStudiesView({ onExploreCase }) {
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color={BRAND.cyan}>EDGE CASES & RESEARCH</Eyebrow>
           <div style={{ height: 36 }}/>
-          <SerifH size={48} color={BRAND.slate} weight={500} leading={1.15}>
+          <SerifH size={48} color="#ffffff" weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
           <Body size={16} color={BRAND.slate} style={{ marginTop: 16, maxWidth: 680 }}>
