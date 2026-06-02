@@ -259,8 +259,8 @@ export function HeroGeometry() {
 
       <g fontFamily={FONT.sans} fontSize="10" fontWeight="600" letterSpacing="2.2" fill={BRAND.slate}>
         <text x="100" y="148">PROMPT</text>
-        <text x="354" y="106" textAnchor="end"<text x="430" y="338" textAnchor="end">AUDIT</text>
-        <text x="430" y="338" textAnchor="end" transform="translate(60 0)">AUDIT</text>
+        <text x="354" y="106" textAnchor="end">RULES</text>
+        <text x="430" y="338" textAnchor="end">AUDIT</text>
         <text x="142" y="416">REPLY</text>
       </g>
 
