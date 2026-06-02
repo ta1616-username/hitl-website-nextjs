@@ -142,7 +142,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
         </div>
         <h3 style={{
           fontFamily: FONT.serif, fontWeight: 500, fontSize: 34, lineHeight: 1.1,
-          color: '#fff', margin: '20px 0 12px', letterSpacing: '-0.015em',
+          color: BRAND.slate, margin: '20px 0 12px', letterSpacing: '-0.015em',
           textWrap: 'pretty',
         }}>{title}</h3>
         <Body size={14.5} color="rgba(38,50,56,.72)" style={{ maxWidth: 380, marginBottom: 22 }}>
