@@ -151,9 +151,6 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           </h1>
           {/* Tagline overflow-wrapped + sized down to 36 (still
               elegant on desktop, no longer spilling on mobile). */}
-          <div style={{ marginTop: 34, marginBottom: 28, overflow: 'hidden', wordBreak: 'break-word' }}>
-            <Tagline size={36} color="#ffffff"/>
-          </div>
           {/* Portrait — visual companion to the 'Welcome! I'm Tommy' intro. */}
           <div style={{ marginBottom: 28 }}>
             <img
