@@ -157,8 +157,9 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Welcome! I'm Tommy, a remote-based AI Annotation Strategist at the heart of
-              Human-In-The-Loop Solutions. I curate Golden Responses, which are the carefully designed
-              examples that teach large language models (LLMs) to be correct, careful and humane.
+              Human-In-The-Loop Solutions. I train AI platforms called LLMs (large language models)
+              to change from providing you with off-the-mark answers to "Golden Responses" - replies 
+              that are correct, careful and humane.
             </Body>
           </div>
           {/* flexWrap allows the two CTAs to wrap onto separate
