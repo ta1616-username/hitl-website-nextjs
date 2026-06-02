@@ -157,8 +157,8 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Welcome! I'm Tommy, a remote-based AI Annotator at the heart of Human-In-The-Loop Solutions. I
-             optimize AI models, specifically working on the data pipelines that power Large Language Models(LLMs). 
-             In short, I train and fine-tune AI models to provide "Golden Responses" that are safer, more accurate 
+             optimize AI models, specifically working on the data pipelines that power Large Language Models (LLMs). 
+             In short? I train and fine-tune AI models to provide "Golden Responses" that are safer, more accurate 
              and more humane.
             </Body>
           </div>
