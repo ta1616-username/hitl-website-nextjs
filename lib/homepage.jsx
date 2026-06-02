@@ -195,9 +195,21 @@ function ContactView() {
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 24 }}>
           Whether it&rsquo;s a collaboration you have in mind, a project that needs assistance or you&rsquo;re quite simply a curious cat about the world of AI annotation, I&rsquo;d love to hear from you.
         </Body>
-
+<div style={{ marginTop: 32, marginBottom: 8 }}>
+          <img
+            src="/Portrait.jpeg"
+            alt="Tommy, AI Annotation Strategist"
+            style={{
+              width: 'clamp(120px, 18vw, 200px)',
+              height: 'auto',
+              display: 'block',
+              borderRadius: 8,
+              boxShadow: '0 10px 30px rgba(38,50,56,.22)',
+            }}
+          />
+        </div>
         <div style={{
-          marginTop: 48, padding: '32px 36px',
+          marginTop: 32, padding: '32px 36px',
           background: '#fafafa', borderLeft: `3px solid ${BRAND.cyan}`,
         }}>
           <div style={{
