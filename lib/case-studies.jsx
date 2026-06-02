@@ -108,7 +108,7 @@ function CaseCard({ no, eyebrow, title, lede, problem, principle, solution, onEx
         // inflating Case 01's article to ~1210px (matching Case 02 + its
         // 450px marginTop), which created the giant gap above the footer
         // and pushed Case 03's overlap on top of the footer area.
-        width: '100%', height: CASE_H, background: PREMIUM_BG,
+        width: '100%', height: CASE_H, background: BRAND.slate2,
         position: 'relative', overflow: 'hidden', boxSizing: 'border-box',
         padding: '36px 36px 14px',
         display: 'flex', flexDirection: 'column',
