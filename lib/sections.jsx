@@ -134,7 +134,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
         alignItems: 'center',
       }}>
         <div style={{ position: 'relative' }}>
-          <div style={{ marginBottom: 28 }}>
+          <div style={{ marginTop: 24, marginBottom: 28 }}>
             <Eyebrow color={BRAND.slate}>A Practice in Human-AI Alignment</Eyebrow>
           </div>
           {/* clamp(min, fluid, max) — title is 36px minimum on phones,
