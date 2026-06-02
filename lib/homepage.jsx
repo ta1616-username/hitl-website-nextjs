@@ -66,7 +66,7 @@ function PracticeView({ on4UClick }) {
         </div>
 
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: -60, maxWidth: 760 }}>
-          I believe that the difference between an example that teaches and one that misleads is about precision. A response can be warm, fluent and well-formed and still be wrong by a single word. When language models learn from examples that are not unequivocally correct, the model learns the wrong rule. Multiply that across thousands of examples, and a small slip becomes an <em style={{ fontStyle: 'italic' }}>ingrained habit</em>.
+          The difference between an example that teaches and one that misleads comes down to precision. A response can sound warm, fluent and perfectly natural, but still be completely wrong because of a single word. When language models learn from examples that are not unequivocally correct, the model learns the wrong rule. Multiply that across thousands of examples, and a small slip becomes an <em style={{ fontStyle: 'italic' }}>ingrained habit</em>. To prevent this, I employ the "4U" check to ensure that an off-beat reply becomes a Golden Response.
         </Body>
 
         <div style={{
