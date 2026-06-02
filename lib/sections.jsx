@@ -152,7 +152,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           {/* Tagline overflow-wrapped + sized down to 36 (still
               elegant on desktop, no longer spilling on mobile). */}
           {/* Portrait — visual companion to the 'Welcome! I'm Tommy' intro. */}
-          <div style={{ marginBottom: 28 }}>
+          <div style={{ marginTop: 24, marginBottom: 28 }}>
             <img
               src="/Portrait.jpeg"
               alt="Tommy, AI Annotation Strategist"
