@@ -154,6 +154,20 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           <div style={{ marginTop: 34, marginBottom: 28, overflow: 'hidden', wordBreak: 'break-word' }}>
             <Tagline size={36} color="#ffffff"/>
           </div>
+          {/* Portrait — visual companion to the 'Welcome! I'm Tommy' intro. */}
+          <div style={{ marginBottom: 28 }}>
+            <img
+              src="/portrait.jpg"
+              alt="Tommy, AI Annotation Strategist"
+              style={{
+                width: 'clamp(180px, 32vw, 320px)',
+                height: 'auto',
+                display: 'block',
+                borderRadius: 8,
+                boxShadow: '0 10px 30px rgba(38,50,56,.22)',
+              }}
+            />
+          </div>
           <div style={{ maxWidth: 520, marginBottom: 40 }}>
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Welcome! I'm Tommy, a remote-based AI Annotator at the heart of Human-In-The-Loop Solutions. I
