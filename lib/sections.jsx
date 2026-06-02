@@ -160,7 +160,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
               src="/Portrait.jpeg"
               alt="Tommy, AI Annotation Strategist"
               style={{
-                width: 'clamp(180px, 32vw, 320px)',
+                width: 'clamp(120px, 18vw, 200px)',
                 height: 'auto',
                 display: 'block',
                 borderRadius: 8,
