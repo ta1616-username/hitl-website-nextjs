@@ -99,7 +99,7 @@ function PracticeView({ on4UClick }) {
 // Case Studies tab.
 function CaseStudiesView({ onExploreCase }) {
   return (
-    <section data-case-studies-section="true" style={{ width: '100%', padding: '80px 40px', background: PREMIUM_BG }}>
+    <section data-case-studies-section="true" style={{ width: '100%', padding: '80px 40px', background: BRAND.slate }}>
       <div style={{ maxWidth: 1480, margin: '0 auto' }}>
         <div style={{ marginBottom: 56 }}>
           <Eyebrow color='#007A8A'>EDGE CASES & RESEARCH</Eyebrow>
