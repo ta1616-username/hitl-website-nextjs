@@ -108,7 +108,7 @@ function CaseStudiesView({ onExploreCase }) {
             Where Annotation Meets Insight
           </SerifH>
           <Body size={16} color={BRAND.slate} style={{ marginTop: 16, maxWidth: 680 }}>
-            Three snapshots from my annotation research. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something about how LLMs learn to think.
+            Three snapshots from my work in AI data annotation. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something <i>critical</i> about how LLMs learn to think.
           </Body>
         </div>
 
