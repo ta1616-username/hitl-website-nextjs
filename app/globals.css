@@ -348,7 +348,7 @@ body {
   }
 
   section[data-services] {
-    padding: 36px 14px !important;
+    padding: 12px 14px 36px !important;
   }
 
   section[data-case-studies-section] {
@@ -356,7 +356,7 @@ body {
   }
 
   section[data-practice] {
-    padding: 36px 14px !important;
+    padding: 12px 14px 36px !important;
   }
 
   div[data-fouru-badge] img {
