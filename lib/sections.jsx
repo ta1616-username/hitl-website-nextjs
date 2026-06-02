@@ -172,8 +172,8 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Welcome! I'm Tommy, a remote-based AI Annotator at the heart of Human-In-The-Loop Solutions. I
              optimize AI models, specifically working on the data pipelines that power Large Language Models (LLMs).
-              <br>In short? I train and fine-tune AI models to provide "Golden Responses" that are safer, more accurate 
-             and aligned with human values.</br>
+              <br/>In short? I train and fine-tune AI models to provide "Golden Responses" that are safer, more accurate 
+             and aligned with human values.
                         </Body>
           </div>
           {/* flexWrap allows the two CTAs to wrap onto separate
