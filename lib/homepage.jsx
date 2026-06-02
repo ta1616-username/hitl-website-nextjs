@@ -107,7 +107,7 @@ function CaseStudiesView({ onExploreCase }) {
           <SerifH size={48} color="#ffffff" weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
-          <Body size={16} color={BRAND.slate} style={{ marginTop: 16, maxWidth: 680 }}>
+          <Body size={16} color="rgba(255,255,255,.78)" style={{ marginTop: 16, maxWidth: 680 }}>
             Three snapshots from my work in training architectures. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something <i>critical</i> about how LLMs learn to think.
           </Body>
         </div>
