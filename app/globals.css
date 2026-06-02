@@ -256,7 +256,7 @@ body {
      and let the header above also stack instead of staying
      in its 2-col grid. */
   section[data-services] {
-    padding: 20px 16px 48px !important;
+    padding: 10px 8px 24px !important;
   }
 
   section[data-services] > div:first-of-type {
