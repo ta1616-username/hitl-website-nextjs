@@ -126,7 +126,7 @@ function CaseStudiesView({ onExploreCase }) {
           <SerifH size={36} color="#ffffff" weight={500} leading={1.2}>
             The full walkthrough.
           </SerifH>
-          <Body size={15} color="rgba(38,50,56,.72)" style={{ marginTop: 12, maxWidth: 620 }}>
+          <Body size={15} color="rgba(255,255,255,.72)" style={{ marginTop: 12, maxWidth: 620 }}>
             Click any panel to open the full-size annotated infographic.
           </Body>
           <div style={{
