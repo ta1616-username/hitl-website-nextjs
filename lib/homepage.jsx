@@ -121,7 +121,7 @@ function CaseStudiesView({ onExploreCase }) {
         </div>
 
         <div style={{ marginBottom: 60 }}>
-          <Eyebrow color='#007A8A'>ANNOTATED INFOGRAPHICS</Eyebrow>
+          <Eyebrow color={BRAND.cyan}>ANNOTATED INFOGRAPHICS</Eyebrow>
           <div style={{ height: 36 }}/>
           <SerifH size={36} color="#ffffff" weight={500} leading={1.2}>
             The full walkthrough.
