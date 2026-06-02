@@ -99,15 +99,15 @@ function PracticeView({ on4UClick }) {
 // Case Studies tab.
 function CaseStudiesView({ onExploreCase }) {
   return (
-    <section data-case-studies-section="true" style={{ width: '100%', padding: '80px 40px', background: BRAND.slate }}>
+    <section data-case-studies-section="true" style={{ width: '100%', padding: '80px 40px', background: '#B9B6AD' }}>
       <div style={{ maxWidth: 1480, margin: '0 auto' }}>
         <div style={{ marginBottom: 56 }}>
-          <Eyebrow color={BRAND.cyan}>EDGE CASES & RESEARCH</Eyebrow>
+          <Eyebrow color={BRAND.slate}>EDGE CASES & RESEARCH</Eyebrow>
           <div style={{ height: 36 }}/>
-          <SerifH size={48} color="#ffffff" weight={500} leading={1.15}>
+          <SerifH size={48} color={BRAND.slate} weight={500} leading={1.15}>
             Where Annotation Meets Insight
           </SerifH>
-          <Body size={16} color="rgba(255,255,255,.78)" style={{ marginTop: 16, maxWidth: 680 }}>
+          <Body size={16} color={BRAND.slate} style={{ marginTop: 16, maxWidth: 680 }}>
             Three snapshots from my work in training architectures. Each shows a moment where the gap between a near-miss answer and a Golden Response reveals something <i>critical</i> about how LLMs learn to think.
           </Body>
         </div>
@@ -121,12 +121,12 @@ function CaseStudiesView({ onExploreCase }) {
         </div>
 
         <div style={{ marginBottom: 60 }}>
-          <Eyebrow color={BRAND.cyan}>ANNOTATED INFOGRAPHICS</Eyebrow>
+          <Eyebrow color={BRAND.slate}>ANNOTATED INFOGRAPHICS</Eyebrow>
           <div style={{ height: 36 }}/>
-          <SerifH size={36} color="#ffffff" weight={500} leading={1.2}>
+          <SerifH size={36} color={BRAND.slate} weight={500} leading={1.2}>
             The full walkthrough.
           </SerifH>
-          <Body size={15} color="rgba(255,255,255,.72)" style={{ marginTop: 12, maxWidth: 620 }}>
+          <Body size={15} color="rgba(38,50,56,.72)" style={{ marginTop: 12, maxWidth: 620 }}>
             Click any panel to open the full-size annotated infographic.
           </Body>
           <div style={{
@@ -195,7 +195,7 @@ function ContactView() {
         <Body size={17} color={BRAND.slate} weight={400} style={{ marginTop: 24 }}>
           Whether it&rsquo;s a collaboration you have in mind, a project that needs assistance or you&rsquo;re quite simply a curious cat about the world of AI annotation, I&rsquo;d love to hear from you.
         </Body>
-<div style={{ marginTop: 32, marginBottom: 8 }}>
+<div style={{ marginTop: 32, marginBottom: 8, display: 'flex', justifyContent: 'flex-end' }}>
           <img
             src="/Portrait.jpeg"
             alt="Tommy, AI Annotation Strategist"
