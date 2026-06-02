@@ -157,7 +157,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
           {/* Portrait — visual companion to the 'Welcome! I'm Tommy' intro. */}
           <div style={{ marginBottom: 28 }}>
             <img
-              src="/portrait.jpg"
+              src="/portrait.jpeg"
               alt="Tommy, AI Annotation Strategist"
               style={{
                 width: 'clamp(180px, 32vw, 320px)',
