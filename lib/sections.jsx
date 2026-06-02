@@ -309,8 +309,9 @@ export function Services({ height = 760, onTabChange = () => {} }) {
         <div style={{ paddingBottom: 8 }}>
           <Body size={16} color="rgba(255,255,255,.72)">
             My work sits between language, instruction and judgement.
-            Using RLHF (Rehearsed Learning through Human Feedback),
-            my focus is to ensure that every example is unequivocally correct, uniform, useful and understandable.
+            Training models through RLHF (Rehearsed Learning through Human Feedback),
+            my focus is to ensure that every LLM response you receive
+            is unequivocally correct, uniform, useful and understandable.
           </Body>
           <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
             fontFamily: FONT.mono, fontSize: 11, color: BRAND.cyan, letterSpacing: '0.18em' }}>
