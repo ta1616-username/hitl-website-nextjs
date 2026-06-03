@@ -193,7 +193,7 @@ function ContactView() {
           Let&rsquo;s talk!
         </SerifH>
         <div style={{ marginTop: 24, display: 'flex', alignItems: 'flex-start', gap: 16 }}>
-          <Body size={17} color={BRAND.slate} weight={400} style={{ flex: 1, minWidth: 240 }}>
+          <Body size={17} color={BRAND.slate} weight={400} style={{ flex: 1, minWidth: 0 }}>
             Whether it&rsquo;s a collaboration you have in mind, a project that needs assistance or you&rsquo;re quite simply a curious cat about the world of AI annotation, I&rsquo;d love to hear from you.
           </Body>
           <img
