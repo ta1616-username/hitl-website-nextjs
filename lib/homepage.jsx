@@ -200,7 +200,7 @@ function ContactView() {
             src="/Portrait.jpeg"
             alt="Tommy, AI Annotation Strategist"
             style={{
-              width: 'clamp(120px, 18vw, 200px)',
+              width: 'clamp(90px, 25vw, 180px)',
               height: 'auto',
               display: 'block',
               borderRadius: 8,
