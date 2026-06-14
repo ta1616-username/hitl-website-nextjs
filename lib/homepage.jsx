@@ -114,15 +114,20 @@ export function CaseStudiesView({ onExploreCase }) {
           </Body>
         </div>
 
+        {/* Staircase grid: each card's top aligns with the previous card's
+            bottom. Since the cards are a fixed CASE_H (760px) in
+            case-studies.jsx, the marginTop values below equal that
+            height. If you change CASE_H, update these two values to match.
+
+              Case 01: column 1, top at y=0
+              Case 02: column 2, top at y=760  (Case 01 bottom = Case 02 top)
+              Case 03: column 1, top at y=1520 (Case 02 bottom = Case 03 top)
+                       — row 2 of column 1 naturally starts at 760, so the
+                       marginTop of 760 pushes it the extra 760 needed. */}
         <div data-case-grid="true" style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0 }}>
           <div data-case-grid-cell="1"><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
-          <div data-case-grid-cell="2" style={{ marginTop: 450 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          {/* Case 03 sits in column 1, pulled up so its top aligns with
-              the Principle box (middle row) of Case 02. The Principle row
-              sits roughly a third of the way down Case 02. Tune this
-              marginTop value if the alignment drifts after copy edits
-              that change the header height of the case cards. */}
-          <div data-case-grid-cell="3" style={{ gridColumn: '1 / 2', marginTop: -380 }}>
+          <div data-case-grid-cell="2" style={{ marginTop: 760 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
+          <div data-case-grid-cell="3" style={{ gridColumn: '1 / 2', marginTop: 760 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
