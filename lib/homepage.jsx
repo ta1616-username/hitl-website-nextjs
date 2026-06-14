@@ -122,7 +122,7 @@ export function CaseStudiesView({ onExploreCase }) {
               sits roughly a third of the way down Case 02. Tune this
               marginTop value if the alignment drifts after copy edits
               that change the header height of the case cards. */}
-          <div data-case-grid-cell="3" style={{ gridColumn: '1 / 2', marginTop: -380 }}>
+          <div data-case-grid-cell="3" style={{ gridColumn: '1 / 2', marginTop: -430 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
