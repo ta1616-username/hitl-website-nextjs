@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, Inter, JetBrains_Mono, Italianno } from 'next/font/google';
 import './globals.css';
+import { NavBar, Footer } from '@/lib/sections';
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
@@ -138,7 +139,13 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+          <NavBar />
+          <main style={{ flex: 1 }}>{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

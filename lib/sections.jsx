@@ -1,14 +1,39 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { BRAND, FONT, PREMIUM_BG, Wordmark, Eyebrow, SerifH, ItalCyan, Body, Tagline, GeoMark } from './brand';
+
+// Map of tab label → URL. Used by NavBar and Footer for Link hrefs
+// and by usePathname-based active highlighting.
+const TAB_HREFS = {
+  'Home': '/',
+  'Services': '/services',
+  'Case Studies': '/case-studies',
+  'Practice': '/practice',
+  'Contact': '/contact',
+};
+
+// Reverse lookup: pathname → tab label, for the active highlight.
+function activeTabFromPathname(pathname) {
+  if (pathname === '/' || pathname === '') return 'Home';
+  if (pathname.startsWith('/services')) return 'Services';
+  if (pathname.startsWith('/case-studies')) return 'Case Studies';
+  if (pathname.startsWith('/practice')) return 'Practice';
+  if (pathname.startsWith('/contact')) return 'Contact';
+  return null;
+}
 
 // ───────────────────────────────────────────────────────────────
 // Navigation bar — five tabs, no Begin Engagement CTA.
-// Switches the active tab in parent state rather than scrolling.
+// Switches active tab via Next.js routing; usePathname drives
+// the active-tab highlight so it stays in sync with the URL.
 // Uses the custom HITL badge logo (public/logo-hitl.png) on the left,
 // with a cleaned-up wordmark whose only subtitle is "AI Annotation".
 // ───────────────────────────────────────────────────────────────
-export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
+export function NavBar() {
+  const pathname = usePathname();
+  const activeTab = activeTabFromPathname(pathname);
   const links = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
 
   return (
@@ -20,11 +45,12 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
       borderBottom: '1px solid rgba(255,255,255,.08)',
       boxSizing: 'border-box', position: 'relative', zIndex: 2,
     }}>
-      <button
-        onClick={() => onTabChange('Home')}
+      <Link
+        href="/"
         style={{
           background: 'none', border: 'none', cursor: 'pointer', padding: 0,
           display: 'flex', alignItems: 'center', gap: 16,
+          textDecoration: 'none',
         }}
         aria-label="Go to Home"
       >
@@ -54,29 +80,33 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
             AI Annotation
           </div>
         </div>
-      </button>
+      </Link>
       <nav style={{ display: 'flex', alignItems: 'center', gap: 38 }}>
-        {links.map((l) => (
-          <button
-            key={l}
-            onClick={() => onTabChange(l)}
-            style={{
-              fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: l === activeTab ? BRAND.cyan : 'rgba(255,255,255,.78)',
-              background: 'none', border: 'none', cursor: 'pointer',
-              padding: '0 0 4px',
-              borderBottom: l === activeTab ? `1.5px solid ${BRAND.cyan}` : '1.5px solid transparent',
-              transition: 'color 0.2s ease',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = l === activeTab ? BRAND.cyan : 'rgba(255,255,255,.78)';
-            }}
-          >
-            {l}
-          </button>
-        ))}
+        {links.map((l) => {
+          const isActive = l === activeTab;
+          return (
+            <Link
+              key={l}
+              href={TAB_HREFS[l]}
+              style={{
+                fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
+                letterSpacing: '0.22em', textTransform: 'uppercase',
+                color: isActive ? BRAND.cyan : 'rgba(255,255,255,.78)',
+                background: 'none', border: 'none', cursor: 'pointer',
+                padding: '0 0 4px',
+                borderBottom: isActive ? `1.5px solid ${BRAND.cyan}` : '1.5px solid transparent',
+                transition: 'color 0.2s ease',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = isActive ? BRAND.cyan : 'rgba(255,255,255,.78)';
+              }}
+            >
+              {l}
+            </Link>
+          );
+        })}
       </nav>
     </header>
   );
@@ -84,9 +114,9 @@ export function NavBar({ activeTab = 'Home', onTabChange = () => {} }) {
 
 // ───────────────────────────────────────────────────────────────
 // Hero — gradient surface, script tagline as visual anchor.
-// CTAs switch tabs instead of scrolling.
+// CTAs now use Next.js Link components routing to dedicated pages.
 // ───────────────────────────────────────────────────────────────
-export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
+export function Hero({ width = 1440, height = 820 }) {
   return (
     <section data-hero="true" style={{
       // height changed from fixed prop to auto with minHeight, so the
@@ -169,7 +199,7 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
             <Body size={16} color="rgba(38,50,56,.78)" weight={400}>
               Welcome! I'm Tommy, a remote-based AI Annotator and Trainer at the heart of Human-In-The-Loop Solutions. I
              optimize AI models, specifically working on the data pipelines that power Large Language Models (LLMs).
-              <br/>In short? I train and fine-tune AI models to provide "Golden Responses" that are safer, more accurate 
+              <br/>In short? I train and fine-tune AI models to provide "Golden Responses" that are safer, more accurate
              and aligned with human values.
                         </Body>
           </div>
@@ -177,24 +207,25 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
               rows when they can't fit side-by-side. On phones
               the globals.css rule makes each button full-width. */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, rowGap: 10, alignItems: 'center' }}>
-            <button
+            <Link
+              href="/case-studies"
               data-hero-cta="primary"
-              onClick={() => onTabChange('Case Studies')}
               style={{
                 fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
                 letterSpacing: '0.22em', textTransform: 'uppercase',
                 color: BRAND.white, background: BRAND.slate, padding: '15px 22px',
                 border: 'none', cursor: 'pointer',
                 transition: 'opacity 0.2s ease',
+                textDecoration: 'none', display: 'inline-block',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.85'; }}
               onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
             >
               Explore Case Studies →
-            </button>
-            <button
+            </Link>
+            <Link
+              href="/practice"
               data-hero-cta="secondary"
-              onClick={() => onTabChange('Practice')}
               style={{
                 fontFamily: FONT.sans, fontSize: 12, fontWeight: 600,
                 letterSpacing: '0.22em', textTransform: 'uppercase',
@@ -202,12 +233,13 @@ export function Hero({ width = 1440, height = 820, onTabChange = () => {} }) {
                 background: 'none', border: 'none', cursor: 'pointer',
                 borderBottom: `1.5px solid ${BRAND.cyan}`,
                 transition: 'opacity 0.2s ease',
+                textDecoration: 'none', display: 'inline-block',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
               onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
             >
               Read the Practice
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -278,9 +310,9 @@ export function HeroGeometry() {
 
 // ───────────────────────────────────────────────────────────────
 // Services — four practice areas on slate ground. Read More
-// switches to the Case Studies tab.
+// now routes to the dedicated Case Studies page via Next Link.
 // ───────────────────────────────────────────────────────────────
-export function Services({ height = 760, onTabChange = () => {} }) {
+export function Services({ height = 760 }) {
   const items = [
     {
       n: '01', t: 'AI Annotation Strategy', mark: 'orbit',
@@ -321,7 +353,7 @@ export function Services({ height = 760, onTabChange = () => {} }) {
           <Body size={16} color="rgba(255,255,255,.72)">
             My work sits at the intersection of language, instruction and judgement.
             By training models through RLHF (Rehearsed Learning through Human Feedback),
-            my focus is to ensure that every LLM response produced checks the "4U" criteria - 
+            my focus is to ensure that every LLM response produced checks the "4U" criteria -
             unequivocally correct, uniform, useful and understandable.
           </Body>
           <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -352,24 +384,25 @@ export function Services({ height = 760, onTabChange = () => {} }) {
               color: '#fff', margin: '0 0 16px', letterSpacing: '-0.005em',
             }}>{it.t}</h3>
             <Body size={13.5} color="rgba(255,255,255,.65)">{it.d}</Body>
-            <button
-              onClick={() => onTabChange('Case Studies')}
+            <Link
+              href="/case-studies"
               style={{
                 position: 'absolute', bottom: 18, left: 26, right: 26,
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                 borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: 14,
                 fontFamily: FONT.sans, fontSize: 10.5, fontWeight: 600,
                 letterSpacing: '0.22em', color: BRAND.cyan, textTransform: 'uppercase',
-                background: 'none', border: 'none', cursor: 'pointer', width: 'auto',
+                background: 'none', border: 'none', cursor: 'pointer',
                 textAlign: 'left',
                 transition: 'color 0.2s ease',
+                textDecoration: 'none',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(0,188,212,.7)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
             >
               <span>Read More</span>
               <span>→</span>
-            </button>
+            </Link>
           </article>
         ))}
       </div>
@@ -379,9 +412,9 @@ export function Services({ height = 760, onTabChange = () => {} }) {
 
 // ───────────────────────────────────────────────────────────────
 // Footer — restrained, no script tagline, updated email.
-// Tab links mirror the NavBar and call onTabChange to switch tabs.
+// Tab links now use Next.js Link to navigate between routes.
 // ───────────────────────────────────────────────────────────────
-export function Footer({ height = 140, onTabChange = () => {} }) {
+export function Footer({ height = 140 }) {
   const tabs = ['Home', 'Services', 'Case Studies', 'Practice', 'Contact'];
   return (
     <footer data-footer="true" style={{
@@ -414,21 +447,22 @@ export function Footer({ height = 140, onTabChange = () => {} }) {
         </div>
         <div style={{ display: 'flex', gap: 32, alignItems: 'center', marginLeft: 0 }}>
           {tabs.map((t) => (
-            <button
+            <Link
               key={t}
+              href={TAB_HREFS[t]}
               data-footer-tab="true"
-              onClick={() => onTabChange(t)}
               style={{
                 fontFamily: FONT.sans, fontSize: 13, fontWeight: 400,
                 color: 'rgba(255,255,255,.78)', background: 'none', border: 'none',
                 padding: 0, cursor: 'pointer',
                 transition: 'color 0.2s ease',
+                textDecoration: 'none',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = BRAND.cyan; }}
               onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.78)'; }}
             >
               {t}
-            </button>
+            </Link>
           ))}
         </div>
       </div>

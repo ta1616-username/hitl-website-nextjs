@@ -8,16 +8,40 @@ const SITE_URL = 'https://human-in-the-loop-solutions.org';
 export default function sitemap() {
   const lastModified = new Date();
 
-  // Right now the site is a single multi-tab page, so there is only one
-  // canonical URL to advertise. When each tab is split into its own route
-  // (a separate piece of work), add entries for /services, /case-studies,
-  // /practice and /contact here so Google indexes them individually.
+  // Each tab is now its own indexable URL after the multi-route refactor.
+  // Priorities: home is the entry point (1.0), Services and Case Studies
+  // are the conversion-critical pages (0.9), Practice and Contact are
+  // supporting (0.7).
   return [
     {
       url: SITE_URL,
       lastModified,
       changeFrequency: 'monthly',
       priority: 1.0,
+    },
+    {
+      url: `${SITE_URL}/services`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/case-studies`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/practice`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.7,
     },
   ];
 }

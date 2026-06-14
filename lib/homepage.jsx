@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { BRAND, FONT, PREMIUM_BG, Body, SerifH, Eyebrow } from './brand';
-import { NavBar, Hero, Services, Footer } from './sections';
-import { CaseCard01, CaseCard02, CaseCard03, CASE_W } from './case-studies';
+import { useEffect } from 'react';
+import { BRAND, FONT, Body, SerifH, Eyebrow } from './brand';
+import { CaseCard01, CaseCard02, CaseCard03 } from './case-studies';
 
 // Infographic data — JPGs live in /public/infographics/.
-const INFOGRAPHICS = [
+// Exported so route pages and the InfographicModal can share the source list.
+export const INFOGRAPHICS = [
   {
     id: '01',
     label: 'RLHF Edge Case · 01',
@@ -28,7 +28,8 @@ const INFOGRAPHICS = [
 ];
 
 // Practice tab content — the Manifesto.
-function PracticeView({ on4UClick }) {
+// Exported so app/practice/page.js can render it.
+export function PracticeView({ on4UClick }) {
   return (
     <section data-practice="true" style={{
       width: '100%', padding: '96px 40px', background: '#ffffff',
@@ -97,7 +98,8 @@ function PracticeView({ on4UClick }) {
 }
 
 // Case Studies tab.
-function CaseStudiesView({ onExploreCase }) {
+// Exported so app/case-studies/page.js can render it.
+export function CaseStudiesView({ onExploreCase }) {
   return (
     <section data-case-studies-section="true" style={{ width: '100%', padding: '80px 40px', background: BRAND.slate }}>
       <div style={{ maxWidth: 1480, margin: '0 auto' }}>
@@ -180,7 +182,8 @@ function CaseStudiesView({ onExploreCase }) {
 }
 
 // Contact tab.
-function ContactView() {
+// Exported so app/contact/page.js can render it.
+export function ContactView() {
   return (
     <section style={{
       width: '100%', padding: '96px 40px', background: '#ffffff',
@@ -289,8 +292,9 @@ function ContactView() {
   );
 }
 
-// 4U Standard modal.
-function FourUModal({ onClose }) {
+// 4U Standard modal — opened from the badge in PracticeView.
+// Exported so app/practice/page.js can mount it conditionally.
+export function FourUModal({ onClose }) {
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleKey);
@@ -336,8 +340,9 @@ function FourUModal({ onClose }) {
   );
 }
 
-// Infographic modal overlay.
-function InfographicModal({ caseId, onClose }) {
+// Infographic modal overlay — opened from a CaseCard or thumbnail.
+// Exported so app/case-studies/page.js can mount it conditionally.
+export function InfographicModal({ caseId, onClose }) {
   const item = INFOGRAPHICS.find((g) => g.id === caseId);
 
   useEffect(() => {
@@ -411,46 +416,6 @@ function InfographicModal({ caseId, onClose }) {
           style={{ width: '100%', display: 'block', height: 'auto' }}
         />
       </div>
-    </div>
-  );
-}
-
-// Full Homepage — tab-aware composition.
-export function FullHomepage() {
-  const [activeTab, setActiveTab] = useState('Home');
-  const [selectedCase, setSelectedCase] = useState(null);
-  const [show4UModal, setShow4UModal] = useState(false);
-
-  const handleTabChange = (next) => {
-    setActiveTab(next);
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-  };
-
-  return (
-    <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <NavBar activeTab={activeTab} onTabChange={handleTabChange}/>
-
-      <main style={{ flex: 1 }}>
-        {activeTab === 'Home' && <Hero onTabChange={handleTabChange}/>}
-        {activeTab === 'Services' && <Services onTabChange={handleTabChange}/>}
-        {activeTab === 'Case Studies' && (
-          <CaseStudiesView onExploreCase={(id) => setSelectedCase(id)}/>
-        )}
-        {activeTab === 'Practice' && <PracticeView on4UClick={() => setShow4UModal(true)}/>}
-        {activeTab === 'Contact' && <ContactView/>}
-      </main>
-
-      <Footer onTabChange={handleTabChange}/>
-
-      {selectedCase && (
-        <InfographicModal caseId={selectedCase} onClose={() => setSelectedCase(null)}/>
-      )}
-
-      {show4UModal && (
-        <FourUModal onClose={() => setShow4UModal(false)}/>
-      )}
     </div>
   );
 }
