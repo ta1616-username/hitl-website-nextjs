@@ -117,7 +117,12 @@ export function CaseStudiesView({ onExploreCase }) {
         <div data-case-grid="true" style={{ marginBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0 }}>
           <div data-case-grid-cell="1"><CaseCard01 onExplore={() => onExploreCase('01')}/></div>
           <div data-case-grid-cell="2" style={{ marginTop: 450 }}><CaseCard02 onExplore={() => onExploreCase('02')}/></div>
-          <div data-case-grid-cell="3" style={{ gridColumn: '1 / 2', marginTop: -100 }}>
+          {/* Case 03 sits in column 1, pulled up so its top aligns with
+              the Principle box (middle row) of Case 02. The Principle row
+              sits roughly a third of the way down Case 02. Tune this
+              marginTop value if the alignment drifts after copy edits
+              that change the header height of the case cards. */}
+          <div data-case-grid-cell="3" style={{ gridColumn: '1 / 2', marginTop: -380 }}>
             <CaseCard03 onExplore={() => onExploreCase('03')}/>
           </div>
         </div>
@@ -282,11 +287,6 @@ export function ContactView() {
           </a>
         </div>
 
-        <div style={{ marginTop: 40 }}>
-          <Body size={14} color="rgba(38,50,56,.7)">
-            Operating worldwide, remote. Responses usually within two working days.
-          </Body>
-        </div>
       </div>
     </section>
   );
